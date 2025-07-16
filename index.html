@@ -1,81 +1,147 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <title>InfoAnjos</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>InfoAnjos - Tecnologia que Cuida de Você</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #000;
+      background: #000;
       color: #fff;
+      margin: 0; padding: 0;
+      line-height: 1.5;
     }
-
     header {
-      background-color: #111;
-      padding: 1rem;
-      text-align: center;
+      background: linear-gradient(to right, #007bff, #00c6ff);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      align-items: center;
     }
-
-    header img {
-      height: 60px;
-      vertical-align: middle;
-    }
-
     header h1 {
-      display: inline-block;
-      margin-left: 10px;
-      color: #ff0000;
+      margin: 0;
     }
-
     nav a {
-      margin: 0 15px;
-      color: #ff0000;
+      color: #fff;
+      margin-left: 1rem;
       text-decoration: none;
       font-weight: bold;
     }
-
-    section {
-      padding: 2rem;
-      text-align: center;
+    nav a:hover {
+      text-decoration: underline;
     }
-
-    h2 {
-      color: #ff0000;
+    main {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: #111;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    h2, h3 {
+      color: #00aaff;
       margin-bottom: 1rem;
     }
-
-    .servico {
-      margin: 0.5rem 0;
+    .italic {
+      font-style: italic;
+      color: #aaa;
     }
-
+    ul {
+      list-style: none;
+      padding-left: 1rem;
+    }
+    li {
+      border-left: 4px solid #00c6ff;
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      color: #ddd;
+    }
+    a.button {
+      display: inline-block;
+      background: #007bff;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      box-shadow: 0 0 8px #007bffaa;
+      transition: background 0.3s;
+    }
+    a.button:hover {
+      background: #005fcc;
+    }
+    .contact-info a {
+      color: #00aaff;
+      font-weight: bold;
+      text-decoration: none;
+    }
     footer {
-      background-color: #111;
+      background: #007bff;
+      color: #fff;
       text-align: center;
       padding: 1rem;
-      font-size: 0.9rem;
+      user-select: none;
     }
-
-    #whatsapp {
+    .whatsapp-wrapper {
       position: fixed;
-      bottom: 15px;
-      right: 15px;
-      z-index: 999;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      max-width: 180px;
+      text-align: center;
     }
-
-    #whatsapp img {
+    .whatsapp-button img {
+      width: 60px;
       height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #000000aa;
+      transition: transform 0.3s;
+      background: #25d366;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+    .whatsapp-button img:hover {
+      transform: scale(1.1);
+    }
+    .whatsapp-slogan {
+      color: #00c6ff;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(0, 198, 255, 0.15);
+      padding: 4px 8px;
+      border-radius: 12px;
+      user-select: none;
+      cursor: default;
+    }
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+    }
+    @media(max-width:600px){
+      header {
+        flex-direction: column;
+        text-align: center;
+      }
+      nav {
+        margin-top: 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div style="display: flex; align-items: center;">
-    <img src="logo.jpeg" alt="Logo InfoAnjos" style="height: 80px; margin-right: 1rem;">
-    <h1>InfoAnjos</h1>
-  </div>
+  <h1>InfoAnjos</h1>
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
@@ -83,42 +149,60 @@
   </nav>
 </header>
 
+<main>
+  <section class="hero">
+    <h2>Tecnologia que Cuida de Você</h2>
+    <p>Transformamos tecnologia em soluções humanas.</p>
+    <p class="italic">Iniciando nossa jornada com dedicação para transformar tecnologia em confiança e qualidade.</p>
+    <a href="#contato" class="button">Fale Conosco</a>
+  </section>
 
   <section id="sobre">
-    <h2>Sobre Nós</h2>
-    <p>
-      Somos a InfoAnjos, uma equipe apaixonada por inovação e cuidado. Nossa missão é desenvolver soluções que facilitem o dia a dia. Atuamos com foco em gestão inteligente e suporte técnico humanizado.
-    </p>
-    <p>
-      Estamos iniciando com muito entusiasmo, prontos para construir soluções tecnológicas com qualidade e dedicação.
-    </p>
+    <h3>Sobre Nós</h3>
+    <p>Somos a InfoAnjos, uma equipe apaixonada por inovação e cuidado. Nossa missão é desenvolver soluções que facilitem o dia a dia. Atuamos com foco em gestão inteligente e suporte técnico humanizado.</p>
   </section>
 
   <section id="servicos">
-    <h2>Serviços</h2>
-    <div class="servico">🖥️ Manutenção preventiva e corretiva de computadores</div>
-    <div class="servico">⚙️ Diagnóstico e solução de problemas de hardware e software</div>
-    <div class="servico">🧹 Limpeza interna e remoção de vírus e malwares</div>
-    <div class="servico">📦 Instalação e configuração do Pacote Microsoft Office</div>
+    <h3>Serviços</h3>
+    <ul>
+      <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
+      <li>⚙️ Diagnóstico e solução de problemas de hardware e software</li>
+      <li>🧹 Limpeza interna e remoção de vírus e malwares</li>
+      <li>📦 Instalação e configuração do Pacote Microsoft Office</li>
+    </ul>
   </section>
 
   <section id="contato">
-    <h2>Fale Conosco</h2>
+    <h3>Fale Conosco</h3>
     <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
-    <p>📍 <strong>Endereço:</strong> Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
-    <p>⏰ <strong>Horário de Atendimento:</strong><br>Segunda a Sexta: 08h às 18h<br>Sábado: 08h às 12h</p>
-    <p>📸 <strong>Instagram:</strong> <a href="https://www.instagram.com/anjosinfo" style="color:#ff0000">@anjosinfo</a></p>
+
+    <div class="contact-info">
+      <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
+      <p>⏰ Segunda a Sexta: 08h às 18h<br> Sábado: 08h às 12h</p>
+      <p>📸 <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a></p>
+    </div>
   </section>
 
-  <div id="whatsapp">
-    <a href="https://wa.me/5531989764204?text=Olá,%20quero%20falar%20com%20a%20InfoAnjos" target="_blank" title="Fale conosco no WhatsApp">
-      <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" alt="WhatsApp">
-    </a>
-  </div>
+  <section class="mapa">
+    <h3>📍 Localização</h3>
+    <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+</main>
 
-  <footer>
-    © 2025 InfoAnjos. Todos os direitos reservados.
-  </footer>
+<div class="whatsapp-wrapper">
+  <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" 
+     target="_blank" 
+     class="whatsapp-button" 
+     title="Fale conosco pelo WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
+  <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
+</div>
+
+<footer>
+  <p>© 2025 InfoAnjos — Todos os direitos reservados.</p>
+  <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#fff; text-decoration:none;">Siga-nos no Instagram @anjosinfo</a></p>
+</footer>
 
 </body>
 </html>
