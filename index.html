@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Logo e Menu Fixos</title>
+  <title>Logo Fixa e Menu Azul</title>
   <style>
     body {
       margin: 0;
@@ -29,18 +28,19 @@
       height: auto;
     }
 
-    /* Menu azul fixo logo abaixo da logo */
+    /* Espaço reservado para a altura da logo fixa */
+    .spacer {
+      height: 100px; /* mesmo ou pouco mais que a altura da logo */
+    }
+
+    /* Menu azul */
     nav {
-      position: fixed;
-      top: 100px; /* altura da logo */
-      left: 0;
-      width: 100%;
       background-color: #007bff;
       display: flex;
       justify-content: center;
       gap: 2rem;
       padding: 1rem 0;
-      z-index: 999;
+      flex-wrap: wrap;
     }
 
     nav a {
@@ -51,11 +51,6 @@
 
     nav a:hover {
       text-decoration: underline;
-    }
-
-    /* Espaço para evitar sobreposição do conteúdo */
-    .spacer {
-      height: 170px; /* altura da logo + menu */
     }
 
     main {
@@ -70,22 +65,22 @@
     <img src="logo.jpeg" alt="Logo da Empresa">
   </header>
 
-  <!-- Menu fixo -->
+  <!-- Espaço para compensar a logo fixa -->
+  <div class="spacer"></div>
+
+  <!-- Menu azul -->
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
   </nav>
 
-  <!-- Espaço para empurrar o conteúdo abaixo da logo + menu -->
-  <div class="spacer"></div>
-
-  <!-- Conteúdo principal -->
+  <!-- Conteúdo -->
   <main>
     <h2>Bem-vindo à InfoAnjos</h2>
-    <p>Esse é o conteúdo principal da página. Role para ver a logo e o menu fixos no topo.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec augue at leo consequat ultrices.</p>
-    <p style="height: 1200px;">Conteúdo de rolagem para testar o comportamento fixo da logo e do menu.</p>
+    <p>Role a página para ver a logo fixa no topo!</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus, dicta...</p>
+    <p style="height: 1000px;">Conteúdo de rolagem para testar a logo fixa.</p>
   </main>
 
 </body>
