@@ -39,21 +39,23 @@
       display: block;
     }
 
-    /* === MENU DE NAVEGAÇÃO === */
+    /* === MENU DE NAVEGAÇÃO CENTRALIZADO === */
     nav {
-      text-align: center;
+      display: flex;               /* ativa flexbox para o menu */
+      justify-content: center;     /* centraliza horizontalmente os links */
+      gap: 2rem;                   /* espaçamento fixo entre links */
       margin-top: 1rem;
     }
 
     nav a {
-      color: #007bff;          /* Azul para os links */
-      margin: 0 1rem;
+      color: #007bff;              /* cor azul */
       text-decoration: none;
       font-weight: bold;
+      margin: 0;                   /* remove margens laterais */
     }
 
     nav a:hover {
-      text-decoration: underline; /* Sublinhar ao passar o mouse */
+      text-decoration: underline; /* sublinha no hover */
     }
 
     /* === CONTEÚDO PRINCIPAL === */
