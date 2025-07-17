@@ -28,6 +28,7 @@
       top: 0; /* Posicionado no topo */
       left: 0; /* Alinhado à esquerda */
       width: 100%; /* Ocupa toda a largura */
+      height: 112px; /* Altura fixa para facilitar posicionamento do menu */
       background: #000; /* Fundo preto para a área do header */
       padding: 1rem 0; /* Espaçamento vertical */
       display: flex; /* Usar flexbox para centralizar conteúdo */
@@ -39,7 +40,7 @@
 
     /* Tamanho e comportamento da imagem da logo */
     header img {
-      max-height: 80px; /* Altura máxima da logo */
+      max-height: 200px; /* Altura máxima da logo */
       height: auto; /* Mantém proporção */
       width: auto;
       display: block; /* Remove espaçamento extra */
@@ -48,7 +49,7 @@
     /* === MENU DE NAVEGAÇÃO FIXO ABAIXO DA LOGO === */
     nav {
       position: fixed; /* Fixar o menu */
-      top: 80px; /* Posicionado logo abaixo da logo fixa (altura da logo) */
+      top: 112px; /* Posicionado logo abaixo da logo fixa (altura do header) */
       left: 0; /* Alinhado à esquerda */
       width: 100%; /* Ocupa toda largura da página */
       background-color: #007bff; /* Fundo azul */
@@ -77,7 +78,7 @@
 
     /* === CONTEÚDO PRINCIPAL === */
     main {
-      padding-top: 140px; /* Espaço superior para evitar que conteúdo fique atrás do header e menu fixos */
+      padding-top: 180px; /* Espaço superior para evitar que conteúdo fique atrás do header e menu fixos */
       max-width: 900px; /* Largura máxima do conteúdo */
       margin: 2rem auto; /* Centraliza horizontalmente com margem vertical */
       padding-left: 1rem; /* Espaçamento interno lateral esquerdo */
