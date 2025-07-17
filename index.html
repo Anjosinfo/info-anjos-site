@@ -5,125 +5,62 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Tecnologia que Cuida de Você</title>
   <style>
-    :root {
-      --bg-color: #000;
-      --text-color: #fff;
-      --section-bg: #111;
-      --accent-color: #00aaff;
-      --link-color: #00c6ff;
-      --button-bg: #007bff;
-      --button-hover: #005fcc;
-    }
-
-    .light-theme {
-      --bg-color: #f5f5f5;
-      --text-color: #111;
-      --section-bg: #fff;
-      --accent-color: #005fcc;
-      --link-color: #007bff;
-      --button-bg: #007bff;
-      --button-hover: #005fcc;
-    }
-
     body {
       font-family: Arial, sans-serif;
-      background: var(--bg-color);
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
+      background: #000;
+      color: #fff;
+      margin: 0; padding: 0;
       line-height: 1.5;
-      transition: background 0.5s, color 0.5s;
     }
-
     header {
-      background: linear-gradient(to right, #007bff, #00c6ff);
+      background: transparent;
       padding: 1rem 2rem;
       display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .header-bottom {
-      display: flex;
-      flex-wrap: wrap;
       justify-content: center;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 1rem;
     }
-
     nav a {
-      color: #007bff;
-      margin: 0 0.5rem;
+      color: #00c6ff;
+      margin: 0 1rem;
       text-decoration: none;
       font-weight: bold;
-      background: #fff;
-      padding: 0.4rem 0.8rem;
-      border-radius: 6px;
-      transition: background 0.3s, color 0.3s;
     }
-
     nav a:hover {
-      background: #007bff;
-      color: #fff;
+      text-decoration: underline;
     }
-
-    .toggle-theme {
-      cursor: pointer;
-      background: #fff;
-      color: #007bff;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
-    }
-
-    .toggle-theme:hover {
-      background: #e0e0e0;
-    }
-
     main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
-
     section {
-      background: var(--section-bg);
+      background: #111;
       border-radius: 8px;
       padding: 2rem;
       margin-bottom: 2rem;
     }
-
     h2, h3 {
-      color: var(--accent-color);
+      color: #00aaff;
       margin-bottom: 1rem;
     }
-
     .italic {
       font-style: italic;
       color: #aaa;
     }
-
     ul {
       list-style: none;
       padding-left: 1rem;
     }
-
     li {
-      border-left: 4px solid var(--link-color);
+      border-left: 4px solid #00c6ff;
       margin-bottom: 1rem;
       padding-left: 0.5rem;
       color: #ddd;
     }
-
-    .light-theme li {
-      color: #333;
-    }
-
     a.button {
       display: inline-block;
-      background: var(--button-bg);
+      background: #007bff;
       color: #fff;
       padding: 0.75rem 1.5rem;
       border-radius: 6px;
@@ -131,17 +68,14 @@
       box-shadow: 0 0 8px #007bffaa;
       transition: background 0.3s;
     }
-
     a.button:hover {
-      background: var(--button-hover);
+      background: #005fcc;
     }
-
     .contact-info a {
-      color: var(--accent-color);
+      color: #00aaff;
       font-weight: bold;
       text-decoration: none;
     }
-
     footer {
       background: #007bff;
       color: #fff;
@@ -149,7 +83,6 @@
       padding: 1rem;
       user-select: none;
     }
-
     .whatsapp-wrapper {
       position: fixed;
       bottom: 20px;
@@ -162,7 +95,6 @@
       max-width: 180px;
       text-align: center;
     }
-
     .whatsapp-button img {
       width: 60px;
       height: 60px;
@@ -173,13 +105,11 @@
       padding: 8px;
       box-sizing: border-box;
     }
-
     .whatsapp-button img:hover {
       transform: scale(1.1);
     }
-
     .whatsapp-slogan {
-      color: var(--link-color);
+      color: #00c6ff;
       font-size: 0.85rem;
       font-weight: 600;
       background: rgba(0, 198, 255, 0.15);
@@ -188,33 +118,37 @@
       user-select: none;
       cursor: default;
     }
-
     iframe {
       width: 100%;
       height: 300px;
       border: 0;
       border-radius: 8px;
     }
-
     @media(max-width:600px){
-      .header-bottom {
+      header {
         flex-direction: column;
-        gap: 0.5rem;
+        text-align: center;
+      }
+      nav {
+        margin-top: 1rem;
       }
     }
   </style>
 </head>
 <body>
 
+<!-- LOGO NO TOPO, SEM FUNDO AZUL -->
+<div style="text-align: center; margin-top: 20px;">
+  <img src="logo.jpeg" alt="Logo da empresa" style="max-height: 100px; object-fit: contain;" />
+</div>
+
+<!-- MENU DE NAVEGAÇÃO -->
 <header>
-  <div class="header-bottom">
-    <nav>
-      <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
-    </nav>
-    <button class="toggle-theme" onclick="toggleTheme()">🌞/🌙</button>
-  </div>
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+  </nav>
 </header>
 
 <main>
@@ -257,6 +191,7 @@
   </section>
 </main>
 
+<!-- BOTÃO WHATSAPP -->
 <div class="whatsapp-wrapper">
   <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" 
      target="_blank" 
@@ -272,19 +207,6 @@
   <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#fff; text-decoration:none;">Siga-nos no Instagram @anjosinfo</a></p>
 </footer>
 
-<script>
-  function toggleTheme() {
-    document.body.classList.toggle('light-theme');
-    const isLight = document.body.classList.contains('light-theme');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-  }
-
-  window.addEventListener('DOMContentLoaded', () => {
-    if (localStorage.getItem('theme') === 'light') {
-      document.body.classList.add('light-theme');
-    }
-  });
-</script>
-
 </body>
 </html>
+
