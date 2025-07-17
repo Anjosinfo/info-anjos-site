@@ -1,78 +1,89 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!DOCTYPE html> <!-- Define o tipo do documento como HTML5 -->
+<html lang="pt-br"> <!-- Define o idioma da página como português do Brasil -->
 <head>
-  <meta charset="UTF-8" /> <!-- Define a codificação de caracteres como UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsividade para dispositivos móveis -->
+  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres como UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsividade em dispositivos móveis -->
   <title>Tecnologia que Cuida de Você</title> <!-- Título da aba do navegador -->
 
   <style>
-    /* Estilos globais da página */
+    /* Estilo geral do corpo da página */
     body {
-      font-family: Arial, sans-serif; /* Fonte padrão */
-      background: #000;               /* Fundo preto */
-      color: #fff;                    /* Texto branco */
+      font-family: Arial, sans-serif; /* Fonte principal */
+      background: #000; /* Fundo preto */
+      color: #fff; /* Texto branco */
       margin: 0;
       padding: 0;
-      line-height: 1.5;
+      line-height: 1.5; /* Espaçamento entre linhas */
     }
 
-    /* Estilização do cabeçalho (menu) */
+    /* Estilo do cabeçalho */
     header {
-      background: linear-gradient(to right, #007bff, #00c6ff); /* Degradê azul */
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      align-items: center;
+      background: transparent; /* Sem fundo */
+      padding: 1rem 0; /* Espaçamento vertical */
+      display: flex; /* Ativa o Flexbox */
+      justify-content: center; /* Centraliza o conteúdo */
+      align-items: center; /* Alinha verticalmente */
+      flex-wrap: wrap; /* Quebra linha se necessário */
     }
 
+    /* Estilo da imagem da logo */
+    header img {
+      max-height: 220px; /* Altura máxima da logo */
+      height: auto;
+      width: auto;
+      display: block; /* Evita espaços extras */
+    }
+
+    /* Estilo dos links do menu de navegação */
     nav a {
-      color: #fff; /* Cor branca */
-      margin-left: 1rem;
+      color: #007bff; /* Cor azul */
+      margin: 0 1rem; /* Espaço entre os links */
       text-decoration: none;
       font-weight: bold;
     }
 
     nav a:hover {
-      text-decoration: underline;
+      text-decoration: underline; /* Sublinhado ao passar o mouse */
     }
 
     /* Conteúdo principal */
     main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
+      max-width: 900px; /* Largura máxima do conteúdo */
+      margin: 2rem auto; /* Centraliza */
+      padding: 0 1rem; /* Espaço nas laterais */
     }
 
+    /* Estilo de cada seção */
     section {
-      background: #111;
-      border-radius: 8px;
+      background: #111; /* Fundo cinza escuro */
+      border-radius: 8px; /* Bordas arredondadas */
       padding: 2rem;
       margin-bottom: 2rem;
     }
 
     h2, h3 {
-      color: #00aaff;
+      color: #00aaff; /* Títulos em azul claro */
       margin-bottom: 1rem;
     }
 
     .italic {
-      font-style: italic;
+      font-style: italic; /* Texto em itálico */
       color: #aaa;
     }
 
     ul {
-      list-style: none;
+      list-style: none; /* Remove bolinhas da lista */
       padding-left: 1rem;
     }
 
     li {
-      border-left: 4px solid #00c6ff;
+      border-left: 4px solid #00c6ff; /* Borda azul à esquerda */
       margin-bottom: 1rem;
       padding-left: 0.5rem;
       color: #ddd;
     }
 
+    /* Botões */
     a.button {
       display: inline-block;
       background: #007bff;
@@ -88,6 +99,7 @@
       background: #005fcc;
     }
 
+    /* Estilo das informações de contato */
     .contact-info a {
       color: #00aaff;
       font-weight: bold;
@@ -100,7 +112,7 @@
       color: #fff;
       text-align: center;
       padding: 1rem;
-      user-select: none;
+      user-select: none; /* Evita que o texto seja selecionado */
     }
 
     /* Botão flutuante do WhatsApp */
@@ -123,7 +135,7 @@
       border-radius: 50%;
       box-shadow: 0 0 10px #000000aa;
       transition: transform 0.3s;
-      background: #25d366;
+      background: #25d366; /* Verde do WhatsApp */
       padding: 8px;
       box-sizing: border-box;
     }
@@ -143,7 +155,6 @@
       cursor: default;
     }
 
-    /* Mapa embutido */
     iframe {
       width: 100%;
       height: 300px;
@@ -151,37 +162,39 @@
       border-radius: 8px;
     }
 
-    /* Responsividade para telas pequenas */
-    @media(max-width:600px){
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
+    /* Layout responsivo para telas menores */
+    @media(max-width:600px) {
       nav {
+        text-align: center;
         margin-top: 1rem;
+      }
+
+      nav a {
+        display: inline-block;
+        margin-bottom: 0.5rem;
       }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- Logo sem fundo azul -->
-  <div style="text-align: center; margin-top: 150px;">
-    <img src="logo.jpeg" alt="Logo InfoAnjos" style="max-height: 150px;" />
-  </div>
-
-  <!-- Cabeçalho com menu -->
+  <!-- Cabeçalho com logo centralizada -->
   <header>
-    <nav>
-      <a href="#sobre">Sobre</a>
-      <a href="#servicos">Serviços</a>
-      <a href="#contato">Contato</a>
-    </nav>
+    <img src="logo.jpeg" alt="Logo InfoAnjos">
   </header>
+
+  <!-- Menu de navegação -->
+  <nav>
+    <a href="#sobre">Sobre</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+  </nav>
 
   <!-- Conteúdo principal -->
   <main>
-    <!-- Seção inicial com chamada -->
+
+    <!-- Seção de boas-vindas -->
     <section class="hero">
       <h2>Tecnologia que Cuida de Você</h2>
       <p>Transformamos tecnologia em soluções humanas.</p>
@@ -189,13 +202,13 @@
       <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
-    <!-- Sobre a empresa -->
+    <!-- Seção sobre a empresa -->
     <section id="sobre">
       <h3>Sobre Nós</h3>
       <p>Somos a AnjosInfo, nossa missão é desenvolver soluções que facilitem o dia a dia. Atuamos com foco em gestão inteligente e suporte técnico humanizado.</p>
     </section>
 
-    <!-- Lista de serviços oferecidos -->
+    <!-- Seção de serviços -->
     <section id="servicos">
       <h3>Serviços</h3>
       <ul>
@@ -206,7 +219,7 @@
       </ul>
     </section>
 
-    <!-- Informações de contato -->
+    <!-- Seção de contato -->
     <section id="contato">
       <h3>Fale Conosco</h3>
       <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
@@ -217,20 +230,21 @@
       </div>
     </section>
 
-    <!-- Mapa do Google Maps -->
+    <!-- Mapa de localização -->
     <section class="mapa">
       <h3>📍 Localização</h3>
       <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed"
               loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"></iframe>
+              referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
     </section>
   </main>
 
-  <!-- Botão flutuante do WhatsApp -->
+  <!-- Botão do WhatsApp flutuante -->
   <div class="whatsapp-wrapper">
-    <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" 
-       target="_blank" 
-       class="whatsapp-button" 
+    <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!"
+       target="_blank"
+       class="whatsapp-button"
        title="Fale conosco pelo WhatsApp">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
@@ -245,4 +259,5 @@
 
 </body>
 </html>
+
 
