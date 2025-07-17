@@ -1,36 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tecnologia que Cuida de Você</title>
+  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres como UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Torna o site responsivo em dispositivos móveis -->
+  <title>Tecnologia que Cuida de Você</title> <!-- Título exibido na aba do navegador -->
 
   <style>
     html {
-      scroll-behavior: smooth; /* Rolagem suave */
+      scroll-behavior: smooth; /* Suaviza a rolagem entre âncoras */
     }
 
+    /* Estilo base do corpo da página */
     body {
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
+      font-family: Arial, sans-serif; /* Fonte padrão */
+      background: #000; /* Fundo preto (modo escuro) */
+      color: #fff; /* Texto branco */
       margin: 0;
       padding: 0;
-      transition: background 0.4s, color 0.4s;
+      transition: background 0.4s, color 0.4s; /* Transição suave para troca de tema */
     }
 
+    /* Modo claro */
     body.light {
-      background: #f0f0f0;
-      color: #111;
+      background: #f0f0f0; /* Fundo claro */
+      color: #111; /* Texto escuro */
     }
 
+    /* Títulos no modo claro */
     body.light h2,
     body.light h3 {
-      color: #007bff;
+      color: #007bff; /* Azul padrão */
     }
 
+    /* Cabeçalho com logo fixo */
     header {
-      position: fixed;
+      position: fixed; /* Fixa no topo da página */
       top: 0;
       left: 0;
       width: 100%;
@@ -40,30 +44,29 @@
       justify-content: center;
       align-items: center;
       padding: 1rem 0;
-      z-index: 200;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
+      z-index: 200; /* Acima de tudo */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7); /* Sombra inferior */
     }
 
     header img {
-      max-height: 80px;
-      height: auto;
-      width: auto;
+      max-height: 80px; /* Altura máxima da logo */
       display: block;
     }
 
+    /* Menu de navegação fixo */
     nav {
-      position: fixed;
-      top: 112px;
+      position: fixed; /* Fixa abaixo do cabeçalho */
+      top: 112px; /* Exatamente abaixo do header */
       left: 0;
       width: 100%;
       height: 50px;
-      background-color: #007bff;
+      background-color: #007bff; /* Cor azul */
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 2rem;
+      gap: 2rem; /* Espaço entre links */
       z-index: 150;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Sombra inferior */
       transition: all 0.4s;
     }
 
@@ -77,54 +80,61 @@
 
     nav a:hover {
       text-decoration: underline;
-      color: #cce5ff;
+      color: #cce5ff; /* Azul claro no hover */
     }
 
+    /* Espaço reservado para compensar os elementos fixos */
     main {
-      padding-top: 162px;
+      padding-top: 162px; /* 112px do header + 50px do nav */
       max-width: 900px;
       margin: 2rem auto;
       padding-left: 1rem;
       padding-right: 1rem;
     }
 
+    /* Estilo das seções */
     section {
       background: #111;
       border-radius: 8px;
       padding: 2rem;
       margin-bottom: 2rem;
-      transition: background 0.4s, color 0.4s;
+      transition: background 0.4s, color 0.4s; /* Suavidade na troca de tema */
     }
 
+    /* Seções no modo claro */
     body.light section {
       background: #fff;
       color: #111;
     }
 
+    /* Títulos das seções */
     h2, h3 {
-      color: #00aaff;
+      color: #00aaff; /* Azul vibrante */
       margin-bottom: 1rem;
       transition: color 0.4s;
     }
 
+    /* Lista personalizada */
     ul {
       list-style: none;
       padding-left: 1rem;
     }
 
     li {
-      border-left: 4px solid #00c6ff;
+      border-left: 4px solid #00c6ff; /* Linha azul à esquerda */
       margin-bottom: 1rem;
       padding-left: 0.5rem;
       color: #ddd;
       transition: color 0.4s, border-color 0.4s;
     }
 
+    /* Lista no modo claro */
     body.light li {
-      color: #222;
-      border-left: 4px solid #007bff;
+      color: #222; /* Texto mais escuro */
+      border-left: 4px solid #007bff; /* Azul padrão */
     }
 
+    /* Botão principal */
     a.button {
       display: inline-block;
       background: #007bff;
@@ -141,12 +151,14 @@
       background: #005fcc;
     }
 
+    /* Links de contato */
     .contact-info a {
       color: #00aaff;
       font-weight: bold;
       text-decoration: none;
     }
 
+    /* Rodapé */
     footer {
       background: #007bff;
       color: #fff;
@@ -155,6 +167,7 @@
       user-select: none;
     }
 
+    /* Mapa do Google */
     iframe {
       width: 100%;
       height: 300px;
@@ -162,6 +175,7 @@
       border-radius: 8px;
     }
 
+    /* Botão do WhatsApp fixo */
     .whatsapp-wrapper {
       position: fixed;
       bottom: 20px;
@@ -181,13 +195,13 @@
       border-radius: 50%;
       box-shadow: 0 0 10px #000000aa;
       transition: transform 0.3s;
-      background: #25d366;
+      background: #25d366; /* Verde WhatsApp */
       padding: 8px;
       box-sizing: border-box;
     }
 
     .whatsapp-button img:hover {
-      transform: scale(1.1);
+      transform: scale(1.1); /* Efeito ao passar o mouse */
     }
 
     .whatsapp-slogan {
@@ -201,6 +215,7 @@
       cursor: default;
     }
 
+    /* Botão para trocar tema (claro/escuro) */
     .theme-toggle {
       position: fixed;
       top: 20px;
@@ -221,7 +236,7 @@
       background-color: #005fcc;
     }
 
-    /* Menu responsivo para telas pequenas */
+    /* Estilo responsivo para o menu em telas pequenas */
     @media (max-width: 600px) {
       nav {
         flex-direction: column;
@@ -239,19 +254,24 @@
 </head>
 
 <body>
+  <!-- Botão para alternar tema -->
   <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
+  <!-- Cabeçalho fixo com logo -->
   <header>
     <img src="logo.jpeg" alt="Logo InfoAnjos" />
   </header>
 
+  <!-- Navegação principal -->
   <nav role="navigation" aria-label="Menu principal">
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
   </nav>
 
+  <!-- Conteúdo principal -->
   <main>
+    <!-- Seção de apresentação -->
     <section class="hero">
       <h2>Tecnologia que Cuida de Você</h2>
       <p>Transformamos tecnologia em soluções humanas.</p>
@@ -259,11 +279,13 @@
       <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
+    <!-- Seção sobre a empresa -->
     <section id="sobre">
       <h3>Sobre Nós</h3>
       <p>Somos a AnjosInfo, nossa missão é desenvolver soluções que facilitem o dia a dia. Atuamos com foco em gestão inteligente e suporte técnico humanizado.</p>
     </section>
 
+    <!-- Seção de serviços -->
     <section id="servicos">
       <h3>Serviços</h3>
       <ul>
@@ -274,6 +296,7 @@
       </ul>
     </section>
 
+    <!-- Seção de contato -->
     <section id="contato">
       <h3>Fale Conosco</h3>
       <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
@@ -284,15 +307,17 @@
       </div>
     </section>
 
+    <!-- Seção com o mapa -->
     <section class="mapa">
       <h3>📍 Localização</h3>
       <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy"></iframe>
     </section>
   </main>
 
+  <!-- Botão flutuante do WhatsApp -->
   <div class="whatsapp-wrapper">
-    <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" 
-       target="_blank" 
+    <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!"
+       target="_blank"
        class="whatsapp-button"
        aria-label="Abrir conversa no WhatsApp com InfoAnjos"
        title="Fale conosco pelo WhatsApp">
@@ -301,16 +326,17 @@
     <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
   </div>
 
+  <!-- Rodapé -->
   <footer>
     <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#fff; text-decoration:none;">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
+  <!-- Script de alternância de tema -->
   <script>
     function alternarTema() {
-      document.body.classList.toggle('light');
+      document.body.classList.toggle('light'); // Alterna entre tema claro e escuro
     }
   </script>
 </body>
 </html>
-
