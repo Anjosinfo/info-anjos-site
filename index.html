@@ -16,27 +16,22 @@
       transition: background 0.4s, color 0.4s;
     }
 
-    /* === MODO CLARO === */
     body.light {
       background: #f0f0f0;
       color: #111;
     }
 
-    /* === CABEÇALHO === */
+    /* === CABEÇALHO COM LOGO CENTRALIZADA E ESTÁTICA === */
     header {
       background: transparent;
       padding: 1rem 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
+      text-align: center;
     }
 
     header img {
-      max-height: 400px;
+      max-height: 150px;
       height: auto;
       width: auto;
-      display: block;
     }
 
     /* === MENU DE NAVEGAÇÃO ABAIXO DA LOGO COM FUNDO AZUL === */
@@ -53,7 +48,6 @@
       color: #fff;
       text-decoration: none;
       font-weight: bold;
-      margin: 0;
     }
 
     nav a:hover {
@@ -199,12 +193,12 @@
   <!-- Botão de alternância de tema (claro/escuro) -->
   <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
-  <!-- LOGO -->
+  <!-- LOGO ESTÁTICA -->
   <header>
     <img src="logo.jpeg" alt="Logo InfoAnjos">
   </header>
 
-  <!-- MENU DE NAVEGAÇÃO COM FUNDO AZUL -->
+  <!-- MENU COM FUNDO AZUL ABAIXO DA LOGO -->
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
@@ -251,7 +245,7 @@
     </section>
   </main>
 
-  <!-- WHATSAPP -->
+  <!-- WHATSAPP FLUTUANTE -->
   <div class="whatsapp-wrapper">
     <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
