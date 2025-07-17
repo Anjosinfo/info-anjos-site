@@ -2,18 +2,18 @@
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsividade para dispositivos móveis -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Torna o site responsivo -->
   <title>Tecnologia que Cuida de Você</title> <!-- Título da aba -->
 
   <style>
     /* Estilo base do corpo */
     body {
-      font-family: Arial, sans-serif; /* Fonte padrão */
-      background: #000; /* Fundo preto */
+      font-family: Arial, sans-serif; /* Define a fonte */
+      background: #000; /* Fundo preto padrão (modo escuro) */
       color: #fff; /* Texto branco */
       margin: 0;
       padding: 0;
-      transition: background 0.4s, color 0.4s; /* Animação suave ao trocar temas */
+      transition: background 0.4s, color 0.4s; /* Animação suave ao alternar o tema */
     }
 
     /* Modo claro */
@@ -22,97 +22,95 @@
       color: #111; /* Texto escuro */
     }
 
-    /* Header fixo com logo */
+    body.light h2, body.light h3 {
+      color: #007bff; /* Azul padrão no modo claro */
+    }
+
+    /* Cabeçalho fixo com logo */
     header {
-      position: fixed; /* Fixa no topo */
+      position: fixed; /* Fixa o cabeçalho no topo */
       top: 0;
       left: 0;
-      width: 100%; /* Largura total */
-      height: 112px; /* Altura fixa */
-      background: #000; /* Fundo preto */
-      padding: 1rem 0; /* Espaçamento vertical */
-      display: flex; /* Flexbox para centralizar */
-      justify-content: center; /* Centraliza horizontalmente */
-      align-items: center; /* Centraliza verticalmente */
-      z-index: 200; /* Sobre outros elementos */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.7); /* Sombra */
+      width: 100%;
+      height: 112px; /* Altura da logo */
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+      z-index: 200; /* Sobrepõe o restante */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7);
     }
 
-    /* Imagem da logo */
     header img {
-      max-height: 80px; /* Altura máxima */
+      max-height: 80px; /* Altura máxima da logo */
       height: auto;
       width: auto;
-      display: block; /* Remove espaços */
+      display: block;
     }
 
-    /* Menu de navegação fixo logo abaixo do header */
+    /* Menu de navegação fixo abaixo do cabeçalho */
     nav {
-      position: fixed; /* Fixa na tela */
+      position: fixed;
       top: 112px; /* Logo abaixo do header */
       left: 0;
       width: 100%;
-      height: 50px; /* Altura da barra azul */
-      background-color: #007bff; /* Azul */
-      display: flex; /* Flexbox para links */
-      justify-content: center; /* Centraliza horizontalmente */
-      align-items: center; /* Centraliza verticalmente */
-      gap: 2rem; /* Espaço entre links */
-      margin: 0;
-      z-index: 150; /* Abaixo do header */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Sombra leve */
+      height: 50px;
+      background-color: #007bff; /* Azul padrão */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      z-index: 150;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
     }
 
-    /* Estilo dos links do menu */
     nav a {
-      color: #fff; /* Cor branca */
-      text-decoration: none; /* Sem sublinhado */
-      font-weight: bold; /* Negrito */
-      line-height: 50px; /* Centraliza verticalmente no nav */
-      font-size: 1rem; /* Tamanho da fonte */
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 1rem;
+      line-height: 50px;
     }
 
-    /* Efeito hover nos links */
     nav a:hover {
       text-decoration: underline;
-      color: #cce5ff; /* Azul claro */
+      color: #cce5ff;
     }
 
-    /* Conteúdo principal com espaçamento para header e nav fixos */
+    /* Espaço reservado no conteúdo principal por causa do header e nav fixos */
     main {
       padding-top: 162px; /* 112px do header + 50px do nav */
       max-width: 900px;
-      margin: 2rem auto; /* Centralizado com margem vertical */
+      margin: 2rem auto;
       padding-left: 1rem;
       padding-right: 1rem;
     }
 
-    /* Seções com fundo escuro e cantos arredondados */
+    /* Estilo das seções */
     section {
-      background: #111; /* Fundo cinza escuro */
-      border-radius: 8px; /* Cantos arredondados */
-      padding: 2rem; /* Espaçamento interno */
-      margin-bottom: 2rem; /* Espaço entre seções */
+      background: #111;
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
     }
 
-    /* Modo claro para seções */
     body.light section {
-      background: #fff; /* Fundo branco no modo claro */
+      background: #fff;
     }
 
     /* Títulos */
     h2, h3 {
-      color: #00aaff; /* Azul claro */
+      color: #00aaff;
       margin-bottom: 1rem;
     }
 
-    /* Listas sem marcadores padrão */
+    /* Listas estilizadas */
     ul {
       list-style: none;
       padding-left: 1rem;
     }
 
-    /* Itens da lista com barra azul esquerda */
     li {
       border-left: 4px solid #00c6ff;
       margin-bottom: 1rem;
@@ -120,12 +118,11 @@
       color: #ddd;
     }
 
-    /* Itens da lista no modo claro */
     body.light li {
       color: #333;
     }
 
-    /* Botão padrão */
+    /* Botão genérico */
     a.button {
       display: inline-block;
       background: #007bff;
@@ -142,7 +139,7 @@
       background: #005fcc;
     }
 
-    /* Contato - links */
+    /* Links de contato */
     .contact-info a {
       color: #00aaff;
       font-weight: bold;
@@ -166,7 +163,7 @@
       border-radius: 8px;
     }
 
-    /* Botão WhatsApp flutuante */
+    /* Botão flutuante do WhatsApp */
     .whatsapp-wrapper {
       position: fixed;
       bottom: 20px;
@@ -206,7 +203,7 @@
       cursor: default;
     }
 
-    /* Botão de alternar tema */
+    /* Botão de alternância de tema */
     .theme-toggle {
       position: fixed;
       top: 20px;
@@ -229,16 +226,16 @@
 </head>
 
 <body>
-  <!-- Botão para alternar o tema -->
+  <!-- Botão para alternar tema -->
   <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
-  <!-- Header fixo com logo -->
+  <!-- Cabeçalho fixo com logo -->
   <header>
     <img src="logo.jpeg" alt="Logo InfoAnjos" />
   </header>
 
-  <!-- Menu fixo azul abaixo da logo -->
-  <nav>
+  <!-- Navegação principal (fixa) -->
+  <nav role="navigation" aria-label="Menu principal">
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
@@ -246,6 +243,7 @@
 
   <!-- Conteúdo principal -->
   <main>
+    <!-- Seção de destaque -->
     <section class="hero">
       <h2>Tecnologia que Cuida de Você</h2>
       <p>Transformamos tecnologia em soluções humanas.</p>
@@ -253,11 +251,13 @@
       <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
+    <!-- Seção Sobre -->
     <section id="sobre">
       <h3>Sobre Nós</h3>
       <p>Somos a AnjosInfo, nossa missão é desenvolver soluções que facilitem o dia a dia. Atuamos com foco em gestão inteligente e suporte técnico humanizado.</p>
     </section>
 
+    <!-- Seção de Serviços -->
     <section id="servicos">
       <h3>Serviços</h3>
       <ul>
@@ -268,6 +268,7 @@
       </ul>
     </section>
 
+    <!-- Seção de Contato -->
     <section id="contato">
       <h3>Fale Conosco</h3>
       <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
@@ -278,13 +279,14 @@
       </div>
     </section>
 
+    <!-- Mapa com localização -->
     <section class="mapa">
       <h3>📍 Localização</h3>
       <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy"></iframe>
     </section>
   </main>
 
-  <!-- Botão WhatsApp flutuante -->
+  <!-- Botão flutuante do WhatsApp -->
   <div class="whatsapp-wrapper">
     <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button" title="Fale conosco pelo WhatsApp">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
@@ -298,12 +300,11 @@
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#fff; text-decoration:none;">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
-  <!-- Script para alternar o tema -->
+  <!-- Script de alternância de tema -->
   <script>
     function alternarTema() {
-      document.body.classList.toggle('light'); // Adiciona ou remove a classe 'light' para alternar tema
+      document.body.classList.toggle('light'); // Adiciona ou remove o modo claro
     }
   </script>
 </body>
 </html>
-
