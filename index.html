@@ -1,157 +1,100 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres como UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Torna o site responsivo em dispositivos móveis -->
-  <title>Tecnologia que Cuida de Você</title> <!-- Título exibido na aba do navegador -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tecnologia que Cuida de Você</title>
+  <meta charset="UTF-8" /> <!-- Define a codificação de caracteres como UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsividade para dispositivos móveis -->
+  <title>Tecnologia que Cuida de Você</title> <!-- Título da aba do navegador -->
 
   <style>
-    html {
-      scroll-behavior: smooth; /* Suaviza a rolagem entre âncoras */
-    }
-
-    /* Estilo base do corpo da página */
+    /* Estilos globais da página */
     body {
+      font-family: Arial, sans-serif;
+      background: #000;
+      color: #fff;
+      margin: 0; padding: 0;
       font-family: Arial, sans-serif; /* Fonte padrão */
-      background: #000; /* Fundo preto (modo escuro) */
-      color: #fff; /* Texto branco */
+      background: #000;               /* Fundo preto */
+      color: #fff;                    /* Texto branco */
       margin: 0;
       padding: 0;
-      transition: background 0.4s, color 0.4s; /* Transição suave para troca de tema */
+      line-height: 1.5;
     }
 
-    /* Modo claro */
-    body.light {
-      background: #f0f0f0; /* Fundo claro */
-      color: #111; /* Texto escuro */
-    }
-
-    /* Títulos no modo claro */
-    body.light h2,
-    body.light h3 {
-      color: #007bff; /* Azul padrão */
-    }
-
-    /* Cabeçalho com logo fixo */
+    /* Estilização do cabeçalho (menu) */
     header {
-      position: fixed; /* Fixa no topo da página */
-      top: 0;
-      left: 0;
-      width: 250%;
-      height: 112px;
-      background: #000;
+      background: transparent;
+      background: linear-gradient(to right, #007bff, #00c6ff); /* Degradê azul */
+      padding: 1rem 2rem;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       align-items: center;
-      padding: 1rem 0;
-      z-index: 200; /* Acima de tudo */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.7); /* Sombra inferior */
-    }
-
-    header img {
-      max-height: 250px; /* Altura máxima da logo */
-      display: block;
-    }
-
-    /* Menu de navegação fixo */
-    nav {
-      position: fixed; /* Fixa abaixo do cabeçalho */
-      top: 112px; /* Exatamente abaixo do header */
-      left: 0;
-      width: 150%;
-      height: 50px;
-      background-color: #007bff; /* Cor azul */
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem; /* Espaço entre links */
-      z-index: 150;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Sombra inferior */
-      transition: all 0.4s;
     }
 
     nav a {
-      color: #fff;
+      color: #00c6ff;
+      margin: 0 1rem;
+      color: #fff; /* Cor branca */
+      margin-left: 1rem;
       text-decoration: none;
       font-weight: bold;
-      font-size: 1rem;
-      line-height: 50px;
     }
 
     nav a:hover {
       text-decoration: underline;
-      color: #cce5ff; /* Azul claro no hover */
     }
 
-    /* Espaço reservado para compensar os elementos fixos */
+    /* Conteúdo principal */
     main {
-      padding-top: 162px; /* 112px do header + 50px do nav */
       max-width: 900px;
       margin: 2rem auto;
-      padding-left: 1rem;
-      padding-right: 1rem;
+      padding: 0 1rem;
     }
 
-    /* Estilo das seções */
     section {
       background: #111;
       border-radius: 8px;
       padding: 2rem;
       margin-bottom: 2rem;
-      transition: background 0.4s, color 0.4s; /* Suavidade na troca de tema */
     }
 
-    /* Seções no modo claro */
-    body.light section {
-      background: #fff;
-      color: #111;
-    }
-
-    /* Títulos das seções */
     h2, h3 {
-      color: #00aaff; /* Azul vibrante */
+      color: #00aaff;
       margin-bottom: 1rem;
-      transition: color 0.4s;
     }
 
-    /* Lista personalizada */
+    .italic {
+      font-style: italic;
+      color: #aaa;
+    }
+
     ul {
       list-style: none;
       padding-left: 1rem;
     }
 
     li {
-      border-left: 4px solid #00c6ff; /* Linha azul à esquerda */
+      border-left: 4px solid #00c6ff;
       margin-bottom: 1rem;
       padding-left: 0.5rem;
       color: #ddd;
-      transition: color 0.4s, border-color 0.4s;
     }
 
-    /* Lista no modo claro */
-    body.light li {
-      color: #222; /* Texto mais escuro */
-      border-left: 4px solid #007bff; /* Azul padrão */
-    }
-
-    /* Botão principal */
     a.button {
       display: inline-block;
       background: #007bff;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
+@@ -68,21 +83,27 @@
       box-shadow: 0 0 8px #007bffaa;
       transition: background 0.3s;
-      font-weight: bold;
     }
 
     a.button:hover {
       background: #005fcc;
     }
 
-    /* Links de contato */
     .contact-info a {
       color: #00aaff;
       font-weight: bold;
@@ -167,24 +110,11 @@
       user-select: none;
     }
 
-    /* Mapa do Google */
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: 0;
-      border-radius: 8px;
-    }
-
-    /* Botão do WhatsApp fixo */
+    /* Botão flutuante do WhatsApp */
     .whatsapp-wrapper {
       position: fixed;
       bottom: 20px;
-      right: 20px;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
+@@ -95,6 +116,7 @@
       max-width: 180px;
       text-align: center;
     }
@@ -192,86 +122,125 @@
     .whatsapp-button img {
       width: 60px;
       height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #000000aa;
-      transition: transform 0.3s;
-      background: #25d366; /* Verde WhatsApp */
+@@ -105,9 +127,11 @@
       padding: 8px;
       box-sizing: border-box;
     }
 
     .whatsapp-button img:hover {
-      transform: scale(1.1); /* Efeito ao passar o mouse */
+      transform: scale(1.1);
     }
 
     .whatsapp-slogan {
       color: #00c6ff;
       font-size: 0.85rem;
-      font-weight: 600;
-      background: rgba(0, 198, 255, 0.15);
-      padding: 4px 8px;
-      border-radius: 12px;
+@@ -118,12 +142,16 @@
       user-select: none;
       cursor: default;
     }
 
-    /* Botão para trocar tema (claro/escuro) */
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 210;
-      padding: 10px 15px;
-      background-color: #007bff;
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #007bff88;
-      font-weight: bold;
-      transition: background 0.3s;
+    /* Mapa embutido */
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
     }
 
-    .theme-toggle:hover {
-      background-color: #005fcc;
-    }
-
-    /* Estilo responsivo para o menu em telas pequenas */
-    @media (max-width: 600px) {
-      nav {
+    /* Responsividade para telas pequenas */
+    @media(max-width:600px){
+      header {
         flex-direction: column;
-        height: auto;
-        padding: 0.5rem 0;
-        gap: 0.5rem;
-      }
-
-      nav a {
-        line-height: 2rem;
-        font-size: 1rem;
-      }
-    }
-  </style>
+@@ -137,75 +165,83 @@
 </head>
-
 <body>
-  <!-- Botão para alternar tema -->
-  <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
-  <!-- Cabeçalho fixo com logo -->
-  <header>
-    <img src="logo.jpeg" alt="Logo InfoAnjos" />
-  </header>
+<!-- LOGO NO TOPO, SEM FUNDO AZUL -->
+<div style="text-align: center; margin-top: 20px;">
+  <img src="logo.jpeg" alt="Logo da empresa" style="max-height: 300px; object-fit: contain;" />
+</div>
 
-  <!-- Navegação principal -->
-  <nav role="navigation" aria-label="Menu principal">
+<!-- MENU DE NAVEGAÇÃO -->
+<header>
+  <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
   </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <h2>Tecnologia que Cuida de Você</h2>
+    <p>Transformamos tecnologia em soluções humanas.</p>
+    <p class="italic">Iniciando nossa jornada com dedicação para transformar tecnologia em confiança e qualidade.</p>
+    <a href="#contato" class="button">Fale Conosco</a>
+  </section>
+
+  <section id="sobre">
+    <h3>Sobre Nós</h3>
+    <p>Somos a AnjosInfo, nossa missão é desenvolver soluções que facilitem o dia a dia. Atuamos com foco em gestão inteligente e suporte técnico humanizado.</p>
+  </section>
+
+  <section id="servicos">
+    <h3>Serviços</h3>
+    <ul>
+      <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
+      <li>⚙️ Diagnóstico e solução de problemas de hardware e software</li>
+      <li>🧹 Limpeza interna e remoção de vírus e malwares</li>
+      <li>📦 Instalação e configuração do Pacote Microsoft Office</li>
+    </ul>
+  </section>
+
+  <section id="contato">
+    <h3>Fale Conosco</h3>
+    <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
+
+    <div class="contact-info">
+      <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
+      <p>⏰ Segunda a Sexta: 08h às 18h<br> Sábado: 08h às 12h</p>
+      <p>📸 <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a></p>
+    </div>
+  </section>
+
+  <section class="mapa">
+    <h3>📍 Localização</h3>
+    <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+</main>
+
+<!-- BOTÃO WHATSAPP -->
+<div class="whatsapp-wrapper">
+  <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" 
+     target="_blank" 
+     class="whatsapp-button" 
+     title="Fale conosco pelo WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+  </a>
+  <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
+</div>
+
+<footer>
+  <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
+  <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#fff; text-decoration:none;">Siga-nos no Instagram @anjosinfo</a></p>
+</footer>
+  <!-- Logo sem fundo azul -->
+  <div style="text-align: center; margin-top: 150px;">
+    <img src="logo.jpeg" alt="Logo InfoAnjos" style="max-height: 150px;" />
+  </div>
+
+  <!-- Cabeçalho com menu -->
+  <header>
+    <nav>
+      <a href="#sobre">Sobre</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </header>
 
   <!-- Conteúdo principal -->
   <main>
-    <!-- Seção de apresentação -->
+    <!-- Seção inicial com chamada -->
     <section class="hero">
       <h2>Tecnologia que Cuida de Você</h2>
       <p>Transformamos tecnologia em soluções humanas.</p>
@@ -279,13 +248,13 @@
       <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
-    <!-- Seção sobre a empresa -->
+    <!-- Sobre a empresa -->
     <section id="sobre">
       <h3>Sobre Nós</h3>
       <p>Somos a AnjosInfo, nossa missão é desenvolver soluções que facilitem o dia a dia. Atuamos com foco em gestão inteligente e suporte técnico humanizado.</p>
     </section>
 
-    <!-- Seção de serviços -->
+    <!-- Lista de serviços oferecidos -->
     <section id="servicos">
       <h3>Serviços</h3>
       <ul>
@@ -296,30 +265,31 @@
       </ul>
     </section>
 
-    <!-- Seção de contato -->
+    <!-- Informações de contato -->
     <section id="contato">
       <h3>Fale Conosco</h3>
       <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
       <div class="contact-info">
         <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
-        <p>⏰ Segunda a Sexta: 08h às 18h<br />Sábado: 08h às 12h</p>
+        <p>⏰ Segunda a Sexta: 08h às 18h<br> Sábado: 08h às 12h</p>
         <p>📸 <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a></p>
       </div>
     </section>
 
-    <!-- Seção com o mapa -->
+    <!-- Mapa do Google Maps -->
     <section class="mapa">
       <h3>📍 Localização</h3>
-      <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
   </main>
 
   <!-- Botão flutuante do WhatsApp -->
   <div class="whatsapp-wrapper">
-    <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!"
-       target="_blank"
-       class="whatsapp-button"
-       aria-label="Abrir conversa no WhatsApp com InfoAnjos"
+    <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" 
+       target="_blank" 
+       class="whatsapp-button" 
        title="Fale conosco pelo WhatsApp">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
@@ -332,11 +302,5 @@
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#fff; text-decoration:none;">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
-  <!-- Script de alternância de tema -->
-  <script>
-    function alternarTema() {
-      document.body.classList.toggle('light'); // Alterna entre tema claro e escuro
-    }
-  </script>
 </body>
 </html>
