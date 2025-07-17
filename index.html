@@ -1,254 +1,251 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres da página -->
+  <meta charset="UTF-8" /> <!-- Define o conjunto de caracteres -->
   <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsividade para dispositivos móveis -->
-  <title>Tecnologia que Cuida de Você</title> <!-- Título da aba do navegador -->
+  <title>Tecnologia que Cuida de Você</title> <!-- Título da aba -->
 
   <style>
-    /* === ESTILO PADRÃO ESCURO === */
+    /* Estilo base do corpo */
     body {
-      font-family: Arial, sans-serif; /* Fonte da página */
+      font-family: Arial, sans-serif; /* Fonte padrão */
       background: #000; /* Fundo preto */
-      color: #fff; /* Cor do texto branco */
+      color: #fff; /* Texto branco */
       margin: 0;
       padding: 0;
-      transition: background 0.4s, color 0.4s; /* Animação suave na troca de temas */
+      transition: background 0.4s, color 0.4s; /* Animação suave ao trocar temas */
     }
 
-    /* === MODO CLARO === */
+    /* Modo claro */
     body.light {
       background: #f0f0f0; /* Fundo claro */
       color: #111; /* Texto escuro */
     }
 
-    /* === HEADER - LOGO FIXA === */
+    /* Header fixo com logo */
     header {
-      position: fixed; /* Fixar o header no topo da página */
-      top: 0; /* Posicionado no topo */
-      left: 0; /* Alinhado à esquerda */
-      width: 100%; /* Ocupa toda a largura */
-      height: 112px; /* Altura fixa para facilitar posicionamento do menu */
-      background: #000; /* Fundo preto para a área do header */
+      position: fixed; /* Fixa no topo */
+      top: 0;
+      left: 0;
+      width: 100%; /* Largura total */
+      height: 112px; /* Altura fixa */
+      background: #000; /* Fundo preto */
       padding: 1rem 0; /* Espaçamento vertical */
-      display: flex; /* Usar flexbox para centralizar conteúdo */
+      display: flex; /* Flexbox para centralizar */
       justify-content: center; /* Centraliza horizontalmente */
       align-items: center; /* Centraliza verticalmente */
-      z-index: 200; /* Fica acima dos outros elementos */
-      box-shadow: 0 2px 5px rgba(0,0,0,0.7); /* Sombra para destacar a barra */
+      z-index: 200; /* Sobre outros elementos */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.7); /* Sombra */
     }
 
-    /* Tamanho e comportamento da imagem da logo */
+    /* Imagem da logo */
     header img {
-      max-height: 200px; /* Altura máxima da logo */
-      height: auto; /* Mantém proporção */
+      max-height: 80px; /* Altura máxima */
+      height: auto;
       width: auto;
-      display: block; /* Remove espaçamento extra */
+      display: block; /* Remove espaços */
     }
 
-    /* === MENU DE NAVEGAÇÃO FIXO ABAIXO DA LOGO === */
+    /* Menu de navegação fixo logo abaixo do header */
     nav {
-      position: fixed; /* Fixar o menu */
-      top: 112px; /* Posicionado logo abaixo da logo fixa (altura do header) */
-      left: 0; /* Alinhado à esquerda */
-      width: 100%; /* Ocupa toda largura da página */
-      background-color: #007bff; /* Fundo azul */
-      padding: 0.75rem 0; /* Espaçamento vertical */
-      display: flex; /* Flexbox para alinhamento dos links */
-      justify-content: center; /* Centraliza os links */
-      gap: 2rem; /* Espaço entre os links */
-      margin: 0; /* Remove margem padrão */
-      z-index: 150; /* Fica abaixo do header, mas acima do conteúdo */
+      position: fixed; /* Fixa na tela */
+      top: 112px; /* Logo abaixo do header */
+      left: 0;
+      width: 100%;
+      height: 50px; /* Altura da barra azul */
+      background-color: #007bff; /* Azul */
+      display: flex; /* Flexbox para links */
+      justify-content: center; /* Centraliza horizontalmente */
+      align-items: center; /* Centraliza verticalmente */
+      gap: 2rem; /* Espaço entre links */
+      margin: 0;
+      z-index: 150; /* Abaixo do header */
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4); /* Sombra leve */
     }
 
     /* Estilo dos links do menu */
     nav a {
-      color: #fff; /* Cor branca para os links */
-      text-decoration: none; /* Remove sublinhado padrão */
-      font-weight: bold; /* Deixa o texto em negrito */
-      margin: 0; /* Remove margens */
+      color: #fff; /* Cor branca */
+      text-decoration: none; /* Sem sublinhado */
+      font-weight: bold; /* Negrito */
+      line-height: 50px; /* Centraliza verticalmente no nav */
       font-size: 1rem; /* Tamanho da fonte */
     }
 
-    /* Efeito ao passar o mouse sobre os links */
+    /* Efeito hover nos links */
     nav a:hover {
-      text-decoration: underline; /* Sublinha o link */
+      text-decoration: underline;
       color: #cce5ff; /* Azul claro */
     }
 
-    /* === CONTEÚDO PRINCIPAL === */
+    /* Conteúdo principal com espaçamento para header e nav fixos */
     main {
-      padding-top: 180px; /* Espaço superior para evitar que conteúdo fique atrás do header e menu fixos */
-      max-width: 900px; /* Largura máxima do conteúdo */
-      margin: 2rem auto; /* Centraliza horizontalmente com margem vertical */
-      padding-left: 1rem; /* Espaçamento interno lateral esquerdo */
-      padding-right: 1rem; /* Espaçamento interno lateral direito */
+      padding-top: 162px; /* 112px do header + 50px do nav */
+      max-width: 900px;
+      margin: 2rem auto; /* Centralizado com margem vertical */
+      padding-left: 1rem;
+      padding-right: 1rem;
     }
 
-    /* === SEÇÕES COM FUNDO ESCURO E BORDAS ARREDONDADAS === */
+    /* Seções com fundo escuro e cantos arredondados */
     section {
       background: #111; /* Fundo cinza escuro */
-      border-radius: 8px; /* Bordas arredondadas */
+      border-radius: 8px; /* Cantos arredondados */
       padding: 2rem; /* Espaçamento interno */
       margin-bottom: 2rem; /* Espaço entre seções */
     }
 
-    /* Modo claro para as seções */
+    /* Modo claro para seções */
     body.light section {
       background: #fff; /* Fundo branco no modo claro */
     }
 
-    /* Títulos das seções */
+    /* Títulos */
     h2, h3 {
       color: #00aaff; /* Azul claro */
-      margin-bottom: 1rem; /* Espaço abaixo do título */
+      margin-bottom: 1rem;
     }
 
-    /* Lista sem marcadores padrão */
+    /* Listas sem marcadores padrão */
     ul {
-      list-style: none; /* Remove bolinhas */
-      padding-left: 1rem; /* Recuo para o conteúdo da lista */
+      list-style: none;
+      padding-left: 1rem;
     }
 
-    /* Itens da lista com borda azul à esquerda */
+    /* Itens da lista com barra azul esquerda */
     li {
-      border-left: 4px solid #00c6ff; /* Barra azul */
-      margin-bottom: 1rem; /* Espaço entre itens */
-      padding-left: 0.5rem; /* Espaçamento interno */
-      color: #ddd; /* Cor clara para o texto */
+      border-left: 4px solid #00c6ff;
+      margin-bottom: 1rem;
+      padding-left: 0.5rem;
+      color: #ddd;
     }
 
-    /* Cor para itens da lista no modo claro */
+    /* Itens da lista no modo claro */
     body.light li {
-      color: #333; /* Texto escuro */
+      color: #333;
     }
 
-    /* === BOTÃO PADRÃO (ex: Fale Conosco) === */
+    /* Botão padrão */
     a.button {
-      display: inline-block; /* Permite definir largura e altura */
-      background: #007bff; /* Fundo azul */
-      color: #fff; /* Texto branco */
-      padding: 0.75rem 1.5rem; /* Espaçamento interno */
-      border-radius: 6px; /* Bordas arredondadas */
-      text-decoration: none; /* Remove sublinhado */
-      box-shadow: 0 0 8px #007bffaa; /* Sombra azul suave */
-      transition: background 0.3s; /* Animação suave no hover */
+      display: inline-block;
+      background: #007bff;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      box-shadow: 0 0 8px #007bffaa;
+      transition: background 0.3s;
       font-weight: bold;
     }
 
     a.button:hover {
-      background: #005fcc; /* Azul mais escuro no hover */
+      background: #005fcc;
     }
 
-    /* === INFORMAÇÕES DE CONTATO === */
+    /* Contato - links */
     .contact-info a {
-      color: #00aaff; /* Azul claro */
+      color: #00aaff;
       font-weight: bold;
       text-decoration: none;
     }
 
-    /* === RODAPÉ === */
+    /* Rodapé */
     footer {
-      background: #007bff; /* Fundo azul */
-      color: #fff; /* Texto branco */
-      text-align: center; /* Centraliza o texto */
-      padding: 1rem; /* Espaçamento */
-      user-select: none; /* Impede seleção do texto */
+      background: #007bff;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      user-select: none;
     }
 
-    /* === MAPA === */
+    /* Mapa */
     iframe {
-      width: 100%; /* Largura total do container */
-      height: 300px; /* Altura fixa */
-      border: 0; /* Sem borda */
-      border-radius: 8px; /* Bordas arredondadas */
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
     }
 
-    /* === BOTÃO WHATSAPP FLOTANTE === */
+    /* Botão WhatsApp flutuante */
     .whatsapp-wrapper {
-      position: fixed; /* Fixo na tela */
-      bottom: 20px; /* 20px do rodapé */
-      right: 20px; /* 20px da direita */
-      z-index: 100; /* Sobreposto */
-      display: flex; /* Flexbox para alinhar */
-      flex-direction: column; /* Itens em coluna */
-      align-items: center; /* Centraliza horizontalmente */
-      gap: 6px; /* Espaçamento entre itens */
-      max-width: 180px; /* Largura máxima */
-      text-align: center; /* Texto centralizado */
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      max-width: 180px;
+      text-align: center;
     }
 
-    /* Estilo do ícone WhatsApp */
     .whatsapp-button img {
       width: 60px;
       height: 60px;
-      border-radius: 50%; /* Circulo */
-      box-shadow: 0 0 10px #000000aa; /* Sombra */
-      transition: transform 0.3s; /* Animação suave */
-      background: #25d366; /* Verde WhatsApp */
+      border-radius: 50%;
+      box-shadow: 0 0 10px #000000aa;
+      transition: transform 0.3s;
+      background: #25d366;
       padding: 8px;
       box-sizing: border-box;
     }
 
-    /* Animação no hover do ícone */
     .whatsapp-button img:hover {
-      transform: scale(1.1); /* Aumenta o tamanho */
+      transform: scale(1.1);
     }
 
-    /* Texto abaixo do botão WhatsApp */
     .whatsapp-slogan {
-      color: #00c6ff; /* Azul claro */
+      color: #00c6ff;
       font-size: 0.85rem;
       font-weight: 600;
-      background: rgba(0, 198, 255, 0.15); /* Fundo azul transparente */
+      background: rgba(0, 198, 255, 0.15);
       padding: 4px 8px;
       border-radius: 12px;
-      user-select: none; /* Impede seleção */
-      cursor: default; /* Cursor padrão */
+      user-select: none;
+      cursor: default;
     }
 
-    /* === BOTÃO DE MUDAR TEMA === */
+    /* Botão de alternar tema */
     .theme-toggle {
-      position: fixed; /* Fixo na tela */
-      top: 20px; /* 20px do topo */
-      right: 20px; /* 20px da direita */
-      z-index: 210; /* Acima do header e menu */
-      padding: 10px 15px; /* Espaçamento */
-      background-color: #007bff; /* Fundo azul */
-      color: #fff; /* Texto branco */
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 210;
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: #fff;
       border: none;
-      border-radius: 20px; /* Bordas arredondadas */
-      cursor: pointer; /* Cursor de mão */
-      box-shadow: 0 0 10px #007bff88; /* Sombra azul suave */
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #007bff88;
       font-weight: bold;
     }
 
-    /* Efeito hover no botão de tema */
     .theme-toggle:hover {
-      background-color: #005fcc; /* Azul mais escuro */
+      background-color: #005fcc;
     }
   </style>
 </head>
 
 <body>
-  <!-- Botão para alternar entre modo claro e escuro -->
+  <!-- Botão para alternar o tema -->
   <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
-  <!-- HEADER com a logo fixa -->
+  <!-- Header fixo com logo -->
   <header>
     <img src="logo.jpeg" alt="Logo InfoAnjos" />
   </header>
 
-  <!-- MENU de navegação fixo abaixo da logo -->
+  <!-- Menu fixo azul abaixo da logo -->
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
   </nav>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- Conteúdo principal -->
   <main>
-    <!-- Seção inicial com slogan e botão -->
     <section class="hero">
       <h2>Tecnologia que Cuida de Você</h2>
       <p>Transformamos tecnologia em soluções humanas.</p>
@@ -256,13 +253,11 @@
       <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
-    <!-- Sobre Nós -->
     <section id="sobre">
       <h3>Sobre Nós</h3>
       <p>Somos a AnjosInfo, nossa missão é desenvolver soluções que facilitem o dia a dia. Atuamos com foco em gestão inteligente e suporte técnico humanizado.</p>
     </section>
 
-    <!-- Serviços -->
     <section id="servicos">
       <h3>Serviços</h3>
       <ul>
@@ -273,25 +268,23 @@
       </ul>
     </section>
 
-    <!-- Contato -->
     <section id="contato">
       <h3>Fale Conosco</h3>
       <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
       <div class="contact-info">
         <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
-        <p>⏰ Segunda a Sexta: 08h às 18h<br /> Sábado: 08h às 12h</p>
+        <p>⏰ Segunda a Sexta: 08h às 18h<br />Sábado: 08h às 12h</p>
         <p>📸 <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a></p>
       </div>
     </section>
 
-    <!-- Mapa -->
     <section class="mapa">
       <h3>📍 Localização</h3>
       <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy"></iframe>
     </section>
   </main>
 
-  <!-- BOTÃO FLUTUANTE DO WHATSAPP -->
+  <!-- Botão WhatsApp flutuante -->
   <div class="whatsapp-wrapper">
     <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button" title="Fale conosco pelo WhatsApp">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
@@ -299,18 +292,16 @@
     <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
   </div>
 
-  <!-- RODAPÉ -->
+  <!-- Rodapé -->
   <footer>
     <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
-    <p>
-      <a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#fff; text-decoration:none;">Siga-nos no Instagram @anjosinfo</a>
-    </p>
+    <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#fff; text-decoration:none;">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
-  <!-- SCRIPT para alternar o tema claro/escuro -->
+  <!-- Script para alternar o tema -->
   <script>
     function alternarTema() {
-      document.body.classList.toggle('light'); // Ativa ou desativa a classe 'light' para o tema claro
+      document.body.classList.toggle('light'); // Adiciona ou remove a classe 'light' para alternar tema
     }
   </script>
 </body>
