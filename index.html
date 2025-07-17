@@ -43,18 +43,6 @@
       align-items: center;
     }
 
-    .header-top {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 1rem;
-    }
-
-    .logo {
-      height: 200px;
-      max-width: 100%;
-    }
-
     .header-bottom {
       display: flex;
       flex-wrap: wrap;
@@ -219,9 +207,6 @@
 <body>
 
 <header>
-  <div class="header-top">
-    <img src="logo.jpeg" alt="Logo InfoAnjos" class="logo" loading="lazy">
-  </div>
   <div class="header-bottom">
     <nav>
       <a href="#sobre">Sobre</a>
@@ -294,7 +279,6 @@
     localStorage.setItem('theme', isLight ? 'light' : 'dark');
   }
 
-  // Carrega a preferência ao abrir
   window.addEventListener('DOMContentLoaded', () => {
     if (localStorage.getItem('theme') === 'light') {
       document.body.classList.add('light-theme');
@@ -304,5 +288,3 @@
 
 </body>
 </html>
-
-
