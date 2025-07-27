@@ -21,7 +21,6 @@
       color: #111;
     }
 
-    /* === CABEÇALHO COM LOGO CENTRALIZADA E ESTÁTICA === */
     header {
       background: transparent;
       padding: 1rem 0;
@@ -34,12 +33,11 @@
       width: auto;
     }
 
-    /* === MENU DE NAVEGAÇÃO ABAIXO DA LOGO COM FUNDO AZUL === */
     nav {
       display: flex;
       justify-content: center;
       gap: 2rem;
-      background-color: #007bff;
+      background-color: #c62828;
       padding: 1rem 0;
       flex-wrap: wrap;
     }
@@ -54,7 +52,6 @@
       text-decoration: underline;
     }
 
-    /* === CONTEÚDO PRINCIPAL === */
     main {
       max-width: 900px;
       margin: 2rem auto;
@@ -73,7 +70,7 @@
     }
 
     h2, h3 {
-      color: #00aaff;
+      color: #c62828;
       margin-bottom: 1rem;
     }
 
@@ -83,7 +80,7 @@
     }
 
     li {
-      border-left: 4px solid #00c6ff;
+      border-left: 4px solid #e53935;
       margin-bottom: 1rem;
       padding-left: 0.5rem;
       color: #ddd;
@@ -95,28 +92,28 @@
 
     a.button {
       display: inline-block;
-      background: #007bff;
+      background: #c62828;
       color: #fff;
       padding: 0.75rem 1.5rem;
       border-radius: 6px;
       text-decoration: none;
-      box-shadow: 0 0 8px #007bffaa;
+      box-shadow: 0 0 8px #c62828aa;
       transition: background 0.3s;
       font-weight: bold;
     }
 
     a.button:hover {
-      background: #005fcc;
+      background: #9a0007;
     }
 
     .contact-info a {
-      color: #00aaff;
+      color: #c62828;
       font-weight: bold;
       text-decoration: none;
     }
 
     footer {
-      background: #007bff;
+      background: #c62828;
       color: #fff;
       text-align: center;
       padding: 1rem;
@@ -159,10 +156,10 @@
     }
 
     .whatsapp-slogan {
-      color: #00c6ff;
+      color: #e53935;
       font-size: 0.85rem;
       font-weight: 600;
-      background: rgba(0, 198, 255, 0.15);
+      background: rgba(229, 57, 53, 0.15);
       padding: 4px 8px;
       border-radius: 12px;
       user-select: none;
@@ -175,38 +172,43 @@
       right: 20px;
       z-index: 200;
       padding: 10px 15px;
-      background-color: #007bff;
+      background-color: #c62828;
       color: #fff;
       border: none;
       border-radius: 20px;
       cursor: pointer;
-      box-shadow: 0 0 10px #007bff88;
+      box-shadow: 0 0 10px #c6282888;
       font-weight: bold;
     }
 
     .theme-toggle:hover {
-      background-color: #005fcc;
+      background-color: #9a0007;
+    }
+
+    @media (max-width: 500px) {
+      .theme-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Botão de alternância de tema (claro/escuro) -->
   <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
-  <!-- LOGO ESTÁTICA -->
   <header>
     <img src="logo.jpeg" alt="Logo AnjosInfo" />
   </header>
 
-  <!-- MENU COM FUNDO AZUL ABAIXO DA LOGO -->
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
   </nav>
 
-  <!-- CONTEÚDO PRINCIPAL -->
   <main>
     <section class="hero">
       <h2>Suporte Ágil e Eficiente para Você</h2>
@@ -229,15 +231,15 @@
     <section id="servicos">
       <h3>Serviços</h3>
       <ul>
-    <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
-    <li>⚙️ Diagnóstico e solução de problemas de hardware e software</li>
-    <li>🧹 Limpeza interna e remoção de vírus e malwares</li>
-    <li>📦 Instalação e configuração do Pacote Microsoft Office</li>
-    <li>🌐 Suporte e acesso remoto para atendimento rápido e seguro</li>
-    <li>💾 Backups</li>
-    <li>🛡️ Instalação de antivírus</li>
-    <li>📡 Instalação de antenas Wi-Fi para computadores sem conexão sem fio</li>
-    <li>⚙️ Consultoria para otimização e melhoria de desempenho de sistemas</li>
+        <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
+        <li>⚙️ Diagnóstico e solução de problemas de hardware e software</li>
+        <li>🧹 Limpeza interna e remoção de vírus e malwares</li>
+        <li>📦 Instalação e configuração do Pacote Microsoft Office</li>
+        <li>🌐 Suporte e acesso remoto para atendimento rápido e seguro</li>
+        <li>💾 Backups</li>
+        <li>🛡️ Instalação de antivírus</li>
+        <li>📡 Instalação de antenas Wi-Fi para computadores sem conexão sem fio</li>
+        <li>⚙️ Consultoria para otimização e melhoria de desempenho de sistemas</li>
       </ul>
     </section>
 
@@ -250,9 +252,7 @@
         <p>⏰ Sábado: 08h às 18h</p>
         <p>⏰ Domingo: 08h às 13h</p>
         <p>
-          📸 <a href="https://www.instagram.com/anjosinfo" target="_blank"
-            >@anjosinfo</a
-          >
+          📸 <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a>
         </p>
       </div>
     </section>
@@ -265,102 +265,33 @@
       ></iframe>
     </section>
 
-    <!-- Suporte Remoto RustDesk -->
-    <section
-      id="suporte-remoto"
-      style="
-        background: #111;
-        border-radius: 8px;
-        padding: 2rem;
-        margin-bottom: 2rem;
-        color: #ddd;
-      "
-    >
-      <h3 style="color: #00aaff; margin-bottom: 1rem">Suporte Remoto</h3>
+    <section id="suporte-remoto">
+      <h3>Suporte Remoto</h3>
       <p>Para suporte remoto com a equipe AnjosInfo, siga os passos abaixo:</p>
       <ol style="padding-left: 1rem; list-style-position: inside; color: #ddd">
         <li>Baixe e execute o programa RustDesk clicando no botão abaixo.</li>
-        <li>
-          Abra o RustDesk e copie o seu <strong>ID</strong> que aparece na tela.
-        </li>
-        <li>
-          Clique no botão <strong>Enviar ID pelo WhatsApp</strong> para enviar
-          seu ID para nossa equipe.
-        </li>
+        <li>Abra o RustDesk e copie o seu <strong>ID</strong> que aparece na tela.</li>
+        <li>Clique no botão <strong>Enviar ID pelo WhatsApp</strong> para enviar seu ID para nossa equipe.</li>
       </ol>
-
-      <div
-        style="
-          display: flex;
-          gap: 1rem;
-          flex-wrap: wrap;
-          margin-top: 1rem;
-        "
-      >
-        <a
-          href="https://github.com/rustdesk/rustdesk/releases/latest/download/rustdesk-1.2.3-windows-x64.exe"
-          class="button"
-          style="
-            background: #007bff;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            box-shadow: 0 0 8px #007bffaa;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-          "
-          >Baixar RustDesk (Acesso Remoto)</a
-        >
-        <a
-          href="https://wa.me/553131039546?text=Olá,%20meu%20ID%20do%20RustDesk%20é%20"
-          target="_blank"
-          class="button"
-          style="
-            background: #25d366;
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            box-shadow: 0 0 8px #25d366aa;
-            text-decoration: none;
-            font-weight: bold;
-            display: inline-block;
-          "
-          >Enviar ID pelo WhatsApp</a
-        >
+      <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1rem;">
+        <a href="https://github.com/rustdesk/rustdesk/releases/latest/download/rustdesk-1.2.3-windows-x64.exe" class="button">Baixar RustDesk (Acesso Remoto)</a>
+        <a href="https://wa.me/553131039546?text=Olá,%20meu%20ID%20do%20RustDesk%20é%20" target="_blank" class="button" style="background:#25d366; box-shadow: 0 0 8px #25d366aa;">Enviar ID pelo WhatsApp</a>
       </div>
     </section>
   </main>
 
-  <!-- WHATSAPP FLUTUANTE -->
   <div class="whatsapp-wrapper">
-    <a
-      href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!"
-      target="_blank"
-      class="whatsapp-button"
-    >
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
-        alt="WhatsApp"
-      />
+    <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
     <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
   </div>
 
-  <!-- RODAPÉ -->
   <footer>
     <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
-    <p>
-      <a
-        href="https://www.instagram.com/anjosinfo"
-        target="_blank"
-        style="color: #fff; text-decoration: none"
-        >Siga-nos no Instagram @anjosinfo</a
-      >
-    </p>
+    <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color: #fff; text-decoration: none">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
-  <!-- SCRIPT DO TEMA -->
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("tema") === "claro") {
@@ -370,10 +301,7 @@
 
     function alternarTema() {
       document.body.classList.toggle("light");
-      localStorage.setItem(
-        "tema",
-        document.body.classList.contains("light") ? "claro" : "escuro"
-      );
+      localStorage.setItem("tema", document.body.classList.contains("light") ? "claro" : "escuro");
     }
   </script>
 </body>
