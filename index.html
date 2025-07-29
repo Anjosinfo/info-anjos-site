@@ -1,8 +1,10 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>InfoAnjos - Tecnologia que Cuida de Você</title>
   <title>Suporte Ágil e Eficiente para Você</title>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -13,13 +15,11 @@
       transition: background 0.4s, color 0.4s;
     }
 
-    nav {
-      background-color: #00aaff;
-      padding: 10px;
     body.light {
       background: #f0f0f0;
       color: #111;
     }
+
     header {
       background: transparent;
       padding: 1rem 0;
@@ -31,6 +31,7 @@
       height: auto;
       width: auto;
     }
+
     nav {
       display: flex;
       justify-content: center;
@@ -39,24 +40,23 @@
       padding: 1rem 0;
       flex-wrap: wrap;
     }
+
     nav a {
       color: #fff;
-      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
 
-    header {
-      text-align: center;
-      padding: 50px 20px;
     nav a:hover {
       text-decoration: underline;
     }
+
     main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
+
     section {
       background: #111;
       border-radius: 8px;
@@ -64,62 +64,47 @@
       margin-bottom: 2rem;
     }
 
-    h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-      color: #00aaff;
     body.light section {
       background: #fff;
     }
 
-    h2 {
-      color: #00aaff;
-      text-align: center;
     h2, h3 {
       color: #1877F2;
       margin-bottom: 1rem;
     }
 
-    section {
-      padding: 30px 20px;
-      text-align: center;
     ul {
       list-style: none;
       padding-left: 1rem;
     }
+
     li {
       border-left: 4px solid #1877F2;
       margin-bottom: 1rem;
       padding-left: 0.5rem;
       color: #ddd;
     }
+
     body.light li {
       color: #333;
     }
 
     a.button {
       display: inline-block;
-      margin: 10px;
-      padding: 12px 25px;
-      background: #00aaff;
-      color: white;
       background: #1877F2;
       color: #fff;
       padding: 0.75rem 1.5rem;
       border-radius: 6px;
       text-decoration: none;
-      border-radius: 8px;
-      font-weight: bold;
       box-shadow: 0 0 8px #1877F2aa;
       transition: background 0.3s;
-      box-shadow: 0 0 8px #00aaffaa;
       font-weight: bold;
     }
 
     a.button:hover {
-      background: #0088cc;
       background: #0f5dc9;
     }
+
     .contact-info a {
       color: #1877F2;
       font-weight: bold;
@@ -127,19 +112,20 @@
     }
 
     footer {
-      background: #00aaff;
       background: #1877F2;
       color: #fff;
       text-align: center;
       padding: 1rem;
       user-select: none;
     }
+
     iframe {
       width: 100%;
       height: 300px;
       border: 0;
       border-radius: 8px;
     }
+
     .whatsapp-wrapper {
       position: fixed;
       bottom: 20px;
@@ -151,9 +137,8 @@
       gap: 6px;
       max-width: 180px;
       text-align: center;
-      padding: 15px;
-      font-size: 0.9em;
     }
+
     .whatsapp-button img {
       width: 60px;
       height: 60px;
@@ -164,9 +149,11 @@
       padding: 8px;
       box-sizing: border-box;
     }
+
     .whatsapp-button img:hover {
       transform: scale(1.1);
     }
+
     .whatsapp-slogan {
       color: #1877F2;
       font-size: 0.85rem;
@@ -180,30 +167,23 @@
 
     .theme-toggle {
       position: fixed;
-      top: 15px;
-      right: 15px;
-      background-color: #00aaff;
-      border: none;
-      color: white;
       top: 20px;
       right: 20px;
       z-index: 200;
       padding: 10px 15px;
-      border-radius: 50px;
       background-color: #1877F2;
       color: #fff;
       border: none;
       border-radius: 20px;
       cursor: pointer;
-      box-shadow: 0 0 10px #00aaff88;
       box-shadow: 0 0 10px #1877F288;
       font-weight: bold;
     }
 
     .theme-toggle:hover {
-      background-color: #0088cc;
       background-color: #0f5dc9;
     }
+
     @media (max-width: 500px) {
       .theme-toggle {
         top: 10px;
@@ -214,23 +194,20 @@
     }
   </style>
 </head>
+
 <body>
-  <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
   <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
+
   <header>
     <img src="logo.jpeg" alt="Logo AnjosInfo" />
   </header>
+
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
-    <a href="#suporte">Suporte Remoto</a>
   </nav>
 
-  <header>
-    <h1>InfoAnjos</h1>
-    <p>Tecnologia que Cuida de Você</p>
-  </header>
   <main>
     <section class="hero">
       <h2>Suporte Ágil e Eficiente para Você</h2>
@@ -241,10 +218,6 @@
       <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
-  <section id="servicos">
-    <h2>Serviços</h2>
-    <p>Manutenção, formatação, upgrades, redes e muito mais!</p>
-  </section>
     <section id="sobre">
       <h3>Sobre Nós</h3>
       <p>
@@ -254,11 +227,6 @@
       </p>
     </section>
 
-  <section id="contato">
-    <h2>Contato</h2>
-    <a href="https://wa.me/5511999999999" class="button">WhatsApp</a>
-    <a href="mailto:anjosinfo2025@gmail.com" class="button">Email</a>
-  </section>
     <section id="servicos">
       <h3>Serviços</h3>
       <ul>
@@ -274,10 +242,6 @@
       </ul>
     </section>
 
-  <section id="suporte">
-    <h2>Suporte Remoto</h2>
-    <a href="https://download.teamviewer.com/download/TeamViewerQS.exe" class="button">Acesso com TeamViewer</a>
-  </section>
     <section id="contato">
       <h3>Fale Conosco</h3>
       <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
@@ -291,6 +255,7 @@
         </p>
       </div>
     </section>
+
     <section class="mapa">
       <h3>📍 Localização</h3>
       <iframe
@@ -298,6 +263,7 @@
         loading="lazy"
       ></iframe>
     </section>
+
     <section id="suporte-remoto">
       <h3>Suporte Remoto</h3>
       <p>Para suporte remoto com a equipe AnjosInfo, siga os passos abaixo:</p>
@@ -312,6 +278,7 @@
       </div>
     </section>
   </main>
+
   <div class="whatsapp-wrapper">
     <a href="https://wa.me/5531989764204?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
@@ -320,24 +287,21 @@
   </div>
 
   <footer>
-    &copy; 2025 InfoAnjos. Todos os direitos reservados.
     <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color: #fff; text-decoration: none">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
   <script>
-    function toggleTheme() {
-      var body = document.body;
-      body.style.background = body.style.background === 'white' ? 'black' : 'white';
-      body.style.color = body.style.color === 'black' ? 'white' : 'black';
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("tema") === "claro") {
         document.body.classList.add("light");
       }
     });
+
     function alternarTema() {
       document.body.classList.toggle("light");
       localStorage.setItem("tema", document.body.classList.contains("light") ? "claro" : "escuro");
     }
   </script>
 </body>
+</html>
