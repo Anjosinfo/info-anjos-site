@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnjosInfo Tech</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        header {
+            background-color: #1e90ff;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            margin-top: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: bold;
+        }
+        section {
+            padding: 40px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        h2 {
+            color: #1e90ff;
+        }
+        .services {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .service {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+            flex: 1 1 250px;
+        }
+        .contact-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            text-decoration: none;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #1e90ff;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>AnjosInfo Tech</h1>
+    <nav>
+        <a href="#about">Sobre</a>
+        <a href="#services">Serviços</a>
+        <a href="#contact">Contato</a>
+    </nav>
+</header>
+
+<section id="about">
+    <h2>Missão e Visão</h2>
+    <p><strong>Missão:</strong> Fornecer soluções tecnológicas rápidas, confiáveis e acessíveis.</p>
+    <p><strong>Visão:</strong> Ser referência em suporte remoto e consultoria tecnológica na região.</p>
+</section>
+
+<section id="services">
+    <h2>Serviços</h2>
+    <div class="services">
+        <div class="service">
+            <h3>Suporte Remoto</h3>
+            <p>Atendimento via TeamViewer, WhatsApp, rápido e confiável.</p>
+        </div>
+        <div class="service">
+            <h3>Manutenção de Computadores</h3>
+            <p>Preventiva e corretiva, garantindo desempenho e segurança.</p>
+        </div>
+        <div class="service">
+            <h3>Criação de Sites</h3>
+            <p>Desenvolvimento de páginas simples em HTML/CSS.</p>
+        </div>
+        <div class="service">
+            <h3>Consultoria em TI</h3>
+            <p>Otimização de sistemas, segurança digital e soluções personalizadas.</p>
+        </div>
+    </div>
+</section>
+
+<a href="https://wa.me/seunumerodetelefone" class="contact-whatsapp" target="_blank">💬</a>
+
+<footer>
+    <p>© 2025 AnjosInfo Tech - Todos os direitos reservados</p>
+</footer>
+
+</body>
+</html>
