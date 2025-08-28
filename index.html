@@ -292,17 +292,38 @@
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color: #fff; text-decoration: none">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
+  <!-- Script para alternar entre tema claro e escuro -->
   <script>
+    // Quando a página carregar, verifica o tema salvo no localStorage
     document.addEventListener("DOMContentLoaded", () => {
       if (localStorage.getItem("tema") === "claro") {
-        document.body.classList.add("light");
+        document.body.classList.add("light"); // Aplica modo claro se estava salvo
       }
     });
 
+    // Função para alternar tema quando botão for clicado
     function alternarTema() {
-      document.body.classList.toggle("light");
+      document.body.classList.toggle("light"); // Adiciona ou remove classe "light"
+      // Salva no localStorage o estado atual do tema para lembrar depois
       localStorage.setItem("tema", document.body.classList.contains("light") ? "claro" : "escuro");
     }
+    // 🔒 Bloqueia clique direito do mouse
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
+
+    // 🔒 Bloqueia atalhos comuns para ver o código
+    document.addEventListener("keydown", function (e) {
+      if (
+        e.key === "F12" ||
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i") || // Ctrl+Shift+I
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "j") || // Ctrl+Shift+J
+        (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "c") || // Ctrl+Shift+C
+        (e.ctrlKey && e.key.toLowerCase() === "u")                 // Ctrl+U
+      ) {
+        e.preventDefault();
+      }
+    });
   </script>
 </body>
 </html>
