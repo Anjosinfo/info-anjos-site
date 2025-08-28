@@ -331,14 +331,14 @@
     function alternarTema() {
       document.body.classList.toggle("light");
       localStorage.setItem("tema", document.body.classList.contains("light") ? "claro" : "escuro");
-    }
+    });
 
-    // Bloqueia clique direito do mouse
+    // 🔒 Bloqueia clique direito do mouse
     document.addEventListener("contextmenu", function (e) {
       e.preventDefault();
     });
 
-    // Bloqueia atalhos comuns para ver o código
+    // 🔒 Bloqueia atalhos comuns para ver o código
     document.addEventListener("keydown", function (e) {
       if (
         e.key === "F12" ||
@@ -350,6 +350,7 @@
         e.preventDefault();
       }
     });
+
   const logo = document.getElementById("logo");
   const floatingLogo = document.getElementById("logo-floating");
 
