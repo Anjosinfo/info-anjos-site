@@ -294,13 +294,6 @@
 
   <!-- Script para alternar entre tema claro e escuro -->
   <script>
-    // Quando a página carregar, verifica o tema salvo no localStorage
-    document.addEventListener("DOMContentLoaded", () => {
-      if (localStorage.getItem("tema") === "claro") {
-        document.body.classList.add("light"); // Aplica modo claro se estava salvo
-      }
-    });
-
     // Função para alternar tema quando botão for clicado
     function alternarTema() {
       document.body.classList.toggle("light"); // Adiciona ou remove classe "light"
