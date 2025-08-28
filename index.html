@@ -6,15 +6,237 @@
   <title>Suporte Ágil e Eficiente para Você</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <style>
-    /* (Seu CSS permanece inalterado - não mostrado aqui por brevidade) */
+    /* Estilos básicos do corpo da página */
+    body {
+      font-family: Arial, sans-serif; /* Fonte do site */
+      background: #000; /* Fundo preto para modo escuro padrão */
+      color: #fff; /* Texto branco para contraste no modo escuro */
+      margin: 0; /* Remove margens padrão do body */
+      padding: 0; /* Remove padding padrão do body */
+      transition: background 0.4s, color 0.4s; /* Transição suave ao alternar tema */
+    }
+
+    /* Estilos para o modo claro */
+    body.light {
+      background: #f0f0f0; /* Fundo claro */
+      color: #111; /* Texto escuro */
+    }
+
+    /* Estilo do cabeçalho */
+    header {
+      background: transparent; /* Fundo transparente */
+      padding: 1rem 0; /* Espaçamento vertical */
+      text-align: center; /* Centraliza o conteúdo dentro do header */
+    }
+
+    /* Imagem do logo dentro do header */
+    header img {
+      max-height: 150px; /* Altura máxima para o logo */
+      height: auto; /* Altura automática */
+      width: auto; /* Largura automática */
+    }
+
+    /* Barra de navegação principal */
+    nav {
+      display: flex; /* Layout flexível */
+      justify-content: center; /* Centraliza itens horizontalmente */
+      gap: 2rem; /* Espaço entre links */
+      background-color: #1877F2; /* Fundo azul (semelhante ao azul do Facebook) */
+      padding: 1rem 0; /* Espaçamento vertical */
+      flex-wrap: wrap; /* Permite que os links quebrem linha em telas pequenas */
+    }
+
+    /* Links da navegação */
+    nav a {
+      color: #fff; /* Cor branca para o texto */
+      text-decoration: none; /* Remove sublinhado padrão */
+      font-weight: bold; /* Texto em negrito */
+    }
+
+    /* Efeito hover nos links */
+    nav a:hover {
+      text-decoration: underline; /* Sublinhado ao passar o mouse */
+    }
+
+    /* Conteúdo principal */
+    main {
+      max-width: 900px; /* Largura máxima para centralizar o conteúdo */
+      margin: 2rem auto; /* Margem superior e inferior, centralizado horizontalmente */
+      padding: 0 1rem; /* Espaçamento lateral */
+    }
+
+    /* Seções dentro do main */
+    section {
+      background: #111; /* Fundo escuro das seções */
+      border-radius: 8px; /* Cantos arredondados */
+      padding: 2rem; /* Espaçamento interno */
+      margin-bottom: 2rem; /* Espaço entre seções */
+    }
+
+    /* No modo claro, o fundo das seções fica branco */
+    body.light section {
+      background: #fff;
+    }
+
+    /* Títulos h2 e h3 com cor azul */
+    h2, h3 {
+      color: #1877F2;
+      margin-bottom: 1rem;
+    }
+
+    /* Remove estilo padrão da lista */
+    ul {
+      list-style: none;
+      padding-left: 1rem; /* Pequeno recuo */
+    }
+
+    /* Itens da lista */
+    li {
+      border-left: 4px solid #1877F2; /* Barra azul à esquerda */
+      margin-bottom: 1rem; /* Espaço entre itens */
+      padding-left: 0.5rem; /* Espaçamento entre barra e texto */
+      color: #ddd; /* Cor clara para texto no modo escuro */
+    }
+
+    /* No modo claro, o texto dos itens fica mais escuro */
+    body.light li {
+      color: #333;
+    }
+
+    /* Estilo do botão (link com aparência de botão) */
+    a.button {
+      display: inline-block; /* Para definir tamanho e padding */
+      background: #1877F2; /* Fundo azul */
+      color: #fff; /* Texto branco */
+      padding: 0.75rem 1.5rem; /* Espaçamento interno */
+      border-radius: 6px; /* Bordas arredondadas */
+      text-decoration: none; /* Remove sublinhado */
+      box-shadow: 0 0 8px #1877F2aa; /* Sombra azul suave */
+      transition: background 0.3s; /* Transição suave para hover */
+      font-weight: bold;
+    }
+
+    /* Cor do botão muda ao passar o mouse */
+    a.button:hover {
+      background: #0f5dc9;
+    }
+
+    /* Estilo para links de contato */
+    .contact-info a {
+      color: #1877F2;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    /* Rodapé */
+    footer {
+      background: #1877F2;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      user-select: none; /* Impede seleção do texto no rodapé */
+    }
+
+    /* iframe do mapa */
+    iframe {
+      width: 100%;
+      height: 300px;
+      border: 0;
+      border-radius: 8px;
+    }
+
+    /* Botão flutuante do WhatsApp */
+    .whatsapp-wrapper {
+      position: fixed; /* Fixa no canto da tela */
+      bottom: 20px;
+      right: 20px;
+      z-index: 100; /* Fica acima de outros elementos */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      max-width: 180px;
+      text-align: center;
+    }
+
+    /* Estilo da imagem do botão WhatsApp */
+    .whatsapp-button img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%; /* Círculo */
+      box-shadow: 0 0 10px #000000aa; /* Sombra para destacar */
+      transition: transform 0.3s; /* Transição para efeito hover */
+      background: #25d366; /* Cor verde do WhatsApp */
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    /* Zoom ao passar o mouse no botão WhatsApp */
+    .whatsapp-button img:hover {
+      transform: scale(1.1);
+    }
+
+    /* Slogan abaixo do botão WhatsApp */
+    .whatsapp-slogan {
+      color: #1877F2;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(24, 119, 242, 0.15);
+      padding: 4px 8px;
+      border-radius: 12px;
+      user-select: none;
+      cursor: default;
+    }
+
+    /* Botão para alternar tema claro/escuro */
+    .theme-toggle {
+      position: fixed; /* Fixa no topo direito */
+      top: 20px;
+      right: 20px;
+      z-index: 200; /* Sempre acima dos outros elementos */
+      padding: 10px 15px;
+      background-color: #1877F2;
+      color: #fff;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      box-shadow: 0 0 10px #1877F288;
+      font-weight: bold;
+    }
+
+    /* Efeito hover no botão de tema */
+    .theme-toggle:hover {
+      background-color: #0f5dc9;
+    }
+
+    /* Ajustes para telas pequenas (celular) */
+    @media (max-width: 500px) {
+      .theme-toggle {
+        top: 10px;
+        right: 10px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
+    }
+    #logo-floating {
+  position: fixed;
+  pointer-events: none; /* Ignora interações */
+  opacity: 0;
+  width: 120px;
+  height: auto;
+  z-index: 999;
+  transform: translate(-50%, -50%);
+  transition: opacity 0.2s ease;
+}
   </style>
 </head>
 
 <body>
   <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
-  <header>
-     <img src="logo.jpeg" alt="Logo AnjosInfo" />
+     <header>
+  <img src="logo.jpeg" alt="Logo AnjosInfo" id="logo" />
+  <img src="logo.jpeg" alt="Logo flutuante" id="logo-floating" />
   </header>
 
   <nav>
@@ -128,6 +350,37 @@
         e.preventDefault();
       }
     });
+  const logo = document.getElementById("logo");
+  const floatingLogo = document.getElementById("logo-floating");
+
+  logo.addEventListener("mouseenter", () => {
+    floatingLogo.style.opacity = "1";
+  });
+
+  logo.addEventListener("mouseleave", () => {
+    floatingLogo.style.opacity = "0";
+  });
+
+  logo.addEventListener("mousemove", (e) => {
+    floatingLogo.style.left = `${e.clientX}px`;
+    floatingLogo.style.top = `${e.clientY}px`;
+  });
+    <script>
+  const logo = document.getElementById("logo");
+  const floatingLogo = document.getElementById("logo-floating");
+
+  logo.addEventListener("mouseenter", () => {
+    floatingLogo.style.opacity = "1";
+  });
+
+  logo.addEventListener("mouseleave", () => {
+    floatingLogo.style.opacity = "0";
+  });
+
+  logo.addEventListener("mousemove", (e) => {
+    floatingLogo.style.left = `${e.clientX}px`;
+    floatingLogo.style.top = `${e.clientY}px`;
+  });
   </script>
 </body>
 </html>
