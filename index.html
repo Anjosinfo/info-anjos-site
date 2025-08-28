@@ -199,7 +199,7 @@
   <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
   <header>
-     <img id="logo" src="logo.jpeg" alt="Logo AnjosInfo" />
+     <img src="logo.jpeg" alt="Logo AnjosInfo" />
   </header>
 
   <nav>
@@ -291,53 +291,12 @@
     <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color: #fff; text-decoration: none">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
-
   <!-- Script para alternar entre tema claro e escuro -->
   <script>
     const logo = document.getElementById("logo");
 
   let isDragging = false; // Se está arrastando
   let offsetX, offsetY;    // Distância entre o mouse e o canto da imagem
-
-  logo.style.position = 'absolute'; // Pra poder mover livremente na tela
-  logo.style.cursor = 'grab'; // Cursor de "pegar"
-
-  logo.addEventListener('mousedown', (e) => {
-    isDragging = true;
-    logo.style.cursor = 'grabbing'; // Cursor de arrastando
-
-    // Calcula a diferença entre posição do mouse e canto da imagem
-    offsetX = e.clientX - logo.offsetLeft;
-    offsetY = e.clientY - logo.offsetTop;
-
-    // Evita seleção de texto enquanto arrasta
-    e.preventDefault();
-  });
-
-  window.addEventListener('mouseup', () => {
-    isDragging = false;
-    logo.style.cursor = 'grab';
-  });
-
-  window.addEventListener('mousemove', (e) => {
-    if (!isDragging) return;
-
-    // Calcula nova posição da logo baseado na posição do mouse
-    let left = e.clientX - offsetX;
-    let top = e.clientY - offsetY;
-
-    // (Opcional) Pode limitar o movimento dentro da janela, para não sumir a logo:
-    const maxLeft = window.innerWidth - logo.offsetWidth;
-    const maxTop = window.innerHeight - logo.offsetHeight;
-
-    if (left < 0) left = 0;
-    if (top < 0) top = 0;
-    if (left > maxLeft) left = maxLeft;
-    if (top > maxTop) top = maxTop;
-
-    // Aplica o movimento
-    logo.style.left = left + 'px';
-    logo.style.top = top + 'px';
   });
     // Função para alternar tema quando botão for clicado
     function alternarTema() {
