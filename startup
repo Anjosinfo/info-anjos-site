@@ -1,303 +1,205 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>AnjosInfo Tech</title>
+<!DOCTYPE html> <!-- Define o documento como HTML5 -->
+<html lang="pt-BR"> <!-- Elemento raiz do HTML com idioma definido para português do Brasil -->
+<head> <!-- Início do cabeçalho (metadados, título e estilos) -->
+  <meta charset="UTF-8" /> <!-- Define a codificação de caracteres para UTF-8 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Faz o layout responsivo em dispositivos móveis -->
+  <meta name="description" content="AnjosInfo Tech - Suporte remoto, manutenção de computadores, criação de sites e consultoria em TI em Belo Horizonte. Atendimento rápido e confiável." /> <!-- Descrição do site para SEO -->
+  <title>AnjosInfo Tech</title> <!-- Título mostrado na aba do navegador -->
+  <style> /* Início do bloco de CSS interno */
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #000;
-      color: #fff;
-      margin: 0;
-      padding: 0;
-      transition: background 0.4s, color 0.4s;
-    }
+    /* Estilos gerais do corpo da página */
+    body { /* Seletor do elemento body */
+      font-family: Arial, sans-serif; /* Fonte padrão do site */
+      line-height: 1.6; /* Altura da linha para melhorar leitura */
+      margin: 0; /* Remove margem padrão do navegador */
+      padding: 0; /* Remove padding padrão do navegador */
+      background-color: #f4f4f9; /* Cor de fundo padrão (claro) */
+      color: #333; /* Cor do texto padrão (escura) */
+      transition: background-color 0.3s, color 0.3s; /* Transição suave ao alternar tema */
+    } /* Fim do bloco de estilo do body */
 
-    body.light {
-      background: #f0f0f0;
-      color: #111;
-    }
+    /* Cabeçalho (header) */
+    header { /* Seletor do elemento header */
+      background: #007BFF; /* Cor de fundo azul do cabeçalho */
+      color: #fff; /* Cor do texto do cabeçalho (branco) */
+      padding: 1rem; /* Espaçamento interno do cabeçalho */
+      text-align: center; /* Centraliza o conteúdo no cabeçalho */
+    } /* Fim do bloco header */
 
-    header {
-      background: transparent;
-      padding: 1rem 0;
-      text-align: center;
-    }
+    /* Estilos do menu de navegação (lista) */
+    nav ul { /* Seletor para a lista dentro do nav */
+      display: flex; /* Usa flexbox para organizar itens em linha */
+      justify-content: center; /* Centraliza os itens horizontalmente */
+      list-style: none; /* Remove marcadores padrão da lista */
+      padding: 0; /* Remove padding da lista */
+      margin: 0; /* Remove margin da lista */
+      flex-wrap: wrap; /* Permite quebra de linha em telas pequenas */
+    } /* Fim do bloco nav ul */
 
-    header img {
-      max-height: 150px;
-      height: auto;
-      width: auto;
-    }
+    nav ul li { /* Itens da lista do menu */
+      margin: 0 15px; /* Espaçamento lateral entre os itens do menu */
+    } /* Fim do bloco nav ul li */
 
-    nav {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      background-color: #1877F2;
-      padding: 1rem 0;
-      flex-wrap: wrap;
-    }
+    nav ul li a { /* Links do menu */
+      color: #fff; /* Cor do texto dos links (branco) */
+      text-decoration: none; /* Remove sublinhado dos links */
+    } /* Fim do bloco nav ul li a */
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    /* Conteúdo principal */
+    main { /* Seletor para a tag main */
+      padding: 20px; /* Espaçamento interno do conteúdo principal */
+      max-width: 900px; /* Largura máxima do conteúdo central */
+      margin: auto; /* Centraliza o main horizontalmente */
+    } /* Fim do bloco main */
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+    /* Grid de serviços */
+    .services { /* Container que agrupa os cards de serviços */
+      display: grid; /* Usa grid layout */
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Colunas responsivas */
+      gap: 20px; /* Espaçamento entre os cards */
+    } /* Fim do bloco .services */
 
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+    .service { /* Cada card de serviço */
+      background: #fff; /* Fundo branco para cada card */
+      padding: 15px; /* Espaçamento interno do card */
+      border-radius: 8px; /* Cantos arredondados do card */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+      transition: transform 0.2s; /* Animação ao passar o mouse */
+    } /* Fim do bloco .service */
 
-    section {
-      background: #111;
-      border-radius: 8px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-    }
+    .service:hover { /* Estado hover do card */
+      transform: scale(1.05); /* Leve aumento ao passar o mouse */
+    } /* Fim do bloco .service:hover */
 
-    body.light section {
-      background: #fff;
-    }
+    /* Bloco de informações de contato */
+    .contact-info { /* Container das informações de contato */
+      margin-top: 20px; /* Espaçamento superior */
+      padding: 15px; /* Espaçamento interno */
+      background: #fff; /* Fundo branco */
+      border-radius: 8px; /* Cantos arredondados */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    } /* Fim do bloco .contact-info */
 
-    h2, h3 {
-      color: #1877F2;
-      margin-bottom: 1rem;
-    }
+    /* Estilo do botão/link do WhatsApp */
+    .whatsapp-link { /* Classe do link que representa botão do WhatsApp */
+      display: inline-flex; /* Exibe ícone e texto em linha flexível */
+      align-items: center; /* Alinha verticalmente ícone e texto */
+      background: #25D366; /* Cor de fundo verde do WhatsApp */
+      color: #fff; /* Cor do texto (branco) */
+      padding: 10px 15px; /* Espaçamento interno do botão */
+      border-radius: 5px; /* Bordas arredondadas do botão */
+      text-decoration: none; /* Remove sublinhado */
+      font-weight: bold; /* Texto em negrito */
+      margin-top: 10px; /* Espaçamento superior */
+    } /* Fim do bloco .whatsapp-link */
 
-    ul {
-      list-style: none;
-      padding-left: 1rem;
-    }
+    .whatsapp-link img { /* Estilo do ícone dentro do botão WhatsApp */
+      width: 20px; /* Largura do ícone */
+      margin-right: 8px; /* Espaço entre ícone e texto */
+    } /* Fim do bloco .whatsapp-link img */
 
-    li {
-      border-left: 4px solid #1877F2;
-      margin-bottom: 1rem;
-      padding-left: 0.5rem;
-      color: #ddd;
-    }
+    /* Rodapé */
+    footer { /* Seletor do rodapé */
+      text-align: center; /* Centraliza conteúdo do rodapé */
+      padding: 15px; /* Espaçamento interno do rodapé */
+      margin-top: 20px; /* Espaço acima do rodapé */
+      background: #333; /* Fundo escuro do rodapé */
+      color: #fff; /* Texto em branco no rodapé */
+    } /* Fim do bloco footer */
 
-    body.light li {
-      color: #333;
-    }
+    /* Tema escuro - classe aplicada ao body */
+    body.dark-mode { /* Quando a classe dark-mode está presente no body */
+      background-color: #181818; /* Fundo escuro para o site */
+      color: #f4f4f9; /* Texto claro para contraste */
+    } /* Fim do bloco body.dark-mode */
 
-    a.button {
-      display: inline-block;
-      background: #1877F2;
-      color: #fff;
-      padding: 0.75rem 1.5rem;
-      border-radius: 6px;
-      text-decoration: none;
-      box-shadow: 0 0 8px #1877F2aa;
-      transition: background 0.3s;
-      font-weight: bold;
-    }
+    body.dark-mode header { /* Cabeçalho no tema escuro */
+      background: #222; /* Fundo do header em tom escuro */
+    } /* Fim do bloco body.dark-mode header */
 
-    a.button:hover {
-      background: #0f5dc9;
-    }
+    body.dark-mode nav ul li a { /* Links do menu no tema escuro */
+      color: #f4f4f9; /* Cor clara para os links */
+    } /* Fim do bloco body.dark-mode nav ul li a */
 
-    .contact-info a {
-      color: #1877F2;
-      font-weight: bold;
-      text-decoration: none;
-    }
+    body.dark-mode .service, /* Cards no tema escuro */
+    body.dark-mode .contact-info { /* Bloco de contato no tema escuro */
+      background: #333; /* Fundo escuro para cards e contato */
+      color: #f4f4f9; /* Texto claro dentro desses elementos */
+    } /* Fim do bloco de estilos dark-mode para cards e contato */
 
-    footer {
-      background: #1877F2;
-      color: #fff;
-      text-align: center;
-      padding: 1rem;
-      user-select: none;
-    }
+    /* Botão que alterna o tema */
+    #theme-toggle { /* Seletor do botão de troca de tema */
+      margin-top: 10px; /* Espaço acima do botão */
+      padding: 8px 12px; /* Espaçamento interno do botão */
+      border: none; /* Remove borda padrão */
+      border-radius: 5px; /* Arredonda cantos do botão */
+      cursor: pointer; /* Cursor de clique no hover */
+      background: #444; /* Fundo do botão */
+      color: #fff; /* Cor do texto do botão */
+    } /* Fim do bloco #theme-toggle */
 
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: 0;
-      border-radius: 8px;
-    }
+  </style> <!-- Fim do bloco de CSS interno -->
+</head> <!-- Fim do cabeçalho (head) -->
+<body> <!-- Início do corpo (conteúdo visível) -->
 
-    .whatsapp-wrapper {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 100;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 6px;
-      max-width: 180px;
-      text-align: center;
-    }
+  <header> <!-- Início do cabeçalho da página -->
+    <img src="logo.jpeg" alt="Logotipo da AnjosInfo Tech" width="100" /> <!-- Imagem do logotipo (atributo alt para acessibilidade) -->
+    <h1>AnjosInfo Tech</h1> <!-- Título principal do site -->
+    <p>Seu suporte em tecnologia, onde você estiver.</p> <!-- Slogan curto -->
+    <button id="theme-toggle">Alternar Tema</button> <!-- Botão que ativa/desativa o tema escuro -->
+    <nav> <!-- Início da barra de navegação -->
+      <ul> <!-- Lista não ordenada que contém os links do menu -->
+        <li><a href="#services">Serviços</a></li> <!-- Link com âncora para a seção 'Serviços' -->
+        <li><a href="#contact">Contato</a></li> <!-- Link com âncora para a seção 'Contato' -->
+      </ul> <!-- Fim da lista de navegação -->
+    </nav> <!-- Fim da barra de navegação -->
+  </header> <!-- Fim do cabeçalho da página -->
 
-    .whatsapp-button img {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 0 10px #000000aa;
-      transition: transform 0.3s;
-      background: #25d366;
-      padding: 8px;
-      box-sizing: border-box;
-    }
+  <main> <!-- Início do conteúdo principal -->
+    <section id="services"> <!-- Seção dedicada aos serviços oferecidos -->
+      <h2>Serviços</h2> <!-- Título da seção serviços -->
+      <div class="services"> <!-- Container em grid para os cards de serviço -->
+        <div class="service"> <!-- Card de serviço 1 -->
+          <h3>Manutenção de Computadores</h3> <!-- Título do serviço -->
+          <p>Formatamos, limpamos vírus e otimizamos seu PC para máximo desempenho.</p> <!-- Descrição curta -->
+        </div> <!-- Fim do card de serviço 1 -->
+        <div class="service"> <!-- Card de serviço 2 -->
+          <h3>Criação de Sites</h3> <!-- Título do serviço -->
+          <p>Desenvolvemos sites modernos e responsivos para sua empresa.</p> <!-- Descrição curta -->
+        </div> <!-- Fim do card de serviço 2 -->
+        <div class="service"> <!-- Card de serviço 3 -->
+          <h3>Consultoria em TI</h3> <!-- Título do serviço -->
+          <p>Soluções inteligentes para o crescimento do seu negócio.</p> <!-- Descrição curta -->
+        </div> <!-- Fim do card de serviço 3 -->
+        <div class="service"> <!-- Card de serviço 4 -->
+          <h3>Suporte Remoto</h3> <!-- Título do serviço -->
+          <p>Atendimento imediato sem precisar sair de casa.</p> <!-- Descrição curta -->
+        </div> <!-- Fim do card de serviço 4 -->
+      </div> <!-- Fim do container .services -->
+    </section> <!-- Fim da seção services -->
 
-    .whatsapp-button img:hover {
-      transform: scale(1.1);
-    }
+    <h3>Fale Conosco</h3> <!-- Cabeçalho da área de contato -->
+    <p>Estamos prontos para te atender! Entre em contato pelos canais abaixo:</p> <!-- Texto introdutório para contato -->
 
-    .whatsapp-slogan {
-      color: #1877F2;
-      font-size: 0.85rem;
-      font-weight: 600;
-      background: rgba(24, 119, 242, 0.15);
-      padding: 4px 8px;
-      border-radius: 12px;
-      user-select: none;
-      cursor: default;
-    }
+    <div class="contact-info" id="contact"> <!-- Início do bloco com informações de contato (id para âncora) -->
+      <p>Email: suporte@anjosinfo.com</p> <!-- Exemplo de e-mail de contato -->
+      <p>Telefone: (31) 3103-9546</p> <!-- Telefone atualizado conforme solicitado -->
+      <a href="https://wa.me/553131039546" target="_blank" class="whatsapp-link"> <!-- Link direto para WhatsApp (abre em nova aba) -->
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp" /> <!-- Ícone do WhatsApp com atributo alt -->
+        Fale conosco no WhatsApp <!-- Texto exibido no botão/link do WhatsApp -->
+      </a> <!-- Fim do link do WhatsApp -->
+    </div> <!-- Fim do bloco .contact-info -->
 
-    .theme-toggle {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      z-index: 200;
-      padding: 10px 15px;
-      background-color: #1877F2;
-      color: #fff;
-      border: none;
-      border-radius: 20px;
-      cursor: pointer;
-      box-shadow: 0 0 10px #1877F288;
-      font-weight: bold;
-    }
+  </main> <!-- Fim do conteúdo principal -->
 
-    .theme-toggle:hover {
-      background-color: #0f5dc9;
-    }
+  <footer> <!-- Início do rodapé -->
+    <p>&copy; 2025 AnjosInfo Tech. Todos os direitos reservados.</p> <!-- Informação de copyright -->
+  </footer> <!-- Fim do rodapé -->
 
-    @media (max-width: 500px) {
-      .theme-toggle {
-        top: 10px;
-        right: 10px;
-        padding: 8px 12px;
-        font-size: 0.85rem;
-      }
-    }
-  </style>
-</head>
+  <script> /* Início do JavaScript para alternância de tema */
+    const toggleButton = document.getElementById("theme-toggle"); // Seleciona o botão que alterna o tema
+    const body = document.body; // Referência ao elemento body
+  </script> /* Fim do JavaScript */
 
-<body>
-  <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
-
-  <header>
-    <img src="logo.jpeg" alt="Logo AnjosInfo" />
-  </header>
-          
-  <nav>
-     <a href="#about">Sobre</a>
-        <a href="#services">Serviços</a>
-        <a href="#contact">Contato</a>
-  </nav>
-<section id="about">
-    <h2>Missão e Visão</h2>
-    <p><strong>Missão:</strong> Fornecer soluções tecnológicas rápidas, confiáveis e acessíveis.</p>
-    <p><strong>Visão:</strong> Ser referência em suporte remoto e consultoria tecnológica na região.</p>
-</section>
-
-<section id="services">
-    <h2>Serviços</h2>
-    <div class="services">
-        <div class="service">
-            <h3>Suporte Remoto</h3>
-            <p>Atendimento via TeamViewer, WhatsApp, rápido e confiável.</p>
-        </div>
-        <div class="service">
-            <h3>Manutenção de Computadores</h3>
-            <p>Preventiva e corretiva, garantindo desempenho e segurança.</p>
-        </div>
-        <div class="service">
-            <h3>Criação de Sites</h3>
-            <p>Desenvolvimento de páginas simples em HTML/CSS.</p>
-        </div>
-        <div class="service">
-            <h3>Consultoria em TI</h3>
-            <p>Otimização de sistemas, segurança digital e soluções personalizadas.</p>
-        </div>
-    </div>
-</section>
-      </p>
-    </section>
-
-    
-  <h3>Fale Conosco</h3>
-  <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
-  <div class="contact-info">
-    <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
-    <p>⏰ Segunda a Sexta: 09h às 18h<br /></p>
-    <p>⏰ Sábado: 09h às 18h</p>
-    <p>⏰ Domingo: 09h às 13h</p>
-    <p>
-      📸 Siga a gente no Instagram: 
-      <a href="https://www.instagram.com/anjosinfo" target="_blank" style="color:#1877F2; font-weight:bold; text-decoration:none;">
-        @anjosinfo
-      </a>
-    </p>
-  </div>
-</section>
-
-        </p>
-      </div>
-    </section>
-
-    <section class="mapa">
-      <h3>📍 Localização</h3>
-      <iframe
-        src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed"
-        loading="lazy"
-      ></iframe>
-    </section>
-
-    <section id="suporte-remoto">
-      <h3>Suporte Remoto</h3>
-      <p>Para suporte remoto com a equipe AnjosInfo, basta baixar e executar o TeamViewer clicando no botão abaixo. O programa já permite o acesso remoto assim que aberto.</p>
-      <div style="margin-top: 1rem;">
-        <a href="https://get.teamviewer.com/65699et" class="button" target="_blank" rel="noopener noreferrer">Baixar TeamViewer (Acesso Remoto)</a>
-      </div>
-    </section>
-  </main>
-
-  <div class="whatsapp-wrapper">
-    <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-    </a>
-    <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
-  </div>
-
-  <footer>
-   <p>© 2025 AnjosInfo Tech - Todos os direitos reservados</p>
-    <p><a href="https://www.instagram.com/anjosinfo" target="_blank" style="color: #fff; text-decoration: none">Siga-nos no Instagram @anjosinfo</a></p>
-  </footer>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      if (localStorage.getItem("tema") === "claro") {
-        document.body.classList.add("light");
-      }
-    });
-
-    function alternarTema() {
-      document.body.classList.toggle("light");
-      localStorage.setItem("tema", document.body.classList.contains("light") ? "claro" : "escuro");
-    }
-  </script>
-</body>
-</html>
+</body> <!-- Fim do corpo do documento -->
+</html> <!-- Fim do documento HTML -->
