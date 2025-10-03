@@ -39,24 +39,24 @@
 
         header { text-align: center; padding: 1rem 0; position: relative; }
 
-        /* Logo principal semitransparente */
-        #logo {
-            max-height: 150px;
-            opacity: 0.8;
-            transition: opacity 0.3s ease;
-        }
-        #logo:hover { opacity: 1; }
+        /* Logo principal transparente */
+#logo {
+    max-height: 150px;
+    opacity: 0; /* totalmente transparente */
+    transition: opacity 0.3s ease;
+}
 
-        /* Logo flutuante semitransparente */
-        #logo-floating {
-            position: fixed;
-            pointer-events: none;
-            opacity: 0.5;
-            width: 120px;
-            z-index: 999;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.2s ease;
-        }
+/* Logo flutuante transparente */
+#logo-floating {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0; /* totalmente transparente */
+    width: 120px;
+    z-index: 999;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.2s ease;
+}
+
 
         nav {
             display: flex;
