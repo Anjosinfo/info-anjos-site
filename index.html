@@ -1,314 +1,289 @@
-<!DOCTYPE html> <!-- Define documento como HTML5 -->
-<html lang="pt-br"> <!-- Define idioma da página -->
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" /> <!-- Codificação UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Responsividade -->
-  <meta name="description" content="Suporte técnico ágil e eficiente em Belo Horizonte, manutenção de computadores, backup, antivírus, desbloqueio de senha e suporte remoto."> <!-- SEO -->
-  <title>Suporte Ágil e Eficiente</title> <!-- Título da aba -->
-  <link rel="icon" href="favicon.png" type="image/png" /> <!-- Ícone do site -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Suporte técnico ágil e eficiente em Belo Horizonte, manutenção de computadores, backup, antivírus, desbloqueio de senha e suporte remoto.">
+    <title>Suporte Ágil e Eficiente - AnjosInfo</title> <link rel="icon" href="favicon.png" type="image/png" />
 
-  <style>
-    /* =========================
-       Variáveis CSS (cores e fundos)
-       ========================= */
-    :root {
-      --cor-primaria: #1877F2; /* Azul principal */
-      --cor-secundaria: #25d366; /* Verde WhatsApp */
-      --fundo-escuro: #000; /* Fundo tema escuro */
-      --fundo-claro: #f0f0f0; /* Fundo tema claro */
-      --texto-escuro: #111; /* Texto escuro tema claro */
-      --texto-claro: #fff; /* Texto claro tema escuro */
-      --secao-escura: #111; /* Fundo seção escura */
-      --secao-clara: #fff; /* Fundo seção clara */
-    }
+    <style>
+        /* =========================
+       Variáveis CSS (cores e fundos)
+       ========================= */
+        :root {
+            --cor-primaria: #1877F2; /* Azul principal */
+            --cor-secundaria: #25d366; /* Verde WhatsApp */
+            --fundo-escuro: #000; /* Fundo tema escuro */
+            --fundo-claro: #f0f0f0; /* Fundo tema claro */
+            --texto-escuro: #111; /* Texto escuro tema claro */
+            --texto-claro: #fff; /* Texto claro tema escuro */
+            --secao-escura: #111; /* Fundo seção escura */
+            --secao-clara: #fff; /* Fundo seção clara */
+        }
 
-    /* =========================
-       Reset CSS
-       ========================= */
-    * { margin: 0; padding: 0; box-sizing: border-box; } /* Remove margens e padding padrão, inclui borda na largura */
+        /* =========================
+       Reset CSS
+       ========================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* =========================
-       Corpo da página
-       ========================= */
-    body {
-      font-family: Arial, sans-serif; /* Fonte do site */
-      background: var(--fundo-escuro); /* Fundo preto */
-      color: var(--texto-claro); /* Texto branco */
-      transition: background 0.4s, color 0.4s; /* Suaviza troca de cores */
-    }
-    body.light {
-      background: var(--fundo-claro); /* Fundo claro */
-      color: var(--texto-escuro); /* Texto escuro */
-    }
+        /* =========================
+       Corpo da página
+       ========================= */
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--fundo-escuro);
+            color: var(--texto-claro);
+            transition: background 0.4s, color 0.4s;
+        }
+        body.light {
+            background: var(--fundo-claro);
+            color: var(--texto-escuro);
+        }
 
-    /* =========================
-       Cabeçalho e logo
-       ========================= */
-    header { text-align: center; padding: 1rem 0; position: relative; } /* Centraliza conteúdo */
-    #logo { max-height: 150px; } /* Tamanho máximo logo principal */
-    #logo-floating {
-      position: fixed; /* Fixa na tela */
-      pointer-events: none; /* Não interfere no mouse */
-      opacity: 0; /* Inicialmente invisível */
-      width: 120px; /* Largura da logo flutuante */
-      z-index: 999; /* Fica acima de outros elementos */
-      transform: translate(-50%, -50%); /* Centraliza em relação ao cursor */
-      transition: opacity 0.2s ease; /* Suaviza aparecimento */
-    }
+        /* =========================
+       Cabeçalho e logo
+       ========================= */
+        header { text-align: center; padding: 1rem 0; position: relative; }
+        #logo { max-height: 150px; }
+        #logo-floating {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            width: 120px;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s ease;
+        }
 
-    /* =========================
-       Menu de navegação
-       ========================= */
-    nav {
-      display: flex; /* Layout flexível */
-      justify-content: center; /* Centraliza horizontalmente */
-      flex-wrap: wrap; /* Quebra linhas em telas pequenas */
-      gap: 1.5rem; /* Espaçamento entre links */
-      background: var(--cor-primaria); /* Fundo azul */
-      padding: 1rem 0; /* Espaçamento vertical */
-    }
-    nav a {
-      color: #fff; /* Cor branca */
-      font-weight: bold; /* Negrito */
-      text-decoration: none; /* Remove sublinhado */
-      transition: text-decoration 0.3s; /* Suaviza hover */
-    }
-    nav a:hover { text-decoration: underline; } /* Sublinha link ao passar mouse */
+        /* =========================
+       Menu de navegação
+       ========================= */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: var(--cor-primaria);
+            padding: 1rem 0;
+        }
+        nav a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: text-decoration 0.3s;
+        }
+        nav a:hover { text-decoration: underline; }
 
-    /* =========================
-       Conteúdo principal
-       ========================= */
-    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; } /* Centraliza conteúdo */
-    section {
-      background: var(--secao-escura); /* Fundo escuro seções */
-      border-radius: 8px; /* Cantos arredondados */
-      padding: 2rem; /* Espaço interno */
-      margin-bottom: 2rem; /* Espaço entre seções */
-      transition: background 0.4s, color 0.4s; /* Animação ao trocar tema */
-    }
-    body.light section { background: var(--secao-clara); } /* Fundo claro se tema light */
+        /* =========================
+       Conteúdo principal
+       ========================= */
+        main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section {
+            background: var(--secao-escura);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: background 0.4s, color 0.4s;
+        }
+        body.light section { background: var(--secao-clara); }
 
-    h1,h2,h3 { color: var(--cor-primaria); margin-bottom: 1rem; } /* Títulos azuis e espaçamento inferior */
-    ul { list-style: none; padding-left: 1rem; } /* Remove bullets da lista */
-    li {
-      border-left: 4px solid var(--cor-primaria); /* Borda azul à esquerda */
-      padding-left: 0.5rem; /* Espaço interno à esquerda */
-      margin-bottom: 1rem; /* Espaço inferior */
-      color: #ddd; /* Cor do texto */
-    }
-    body.light li { color: #333; } /* Texto mais escuro tema claro */
+        h1,h2,h3 { color: var(--cor-primaria); margin-bottom: 1rem; }
+        ul { list-style: none; padding-left: 1rem; }
+        li {
+            border-left: 4px solid var(--cor-primaria);
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        body.light li { color: #333; }
 
-    /* =========================
-       Botões
-       ========================= */
-    a.button {
-      display: inline-block; /* Mantém dimensões */
-      background: var(--cor-primaria); /* Fundo azul */
-      color: #fff; /* Texto branco */
-      padding: 0.75rem 1.5rem; /* Espaço interno */
-      border-radius: 6px; /* Cantos arredondados */
-      text-decoration: none; /* Remove sublinhado */
-      font-weight: bold; /* Negrito */
-      box-shadow: 0 0 8px var(--cor-primaria)55; /* Sombra azul */
-      transition: background 0.3s; /* Suaviza hover */
-    }
-    a.button:hover { background: #0f5dc9; } /* Hover mais escuro */
+        /* =========================
+       Botões
+       ========================= */
+        a.button {
+            display: inline-block;
+            background: var(--cor-primaria);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 8px var(--cor-primaria)55;
+            transition: background 0.3s;
+        }
+        a.button:hover { background: #0f5dc9; }
 
-    .contact-info a { color: var(--cor-primaria); font-weight: bold; text-decoration: none; } /* Links de contato azul */
+        .contact-info a { color: var(--cor-primaria); font-weight: bold; text-decoration: none; }
 
-    /* =========================
-       Rodapé
-       ========================= */
-    footer {
-      background: var(--cor-primaria); /* Fundo azul */
-      color: #fff; /* Texto branco */
-      text-align: center; /* Centraliza texto */
-      padding: 1rem; /* Espaço interno */
-      user-select: none; /* Impede seleção de texto */
-    }
+        /* =========================
+       Rodapé
+       ========================= */
+        footer {
+            background: var(--cor-primaria);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            user-select: none;
+        }
 
-    iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; } /* Mapa responsivo */
+        iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; }
 
-    /* =========================
-       WhatsApp flutuante
-       ========================= */
-    .whatsapp-wrapper {
-      position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 180px; text-align: center;
-    }
-    .whatsapp-button img {
-      width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 0 10px #000000aa; transition: transform 0.3s; background: var(--cor-secundaria); padding: 8px;
-    }
-    .whatsapp-button img:hover { transform: scale(1.1); } /* Aumenta ao passar mouse */
-    .whatsapp-slogan {
-      color: var(--cor-primaria); font-size: 0.85rem; font-weight: 600; background: rgba(24,119,242,0.15); padding: 4px 8px; border-radius: 12px; user-select: none; cursor: default;
-    }
+        /* =========================
+       WhatsApp flutuante
+       ========================= */
+        .whatsapp-wrapper {
+            position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 180px; text-align: center;
+        }
+        .whatsapp-button img {
+            width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 0 10px #000000aa; transition: transform 0.3s; background: var(--cor-secundaria); padding: 8px;
+        }
+        .whatsapp-button img:hover { transform: scale(1.1); }
+        .whatsapp-slogan {
+            color: var(--cor-primaria); font-size: 0.85rem; font-weight: 600; background: rgba(24,119,242,0.15); padding: 4px 8px; border-radius: 12px; user-select: none; cursor: default;
+        }
 
-    /* =========================
-       Toggle de tema
-       ========================= */
-    .theme-toggle {
-      position: fixed; top: 20px; right: 20px; z-index: 200; width: 50px; height: 26px; border-radius: 15px; background: #555; cursor: pointer; display: flex; align-items: center; padding: 3px; transition: background 0.3s;
-    }
-    .theme-toggle .ball { width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform 0.3s; }
-    .theme-toggle.active { background: var(--cor-primaria); }
-    .theme-toggle.active .ball { transform: translateX(24px); }
+        /* =========================
+       Toggle de tema
+       ========================= */
+        .theme-toggle {
+            position: fixed; top: 20px; right: 20px; z-index: 200; width: 50px; height: 26px; border-radius: 15px; background: #555; cursor: pointer; display: flex; align-items: center; padding: 3px; transition: background 0.3s;
+        }
+        .theme-toggle .ball { width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform 0.3s; }
+        .theme-toggle.active { background: var(--cor-primaria); }
+        .theme-toggle.active .ball { transform: translateX(24px); }
 
-    @media (max-width:500px){ .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; } .theme-toggle .ball { width:18px; height:18px; } } /* Responsivo */
-  </style>
+        @media (max-width:500px){ .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; } .theme-toggle .ball { width:18px; height:18px; } }
+    </style>
 </head>
 
 <body>
-  <!-- Botão alternar tema -->
-  <div class="theme-toggle" id="theme-toggle">
+<div class="theme-toggle" id="theme-toggle">
     <div class="ball"></div>
-  </div>
+</div>
 
-  <!-- Cabeçalho com logo -->
-  <header>
-    <img src="logo.jpeg" alt="Logo AnjosInfo" id="logo">
-    <img src="logo.jpeg" alt="Logo flutuante" id="logo-floating">
-  </header>
+<header>
+    <img src="logo.jpeg" alt="Logo da AnjosInfo, empresa de suporte técnico em BH" id="logo">
+    <img src="logo.jpeg" alt="Logo flutuante de ícone da AnjosInfo" id="logo-floating">
+</header>
 
-  <!-- Menu de navegação -->
-  <nav aria-label="Menu Principal">
+<nav aria-label="Menu Principal">
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
     <a href="#suporte-remoto">Suporte Remoto</a>
-  </nav>
+</nav>
 
-  <main> <!-- Conteúdo principal -->
-    <section class="hero"> <!-- Seção Hero -->
-      <h1>Suporte Ágil e Eficiente para Você</h1> <!-- Título principal -->
-      <p class="italic">Iniciando nossa jornada com dedicação para transformar seu imprevisto em confiança e qualidade.</p>
-      <a href="#contato" class="button">Fale Conosco</a> <!-- Botão -->
+<main> <section class="hero"> <h1>Suporte Ágil e Eficiente para Você</h1>
+        <blockquote class="slogan">Iniciando nossa jornada com dedicação para transformar seu imprevisto em confiança e qualidade.</blockquote>
+        <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
-    <section id="sobre"> <!-- Sobre nós -->
-      <h2>Sobre Nós</h2>
-      <p>Na AnjosInfo, nossa missão é transformar o cotidiano das pessoas por meio de soluções tecnológicas inteligentes e acessíveis. Com foco em gestão eficiente e atendimento humanizado, oferecemos suporte técnico personalizado que alia rapidez e qualidade. Estamos comprometidos em simplificar processos e garantir que a tecnologia trabalhe a seu favor, sempre com transparência e confiança.</p>
+    <section id="sobre"> <h2>Sobre Nós</h2>
+        <p>Na AnjosInfo, nossa missão é transformar o cotidiano das pessoas por meio de soluções tecnológicas inteligentes e acessíveis. Com foco em gestão eficiente e atendimento humanizado, oferecemos suporte técnico personalizado que alia rapidez e qualidade. Estamos comprometidos em simplificar processos e garantir que a tecnologia trabalhe a seu favor, sempre com transparência e confiança.</p>
     </section>
 
-  <section id="servicos">
-    <h2>Serviços</h2>
+    <section id="servicos">
+        <h2>Serviços</h2>
 
-    <div class="categoria-servico">
-        <h3>🖥️ Manutenção e Hardware</h3>
-        <ul>
-            <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
-            <li>⚙️ Diagnóstico e solução de problemas de hardware e software</li>
-            <li>🧹 Limpeza interna e remoção de vírus e malwares</li>
-            <li>💽 Formatação e reinstalação de sistemas operacionais</li>
-            <li>💻 Upgrade de hardware (RAM, SSD, placa de vídeo, etc.)</li>
-            <li>🛠️ Troca de peças danificadas (tela, teclado, fonte)</li>
-        </ul>
-    </div>
+        <div class="categoria-servico">
+            <h3>🖥️ Manutenção e Hardware</h3>
+            <ul>
+                <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
+                <li>⚙️ Diagnóstico e solução de problemas de hardware e software</li>
+                <li>🧹 Limpeza interna e remoção de vírus e malwares</li>
+                <li>💽 Formatação e reinstalação de sistemas operacionais</li>
+                <li>💻 Upgrade de hardware (RAM, SSD, placa de vídeo, etc.)</li>
+                <li>🛠️ Troca de peças danificadas (tela, teclado, fonte)</li>
+            </ul>
+        </div>
 
-    <div class="categoria-servico">
-        <h3>🔐 Software e Segurança</h3> <ul>
-            <li>🛡️ Instalação de antivírus</li>
-            <li>📦 Instalação e configuração do Pacote Microsoft Office</li>
-            <li>🛡️ Backup em nuvem e segurança de dados pessoais</li>
-        </ul>
-    </div>
+        <div class="categoria-servico">
+            <h3>🔐 Software e Segurança</h3>
+            <ul>
+                <li>🛡️ Instalação de antivírus</li>
+                <li>📦 Instalação e configuração do Pacote Microsoft Office</li>
+                <li>🛡️ Backup em nuvem e segurança de dados pessoais</li> </ul>
+        </div>
 
-    <div class="categoria-servico">
-        <h3>🌐 Redes e Conectividade</h3>
-        <ul>
-            <li>📶 Configuração de roteadores e redes Wi-Fi</li>
-            <li>🌐 Expansão de rede sem fio e repetidores</li>
-            <li>🔌 Conexão de dispositivos IoT (impressoras, câmeras, smart TVs)</li>
-        </ul>
-    </div>
+        <div class="categoria-servico">
+            <h3>🌐 Redes e Conectividade</h3>
+            <ul>
+                <li>📶 Configuração de roteadores e redes Wi-Fi</li>
+                <li>🌐 Expansão de rede sem fio e repetidores</li>
+                <li>🔌 Conexão de dispositivos IoT (impressoras, câmeras, smart TVs)</li>
+            </ul>
+        </div>
 
-    <div class="categoria-servico">
-        <h3>⚙️ Otimização e Suporte Remoto</h3> <ul>
-            <li>🌐 Suporte e acesso remoto via TeamViewer</li>
-            <li>⚙️ Consultoria para otimização de sistemas</li>
-            <li>📈 Otimização de desempenho de PCs e notebooks</li>
-            <li>🔑 Desbloqueio de senha para computadores e notebooks</li>
-        </ul>
-    </div>
+        <div class="categoria-servico">
+            <h3>⚙️ Otimização e Suporte Remoto</h3>
+            <ul>
+                <li>🌐 Suporte e acesso remoto via TeamViewer</li>
+                <li>⚙️ Consultoria para otimização de sistemas</li>
+                <li>📈 Otimização de desempenho de PCs e notebooks</li>
+                <li>🔑 Desbloqueio de senha para computadores e notebooks</li> </ul>
+        </div>
 
-    <div class="categoria-servico">
-        <h3>📱 Periféricos e Mobilidade</h3> <ul>
-            <li>🖨️ Instalação e configuração de impressoras e multifuncionais</li>
-            <li>📱 Configuração de celulares e sincronização com PC</li>
-        </ul>
-    </div>
-</section>
-  <!-- 📱 Serviços Adicionais -->
-  <div class="categoria-servico">
-    <h3>📱 Serviços Adicionais</h3>
-    <ul>
-        <li>🖨️ Instalação e configuração de impressoras e multifuncionais</li>
-        <li>📱 Configuração de celulares e sincronização com PC</li>
-        <li>🛡️ Backup em nuvem e segurança de dados pessoais</li>
-        <li>🔑 Desbloqueio de senha para computadores e notebooks</li>
-    </ul>
-  </div>
-</section>  
-      </ul>
+        <div class="categoria-servico">
+            <h3>📱 Periféricos e Mobilidade</h3>
+            <ul>
+                <li>🖨️ Instalação e configuração de impressoras e multifuncionais</li>
+                <li>📱 Configuração de celulares e sincronização com PC</li>
+            </ul>
+        </div>
     </section>
-    <!-- Seção Contato -->
+
     <section id="contato">
-      <h2>Fale Conosco</h2>
-      <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
-      <div class="contact-info">
-        <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
-        <p>⏰ Segunda a Sexta: 09h às 18h</p>
-        <p>⏰ Sábado: 09h às 18h</p>
-        <p>⏰ Domingo: 09h às 13h</p>
-
-        <p>📸 Instagram: <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a></p>
-      </div>
+        <h2>Fale Conosco</h2>
+        <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
+        <div class="contact-info">
+            <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
+            <p>⏰ Segunda a Sexta: 09h às 18h</p>
+            <p>⏰ Sábado: 09h às 18h</p>
+            <p>⏰ Domingo: 09h às 13h</p>
+            <p>📸 Instagram: <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a></p>
+        </div>
     </section>
 
-    <section class="mapa"> <!-- Mapa -->
-      <h2>📍 Localização</h2>
-      <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy"></iframe>
+    <section class="mapa"> <h2>📍 Localização</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.199925243179!2d-43.9554035!3d-19.8329245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa693994e636c73%3A0x63351d167f1b2691!2sRua%20Joaquim%20Ramos%20Filho%2C%2057%20-%20Jaqueline%2C%20Belo%20Horizonte%20-%20MG%2C%2031760-390!5e0!3m2!1spt-BR!2sbr!4v1699900000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <section id="suporte-remoto"> <!-- Suporte remoto -->
-      <h2>Suporte Remoto</h2>
-      <p>Para suporte remoto com a equipe AnjosInfo, baixe e execute o TeamViewer clicando no botão abaixo.</p>
-      <a href="https://get.teamviewer.com/65699et" class="button" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
+    <section id="suporte-remoto"> <h2>Suporte Remoto</h2>
+        <p>Para suporte remoto com a equipe AnjosInfo, baixe e execute o TeamViewer clicando no botão abaixo.</p>
+        <a href="https://get.teamviewer.com/65699et" class="button" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
     </section>
-  </main>
+</main>
 
-  <div class="whatsapp-wrapper"> <!-- Botão WhatsApp flutuante -->
-    <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
+<div class="whatsapp-wrapper"> <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Ícone do WhatsApp" />
     </a>
     <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
-  </div>
+</div>
 
-  <footer> <!-- Rodapé -->
-    <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
+<footer> <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank">Siga-nos no Instagram @anjosinfo</a></p>
-  </footer>
+</footer>
+    <script>
+    const toggle = document.getElementById('theme-toggle'); // Seleciona botão toggle
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light'); // Alterna tema
+      toggle.classList.toggle('active'); // Anima botão
+    });
+    document.addEventListener("contextmenu", e => e.preventDefault()); // Bloqueia clique direito
 
-  <script>
-    const toggle = document.getElementById('theme-toggle'); // Seleciona botão toggle
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('light'); // Alterna tema
-      toggle.classList.toggle('active'); // Anima botão
-    });
+    document.addEventListener("keydown", e => {
 
-    document.addEventListener("contextmenu", e => e.preventDefault()); // Bloqueia clique direito
-    document.addEventListener("keydown", e => {
-      if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase()==="u")) e.preventDefault(); // Bloqueia dev tools
-    });
+      if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase()==="u")) e.preventDefault(); // Bloqueia dev tools
+    });
 
-    const logo = document.getElementById("logo"); // Logo principal
-    const floatingLogo = document.getElementById("logo-floating"); // Logo flutuante
-    logo.addEventListener("mouseenter", () => floatingLogo.style.opacity = "1"); // Mostra logo flutuante
-    logo.addEventListener("mouseleave", () => floatingLogo.style.opacity = "0"); // Oculta logo flutuante
-    logo.addEventListener("mousemove", e => {
-      floatingLogo.style.left = `${e.clientX}px`; // Posiciona horizontal
-      floatingLogo.style.top = `${e.clientY}px`; // Posiciona vertical
-    });
-  </script>
-
+    const logo = document.getElementById("logo"); // Logo principal
+    const floatingLogo = document.getElementById("logo-floating"); // Logo flutuante
+    logo.addEventListener("mouseenter", () => floatingLogo.style.opacity = "1"); // Mostra logo flutuante
+    logo.addEventListener("mouseleave", () => floatingLogo.style.opacity = "0"); // Oculta logo flutuante
+    logo.addEventListener("mousemove", e => {
+      floatingLogo.style.left = `${e.clientX}px`; // Posiciona horizontal
+      floatingLogo.style.top = `${e.clientY}px`; // Posiciona vertical
+    });
+  </script>
 </body>
 </html>
