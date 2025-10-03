@@ -31,15 +31,20 @@
            Corpo da página
         ========================= */
         body {
-            font-family: Arial, sans-serif;
-            background: var(--fundo-escuro);
-            color: var(--texto-claro);
-            transition: background 0.4s, color 0.4s;
-        }
-        body.light {
-            background: var(--fundo-claro);
-            color: var(--texto-escuro);
-        }
+    font-family: Arial, sans-serif;
+    background: url("imagem fundo.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: var(--texto-claro);
+    transition: background 0.4s, color 0.4s;
+}
+
+body.light {
+    background: url("imagem fundo.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    color: var(--texto-escuro);
+}
 
         /* =========================
            Cabeçalho e logo
