@@ -9,36 +9,32 @@
 
     <style>
         /* =========================
-        Variáveis CSS (cores e fundos)
+           Variáveis CSS (cores e fundos)
         ========================= */
         :root {
-            --cor-primaria: #007bff; /* Azul Profissional */
-            --cor-secundaria: #28a745; /* Verde Sucesso/WhatsApp */
-            --fundo-escuro: #0a0a1a; /* Fundo tema escuro (ainda mais escuro para contraste com o padrão) */
-            --fundo-claro: #f8f9fa; /* Fundo tema claro */
-            --texto-escuro: #212529; /* Texto escuro */
-            --texto-claro: #f8f9fa; /* Texto claro */
-            --secao-escura: #1f1f1f; /* Fundo seção escura */
-            --secao-clara: #ffffff; /* Fundo seção clara */
-            --card-borda: #333333; /* Borda escura para cards */
-            --background-pattern-color: rgba(0, 123, 255, 0.1); /* Cor do padrão de fundo (azul primário com opacidade) */
+            --cor-primaria: #1877F2; 
+            --cor-secundaria: #25d366; 
+            --fundo-escuro: #000; 
+            --fundo-claro: #f0f0f0; 
+            --texto-escuro: #111; 
+            --texto-claro: #fff; 
+            --secao-escura: #111; 
+            --secao-clara: #fff; 
         }
 
         /* =========================
-        Reset CSS
+           Reset CSS
         ========================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         /* =========================
-        Corpo da página
+           Corpo da página
         ========================= */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: var(--fundo-escuro); /* Fundo base para o padrão */
+            font-family: Arial, sans-serif;
+            background: var(--fundo-escuro);
             color: var(--texto-claro);
             transition: background 0.4s, color 0.4s;
-            position: relative; 
-            min-height: 100vh;
         }
         body.light {
             background: var(--fundo-claro);
@@ -46,37 +42,10 @@
         }
 
         /* =========================
-        NOVO: Fundo de Tecnologia (Mantido)
-        ========================= */
-        #background-tech {
-            position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; 
-            background-image: 
-                radial-gradient(circle at 10% 10%, var(--background-pattern-color) 1px, transparent 0),
-                radial-gradient(circle at 90% 90%, var(--background-pattern-color) 1px, transparent 0),
-                linear-gradient(135deg, var(--fundo-escuro) 0%, rgba(0, 50, 100, 0.2) 100%);
-            background-size: 50px 50px, 50px 50px, cover; 
-            opacity: 0.8;
-            transition: opacity 0.4s, background 0.4s;
-        }
-
-        body.light #background-tech {
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(0, 123, 255, 0.05) 1px, transparent 0),
-                radial-gradient(circle at 90% 90%, rgba(0, 123, 255, 0.05) 1px, transparent 0),
-                linear-gradient(135deg, var(--fundo-claro) 0%, rgba(0, 123, 255, 0.05) 100%);
-            opacity: 0.6;
-        }
-
-        /* =========================
-        Cabeçalho e logo
+           Cabeçalho e logo
         ========================= */
         header { text-align: center; padding: 1rem 0; position: relative; }
-        #logo { max-height: 150px; border-radius: 8px; } 
+        #logo { max-height: 150px; }
         #logo-floating {
             position: fixed;
             pointer-events: none;
@@ -88,7 +57,7 @@
         }
 
         /* =========================
-        Menu de navegação
+           Menu de navegação
         ========================= */
         nav {
             display: flex;
@@ -97,115 +66,85 @@
             gap: 1.5rem;
             background: var(--cor-primaria);
             padding: 1rem 0;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            position: sticky; 
-            top: 0;
-            z-index: 100;
         }
         nav a {
             color: #fff;
-            font-weight: 600;
+            font-weight: bold;
             text-decoration: none;
-            padding: 0 0.5rem;
-            transition: opacity 0.3s;
+            transition: text-decoration 0.3s;
         }
-        nav a:hover { opacity: 0.8; }
+        nav a:hover { text-decoration: underline; }
 
         /* =========================
-        Conteúdo principal
+           Conteúdo principal
         ========================= */
-        main { max-width: 1000px; margin: 2.5rem auto; padding: 0 1.5rem; }
+        main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
         section {
             background: var(--secao-escura);
-            border-radius: 12px;
-            padding: 3rem;
-            margin-bottom: 2.5rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            transition: background 0.4s, color 0.4s, box-shadow 0.4s;
-            position: relative; 
-            z-index: 1; 
-        }
-        body.light section { 
-            background: var(--secao-clara); 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        }
-
-        h1 { color: var(--cor-primaria); font-size: 2.5rem; margin-bottom: 1.5rem; }
-        h2 { color: var(--cor-primaria); margin-bottom: 1.5rem; font-size: 2rem; border-bottom: 2px solid var(--cor-secundaria); padding-bottom: 0.5rem;}
-        h3 { color: var(--cor-secundaria); margin-bottom: 1rem; }
-        
-        ul { list-style: none; padding-left: 0; }
-        /* Estilo da lista para serviços */
-        .servico-lista li {
-            border-left: 4px solid var(--cor-secundaria);
-            padding-left: 0.8rem;
-            margin-bottom: 0.8rem;
-            color: var(--texto-claro);
-            transition: color 0.4s;
-        }
-        body.light .servico-lista li { color: var(--texto-escuro); }
-
-        /* Estilo para a citação/slogan */
-        blockquote.slogan {
-            font-style: italic;
+            border-radius: 8px;
+            padding: 2rem;
             margin-bottom: 2rem;
-            font-size: 1.1rem;
-            color: #ccc;
+            transition: background 0.4s, color 0.4s;
         }
-        body.light blockquote.slogan { color: #555; }
+        body.light section { background: var(--secao-clara); }
+
+        h1,h2,h3 { color: var(--cor-primaria); margin-bottom: 1rem; }
+        ul { list-style: none; padding-left: 1rem; }
+        li {
+            border-left: 4px solid var(--cor-primaria);
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        body.light li { color: #333; }
 
         /* =========================
-        Botões
+           Botões
         ========================= */
         a.button {
             display: inline-block;
             background: var(--cor-primaria);
             color: #fff;
-            padding: 1rem 2rem; 
-            border-radius: 30px; 
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
             text-decoration: none;
             font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
-            transition: background 0.3s, transform 0.3s;
+            box-shadow: 0 0 8px var(--cor-primaria)55;
+            transition: background 0.3s;
         }
-        a.button:hover { 
-            background: #0056b3; 
-            transform: translateY(-2px);
-        }
+        a.button:hover { background: #0f5dc9; }
 
         .contact-info a { color: var(--cor-primaria); font-weight: bold; text-decoration: none; }
 
         /* =========================
-        Rodapé
+           Rodapé
         ========================= */
         footer {
             background: var(--cor-primaria);
             color: #fff;
             text-align: center;
-            padding: 1.5rem;
+            padding: 1rem;
             user-select: none;
-            font-size: 0.9rem;
-            position: relative; 
-            z-index: 1;
         }
 
-        iframe { width: 100%; height: 350px; border: 0; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; }
 
         /* =========================
-        WhatsApp flutuante
+           WhatsApp flutuante
         ========================= */
         .whatsapp-wrapper {
-            position: fixed; bottom: 25px; right: 25px; z-index: 1000;
+            position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 180px; text-align: center;
         }
         .whatsapp-button img {
-            width: 70px; height: 70px; border-radius: 50%; box-shadow: 0 0 15px rgba(0,0,0,0.4); transition: transform 0.3s, opacity 0.3s; background: var(--cor-secundaria); padding: 10px;
+            width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 0 10px #000000aa; transition: transform 0.3s; background: var(--cor-secundaria); padding: 8px;
         }
         .whatsapp-button img:hover { transform: scale(1.1); }
-        .whatsapp-slogan { display: none; }
-
+        .whatsapp-slogan {
+            color: var(--cor-primaria); font-size: 0.85rem; font-weight: 600; background: rgba(24,119,242,0.15); padding: 4px 8px; border-radius: 12px; user-select: none; cursor: default;
+        }
 
         /* =========================
-        Toggle de tema
+           Toggle de tema
         ========================= */
         .theme-toggle {
             position: fixed; top: 20px; right: 20px; z-index: 200; width: 50px; height: 26px; border-radius: 15px; background: #555; cursor: pointer; display: flex; align-items: center; padding: 3px; transition: background 0.3s;
@@ -217,110 +156,60 @@
         @media (max-width:500px){ .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; } .theme-toggle .ball { width:18px; height:18px; } }
 
         /* =========================
-        Cards Nossa Atuação
+           Cards Nossa Atuação
         ========================= */
         .atuacao-lista {
             display: flex;
             flex-wrap: wrap;
             gap: 1.5rem;
             justify-content: center;
-            margin-top: 2rem;
         }
 
         .card-atuacao {
             background: var(--secao-clara);
             color: var(--texto-escuro);
             border-radius: 12px;
-            padding: 2.5rem 2rem;
+            padding: 2rem 1.5rem;
             flex: 1 1 250px;
             max-width: 300px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
             transition: transform 0.3s, box-shadow 0.3s, background 0.4s, color 0.4s;
-            text-align: left;
-            border-top: 5px solid var(--cor-secundaria);
+            text-align: center;
         }
 
         body.dark .card-atuacao {
             background: var(--secao-escura);
             color: var(--texto-claro);
-            border: 1px solid var(--card-borda);
         }
 
         .card-atuacao:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
-            border-color: var(--cor-primaria);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .card-atuacao h3 {
-            margin: 1rem 0 0.5rem 0;
-            font-size: 1.35rem;
+            margin: 1rem 0 1rem 0;
+            font-size: 1.3rem;
             color: var(--cor-primaria);
-            border-bottom: none;
         }
 
         .card-atuacao p {
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
 
         .card-atuacao .icon {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            color: var(--cor-secundaria);
-            display: block;
-            transition: color 0.3s;
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s;
         }
-        .card-atuacao:hover .icon {
-             color: var(--cor-primaria);
+        .card-atuacao .icon:hover {
+            transform: scale(1.2) rotate(10deg);
         }
-
-        /* =========================
-        Estrutura de Serviços (Cards Otimizados)
-        ========================= */
-        .servicos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        .categoria-servico {
-            background: var(--secao-clara);
-            color: var(--texto-escuro);
-            border-radius: 12px;
-            padding: 1.5rem;
-            border-left: 5px solid var(--cor-primaria);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-            transition: background 0.4s, color 0.4s, box-shadow 0.3s;
-        }
-        body.dark .categoria-servico {
-            background: var(--secao-escura);
-            color: var(--texto-claro);
-            border-left: 5px solid var(--cor-primaria);
-            border: 1px solid var(--card-borda);
-        }
-        .categoria-servico:hover {
-            box-shadow: 0 6px 15px var(--cor-primaria)33;
-        }
-        .categoria-servico h3 {
-            color: var(--cor-primaria);
-            margin-bottom: 1rem;
-            border-bottom: 1px dashed #ccc;
-            padding-bottom: 0.5rem;
-        }
-        body.dark .categoria-servico h3 {
-            border-bottom: 1px dashed #444;
-        }
-        .categoria-servico .servico-lista li {
-            border-left-color: var(--cor-secundaria);
-        }
-
     </style>
 </head>
 
 <body>
-<div id="background-tech"></div> 
-
 <div class="theme-toggle" id="theme-toggle">
     <div class="ball"></div>
 </div>
@@ -332,10 +221,11 @@
 
 <nav aria-label="Menu Principal">
     <a href="#sobre">Sobre Nós</a>
-    <a href="#atuacao">Atuação</a>
+    <a href="#missao">Missão</a>
+    <a href="#visao">Visão</a>
     <a href="#servicos">Serviços</a>
     <a href="#contato">Contato</a>
-    <a href="#suporte-remoto">Remoto</a>
+    <a href="#suporte-remoto">Suporte Remoto</a>
 </nav>
 
 <main> 
@@ -446,60 +336,69 @@
             </ul>
         </div>
     </section>
+
+    <!-- Contato -->
     <section id="contato">
         <h2>Fale Conosco</h2>
-        <p>Para agilidade, entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
+        <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
         <div class="contact-info">
             <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
-            <p>⏰ **Horário de Atendimento:**</p>
-            <p>Segunda a Sexta: 09h às 18h | Sábado: 09h às 18h | Domingo: 09h às 13h</p>
+            <p>⏰ Segunda a Sexta: 09h às 18h</p>
+            <p>⏰ Sábado: 09h às 18h</p>
+            <p>⏰ Domingo: 09h às 13h</p>
             <p>📸 Instagram: <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a></p>
         </div>
     </section>
 
-    <section class="mapa">  
+    <!-- Mapa -->
+    <section class="mapa"> 
         <h2>📍 Localização</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.199925243179!2d-43.9554035!3d-19.8329245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa693994e636c73%3A0x63351d167f1b2691!2sRua%20Joaquim%20Ramos%20Filho%2C%2057%20-%20Jaqueline%2C%20Belo%20Horizonte%20-%20MG%2C%2031760-390!5e0!3m2!1spt-BR!2sbr!4v1699900000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <section id="suporte-remoto">  
-        <h2>Suporte Remoto Imediato</h2>
-        <p>Para iniciar o suporte remoto com a equipe AnjosInfo imediatamente, baixe e execute o TeamViewer clicando no botão seguro abaixo. Solução na hora!</p>
+    <!-- Suporte Remoto -->
+    <section id="suporte-remoto"> 
+        <h2>Suporte Remoto</h2>
+        <p>Para suporte remoto com a equipe AnjosInfo, baixe e execute o TeamViewer clicando no botão abaixo.</p>
         <a href="https://get.teamviewer.com/65699et" class="button" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
     </section>
 </main>
 
-<div class="whatsapp-wrapper">  
+<!-- WhatsApp flutuante -->
+<div class="whatsapp-wrapper"> 
     <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Ícone do WhatsApp" />
     </a>
+    <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
 </div>
 
-<footer>  
+<!-- Rodapé -->
+<footer> 
     <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank">Siga-nos no Instagram @anjosinfo</a></p>
 </footer>
 
+<!-- Scripts -->
 <script>
-    const toggle = document.getElementById('theme-toggle');  
+    const toggle = document.getElementById('theme-toggle'); 
     toggle.addEventListener('click', () => {
-        document.body.classList.toggle('light');  
-        toggle.classList.toggle('active');  
+        document.body.classList.toggle('light'); 
+        toggle.classList.toggle('active'); 
     });
 
-    document.addEventListener("contextmenu", e => e.preventDefault());  
+    document.addEventListener("contextmenu", e => e.preventDefault()); 
 
     document.addEventListener("keydown", e => {
-        if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase()==="u")) e.preventDefault();  
+        if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase()==="u")) e.preventDefault(); 
     });
 
-    const logo = document.getElementById("logo");  
-    const floatingLogo = document.getElementById("logo-floating");  
-    logo.addEventListener("mouseenter", () => floatingLogo.style.opacity = "1");  
-    logo.addEventListener("mouseleave", () => floatingLogo.style.opacity = "0");  
+    const logo = document.getElementById("logo"); 
+    const floatingLogo = document.getElementById("logo-floating"); 
+    logo.addEventListener("mouseenter", () => floatingLogo.style.opacity = "1"); 
+    logo.addEventListener("mouseleave", () => floatingLogo.style.opacity = "0"); 
     logo.addEventListener("mousemove", e => {
-        floatingLogo.style.left = `${e.clientX}px`;  
-        floatingLogo.style.top = `${e.clientY}px`;  
+        floatingLogo.style.left = `${e.clientX}px`; 
+        floatingLogo.style.top = `${e.clientY}px`; 
     });
 </script>
 </body>
