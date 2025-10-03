@@ -1,4 +1,290 @@
- <!-- Serviços -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Suporte técnico ágil e eficiente em Belo Horizonte, manutenção de computadores, backup, antivírus, desbloqueio de senha e suporte remoto.">
+    <title>Suporte Ágil e Eficiente - AnjosInfo</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
+
+    <style>
+        /* =========================
+           Variáveis CSS (cores e fundos)
+        ========================= */
+        :root {
+            --cor-primaria: #1877F2; 
+            --cor-secundaria: #25d366; 
+            --fundo-escuro: #000; 
+            --fundo-claro: #f0f0f0; 
+            --texto-escuro: #111; 
+            --texto-claro: #fff; 
+            --secao-escura: #111; 
+            --secao-clara: #fff; 
+        }
+
+        /* =========================
+           Reset CSS
+        ========================= */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        /* =========================
+           Corpo da página
+        ========================= */
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--fundo-escuro);
+            color: var(--texto-claro);
+            transition: background 0.4s, color 0.4s;
+        }
+        body.light {
+            background: var(--fundo-claro);
+            color: var(--texto-escuro);
+        }
+
+        /* =========================
+           Cabeçalho e logo
+        ========================= */
+        header { text-align: center; padding: 1rem 0; position: relative; }
+        #logo { max-height: 150px; }
+        #logo-floating {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            width: 120px;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s ease;
+        }
+
+        /* =========================
+           Menu de navegação
+        ========================= */
+        nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            background: var(--cor-primaria);
+            padding: 1rem 0;
+        }
+        nav a {
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            transition: text-decoration 0.3s;
+        }
+        nav a:hover { text-decoration: underline; }
+
+        /* =========================
+           Conteúdo principal
+        ========================= */
+        main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        section {
+            background: var(--secao-escura);
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: background 0.4s, color 0.4s;
+        }
+        body.light section { background: var(--secao-clara); }
+
+        h1,h2,h3 { color: var(--cor-primaria); margin-bottom: 1rem; }
+        ul { list-style: none; padding-left: 1rem; }
+        li {
+            border-left: 4px solid var(--cor-primaria);
+            padding-left: 0.5rem;
+            margin-bottom: 1rem;
+            color: #ddd;
+        }
+        body.light li { color: #333; }
+
+        /* =========================
+           Botões
+        ========================= */
+        a.button {
+            display: inline-block;
+            background: var(--cor-primaria);
+            color: #fff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 0 8px var(--cor-primaria)55;
+            transition: background 0.3s;
+        }
+        a.button:hover { background: #0f5dc9; }
+
+        .contact-info a { color: var(--cor-primaria); font-weight: bold; text-decoration: none; }
+
+        /* =========================
+           Rodapé
+        ========================= */
+        footer {
+            background: var(--cor-primaria);
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            user-select: none;
+        }
+
+        iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; }
+
+        /* =========================
+           WhatsApp flutuante
+        ========================= */
+        .whatsapp-wrapper {
+            position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 180px; text-align: center;
+        }
+        .whatsapp-button img {
+            width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 0 10px #000000aa; transition: transform 0.3s; background: var(--cor-secundaria); padding: 8px;
+        }
+        .whatsapp-button img:hover { transform: scale(1.1); }
+        .whatsapp-slogan {
+            color: var(--cor-primaria); font-size: 0.85rem; font-weight: 600; background: rgba(24,119,242,0.15); padding: 4px 8px; border-radius: 12px; user-select: none; cursor: default;
+        }
+
+        /* =========================
+           Toggle de tema
+        ========================= */
+        .theme-toggle {
+            position: fixed; top: 20px; right: 20px; z-index: 200; width: 50px; height: 26px; border-radius: 15px; background: #555; cursor: pointer; display: flex; align-items: center; padding: 3px; transition: background 0.3s;
+        }
+        .theme-toggle .ball { width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform 0.3s; }
+        .theme-toggle.active { background: var(--cor-primaria); }
+        .theme-toggle.active .ball { transform: translateX(24px); }
+
+        @media (max-width:500px){ .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; } .theme-toggle .ball { width:18px; height:18px; } }
+
+        /* =========================
+           Cards Nossa Atuação
+        ========================= */
+        .atuacao-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .card-atuacao {
+            background: var(--secao-clara);
+            color: var(--texto-escuro);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            flex: 1 1 250px;
+            max-width: 300px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.4s, color 0.4s;
+            text-align: center;
+        }
+
+        body.dark .card-atuacao {
+            background: var(--secao-escura);
+            color: var(--texto-claro);
+        }
+
+        .card-atuacao:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .card-atuacao h3 {
+            margin: 1rem 0 1rem 0;
+            font-size: 1.3rem;
+            color: var(--cor-primaria);
+        }
+
+        .card-atuacao p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .card-atuacao .icon {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s;
+        }
+        .card-atuacao .icon:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+    </style>
+</head>
+
+<body>
+<div class="theme-toggle" id="theme-toggle">
+    <div class="ball"></div>
+</div>
+
+<header>
+    <img src="logo.jpeg" alt="Logo da AnjosInfo, empresa de suporte técnico em BH" id="logo">
+    <img src="logo.jpeg" alt="Logo flutuante de ícone da AnjosInfo" id="logo-floating">
+</header>
+
+<nav aria-label="Menu Principal">
+    <a href="#sobre">Sobre Nós</a>
+    <a href="#missao">Missão</a>
+    <a href="#visao">Visão</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#contato">Contato</a>
+    <a href="#suporte-remoto">Suporte Remoto</a>
+</nav>
+
+<main> 
+    <section class="hero"> 
+        <h1>Suporte Ágil e Eficiente para Você</h1>
+        <blockquote class="slogan">Iniciando nossa jornada com dedicação para transformar seu imprevisto em confiança e qualidade.</blockquote>
+        <a href="#contato" class="button">Fale Conosco</a>
+    </section>
+
+    <section id="sobre">
+        <h2>Sobre Nós</h2>
+        <p>O AnjosInfo é quem garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
+
+        <p>A escolha do nome : O "Anjo" contribui significativamente para que o cliente estabeleça suas conexões e as melhores impressões possíveis da instituição, a partir do modo que foi acolhido. Esperamos caminhar junto no propósito "de garantir a alta performance, proteger dados e transformar a experiência digital", possibilitando aos nossos clientes o melhor Suporte em Tecnologia e a melhor experiência.</p>
+        
+        <p>A sua recepção e a solução que entregamos fará toda diferença. AnjosInfo e toda nossa equipe reforçam a importância de um bom Suporte Técnico (Help Desk) e da Melhor Experiência no Atendimento para que você se sinta sempre seguro.</p>
+        
+        <h3 id="missao">Missão</h3>
+        <ul>
+            <li>Garantir a tranquilidade e a continuidade digital dos nossos clientes, oferecendo suporte técnico humanizado, ágil e eficiente. Queremos que a tecnologia seja uma solução, e não um problema, simplificando o dia a dia e impulsionando a produtividade.</li>
+        </ul>
+
+        <h3 id="visao">Visão</h3>
+        <ul>
+            <li>Ser reconhecida em Belo Horizonte como a referência em suporte de informática e atendimento ao cliente, sendo a primeira escolha pela confiabilidade e pela capacidade de transformar desafios técnicos em experiências positivas e duradouras.</li>
+        </ul>
+
+        <h3 id="valores">Valores</h3>
+        <ul>
+            <li>Suporte Ágil e Descomplicado: garantindo que o cliente tenha o conhecimento e o acesso necessários para resolver problemas imediatamente ou de forma remota.</li>
+            <li>Soluções Abrangentes: Prestamos suporte completo em manutenção de hardware e software, remoção de vírus, backup de dados e desbloqueio de senhas dentre outros.</li>
+            <li>Compromisso com o Cliente: Focamos em um atendimento empático e transparente.</li>
+        </ul>
+    </section>
+
+    <!-- Nossa Atuação -->
+    <section id="atuacao"> 
+        <h2>🌍 Nossa Atuação</h2> 
+        <p>Atuamos em Belo Horizonte e Região Metropolitana, oferecendo suporte técnico para empresas, residências e profissionais autônomos. Atendimento presencial ou remoto.</p> 
+        <div class="atuacao-lista"> 
+            <div class="card-atuacao">
+                <div class="icon">🏢</div>
+                <h3>Empresas</h3>
+                <p>Suporte técnico em computadores e notebooks corporativos, instalação de softwares, otimização de desempenho, backup de dados, manutenção preventiva e corretiva, remoção de vírus e malwares.</p>
+            </div>
+            <div class="card-atuacao">
+                <div class="icon">🏠</div>
+                <h3>Residências</h3>
+                <p>Suporte em computadores pessoais, notebooks, redes domésticas, configuração de dispositivos móveis e manutenção preventiva para garantir que tudo funcione corretamente.</p>
+            </div>
+            <div class="card-atuacao">
+                <div class="icon">💻</div>
+                <h3>Atendimento Remoto</h3>
+                <p>Diagnóstico e resolução de problemas técnicos à distância, sem precisar sair de casa ou do escritório. Atendimento rápido e seguro via TeamViewer.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Serviços -->
     <section id="servicos">
         <h2>Serviços</h2>
 
