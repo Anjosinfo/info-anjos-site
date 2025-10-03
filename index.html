@@ -4,31 +4,32 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Suporte técnico ágil e eficiente em Belo Horizonte, manutenção de computadores, backup, antivírus, desbloqueio de senha e suporte remoto.">
-    <title>Suporte Ágil e Eficiente - AnjosInfo</title> <link rel="icon" href="favicon.png" type="image/png" />
+    <title>Suporte Ágil e Eficiente - AnjosInfo</title>
+    <link rel="icon" href="favicon.png" type="image/png" />
 
     <style>
         /* =========================
-       Variáveis CSS (cores e fundos)
-       ========================= */
+           Variáveis CSS (cores e fundos)
+        ========================= */
         :root {
-            --cor-primaria: #1877F2; /* Azul principal */
-            --cor-secundaria: #25d366; /* Verde WhatsApp */
-            --fundo-escuro: #000; /* Fundo tema escuro */
-            --fundo-claro: #f0f0f0; /* Fundo tema claro */
-            --texto-escuro: #111; /* Texto escuro tema claro */
-            --texto-claro: #fff; /* Texto claro tema escuro */
-            --secao-escura: #111; /* Fundo seção escura */
-            --secao-clara: #fff; /* Fundo seção clara */
+            --cor-primaria: #1877F2; 
+            --cor-secundaria: #25d366; 
+            --fundo-escuro: #000; 
+            --fundo-claro: #f0f0f0; 
+            --texto-escuro: #111; 
+            --texto-claro: #fff; 
+            --secao-escura: #111; 
+            --secao-clara: #fff; 
         }
 
         /* =========================
-       Reset CSS
-       ========================= */
+           Reset CSS
+        ========================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         /* =========================
-       Corpo da página
-       ========================= */
+           Corpo da página
+        ========================= */
         body {
             font-family: Arial, sans-serif;
             background: var(--fundo-escuro);
@@ -41,8 +42,8 @@
         }
 
         /* =========================
-       Cabeçalho e logo
-       ========================= */
+           Cabeçalho e logo
+        ========================= */
         header { text-align: center; padding: 1rem 0; position: relative; }
         #logo { max-height: 150px; }
         #logo-floating {
@@ -56,8 +57,8 @@
         }
 
         /* =========================
-       Menu de navegação
-       ========================= */
+           Menu de navegação
+        ========================= */
         nav {
             display: flex;
             justify-content: center;
@@ -75,8 +76,8 @@
         nav a:hover { text-decoration: underline; }
 
         /* =========================
-       Conteúdo principal
-       ========================= */
+           Conteúdo principal
+        ========================= */
         main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
         section {
             background: var(--secao-escura);
@@ -98,8 +99,8 @@
         body.light li { color: #333; }
 
         /* =========================
-       Botões
-       ========================= */
+           Botões
+        ========================= */
         a.button {
             display: inline-block;
             background: var(--cor-primaria);
@@ -116,8 +117,8 @@
         .contact-info a { color: var(--cor-primaria); font-weight: bold; text-decoration: none; }
 
         /* =========================
-       Rodapé
-       ========================= */
+           Rodapé
+        ========================= */
         footer {
             background: var(--cor-primaria);
             color: #fff;
@@ -129,8 +130,8 @@
         iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; }
 
         /* =========================
-       WhatsApp flutuante
-       ========================= */
+           WhatsApp flutuante
+        ========================= */
         .whatsapp-wrapper {
             position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 180px; text-align: center;
         }
@@ -143,8 +144,8 @@
         }
 
         /* =========================
-       Toggle de tema
-       ========================= */
+           Toggle de tema
+        ========================= */
         .theme-toggle {
             position: fixed; top: 20px; right: 20px; z-index: 200; width: 50px; height: 26px; border-radius: 15px; background: #555; cursor: pointer; display: flex; align-items: center; padding: 3px; transition: background 0.3s;
         }
@@ -153,6 +154,58 @@
         .theme-toggle.active .ball { transform: translateX(24px); }
 
         @media (max-width:500px){ .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; } .theme-toggle .ball { width:18px; height:18px; } }
+
+        /* =========================
+           Cards Nossa Atuação
+        ========================= */
+        .atuacao-lista {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .card-atuacao {
+            background: var(--secao-clara);
+            color: var(--texto-escuro);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            flex: 1 1 250px;
+            max-width: 300px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s, box-shadow 0.3s, background 0.4s, color 0.4s;
+            text-align: center;
+        }
+
+        body.dark .card-atuacao {
+            background: var(--secao-escura);
+            color: var(--texto-claro);
+        }
+
+        .card-atuacao:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .card-atuacao h3 {
+            margin: 1rem 0 1rem 0;
+            font-size: 1.3rem;
+            color: var(--cor-primaria);
+        }
+
+        .card-atuacao p {
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .card-atuacao .icon {
+            font-size: 3rem;
+            margin-bottom: 0.8rem;
+            transition: transform 0.3s;
+        }
+        .card-atuacao .icon:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
     </style>
 </head>
 
@@ -175,7 +228,9 @@
     <a href="#suporte-remoto">Suporte Remoto</a>
 </nav>
 
-<main> <section class="hero"> <h1>Suporte Ágil e Eficiente para Você</h1>
+<main> 
+    <section class="hero"> 
+        <h1>Suporte Ágil e Eficiente para Você</h1>
         <blockquote class="slogan">Iniciando nossa jornada com dedicação para transformar seu imprevisto em confiança e qualidade.</blockquote>
         <a href="#contato" class="button">Fale Conosco</a>
     </section>
@@ -203,23 +258,33 @@
             <li>Suporte Ágil e Descomplicado: garantindo que o cliente tenha o conhecimento e o acesso necessários para resolver problemas imediatamente ou de forma remota.</li>
             <li>Soluções Abrangentes: Prestamos suporte completo em manutenção de hardware e software, remoção de vírus, backup de dados e desbloqueio de senhas dentre outros.</li>
             <li>Compromisso com o Cliente: Focamos em um atendimento empático e transparente.</li>
-                  </ul>
+        </ul>
     </section>
-            <!-- Nossa Atuação --> 
+
+    <!-- Nossa Atuação -->
     <section id="atuacao"> 
-        <h2>🌍 Nossa Atuação</h2> <p>Atuamos em Belo Horizonte e Região Metropolitana, oferecendo suporte técnico para empresas, residências e profissionais autônomos. Atendimento presencial ou remoto.</p> 
+        <h2>🌍 Nossa Atuação</h2> 
+        <p>Atuamos em Belo Horizonte e Região Metropolitana, oferecendo suporte técnico para empresas, residências e profissionais autônomos. Atendimento presencial ou remoto.</p> 
         <div class="atuacao-lista"> 
-            <div class="card-atuacao"> <h3>🏢 Empresas</h3> 
-                <p>Suporte técnico em computadores e notebooks corporativos, instalação de softwares, otimização de desempenho, backup de dados...</p> 
-    </div>
-            <div class="card-atuacao"> 
-                <h3>🏠 Residências</h3> <p>Suporte em computadores pessoais, notebooks, redes domésticas, configuração de dispositivos móveis e manutenção preventiva para garantir que tudo funcione corretamente.</p>
-            </div> 
-            <div class="card-atuacao"> 
-                <h3>💻 Atendimento Remoto</h3> <p>Diagnóstico e resolução de problemas técnicos à distância, sem precisar sair de casa ou do escritório. Atendimento rápido e seguro via TeamViewer.</p>
-            </div> 
+            <div class="card-atuacao">
+                <div class="icon">🏢</div>
+                <h3>Empresas</h3>
+                <p>Suporte técnico em computadores e notebooks corporativos, instalação de softwares, otimização de desempenho, backup de dados, manutenção preventiva e corretiva, remoção de vírus e malwares.</p>
+            </div>
+            <div class="card-atuacao">
+                <div class="icon">🏠</div>
+                <h3>Residências</h3>
+                <p>Suporte em computadores pessoais, notebooks, redes domésticas, configuração de dispositivos móveis e manutenção preventiva para garantir que tudo funcione corretamente.</p>
+            </div>
+            <div class="card-atuacao">
+                <div class="icon">💻</div>
+                <h3>Atendimento Remoto</h3>
+                <p>Diagnóstico e resolução de problemas técnicos à distância, sem precisar sair de casa ou do escritório. Atendimento rápido e seguro via TeamViewer.</p>
+            </div>
+        </div>
     </section>
-  
+
+    <!-- Serviços -->
     <section id="servicos">
         <h2>Serviços</h2>
 
@@ -240,7 +305,8 @@
             <ul>
                 <li>🛡️ Instalação de antivírus</li>
                 <li>📦 Instalação e configuração do Pacote Microsoft Office</li>
-                <li>🛡️ Backup em nuvem e segurança de dados pessoais</li> </ul>
+                <li>🛡️ Backup em nuvem e segurança de dados pessoais</li> 
+            </ul>
         </div>
 
         <div class="categoria-servico">
@@ -258,7 +324,8 @@
                 <li>🌐 Suporte e acesso remoto via TeamViewer</li>
                 <li>⚙️ Consultoria para otimização de sistemas</li>
                 <li>📈 Otimização de desempenho de PCs e notebooks</li>
-                <li>🔑 Desbloqueio de senha para computadores e notebooks</li> </ul>
+                <li>🔑 Desbloqueio de senha para computadores e notebooks</li>
+            </ul>
         </div>
 
         <div class="categoria-servico">
@@ -270,6 +337,7 @@
         </div>
     </section>
 
+    <!-- Contato -->
     <section id="contato">
         <h2>Fale Conosco</h2>
         <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
@@ -282,46 +350,56 @@
         </div>
     </section>
 
-    <section class="mapa"> <h2>📍 Localização</h2>
+    <!-- Mapa -->
+    <section class="mapa"> 
+        <h2>📍 Localização</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.199925243179!2d-43.9554035!3d-19.8329245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa693994e636c73%3A0x63351d167f1b2691!2sRua%20Joaquim%20Ramos%20Filho%2C%2057%20-%20Jaqueline%2C%20Belo%20Horizonte%20-%20MG%2C%2031760-390!5e0!3m2!1spt-BR!2sbr!4v1699900000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
-    <section id="suporte-remoto"> <h2>Suporte Remoto</h2>
+    <!-- Suporte Remoto -->
+    <section id="suporte-remoto"> 
+        <h2>Suporte Remoto</h2>
         <p>Para suporte remoto com a equipe AnjosInfo, baixe e execute o TeamViewer clicando no botão abaixo.</p>
         <a href="https://get.teamviewer.com/65699et" class="button" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
     </section>
 </main>
 
-<div class="whatsapp-wrapper"> <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
+<!-- WhatsApp flutuante -->
+<div class="whatsapp-wrapper"> 
+    <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Ícone do WhatsApp" />
     </a>
     <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
 </div>
 
-<footer> <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
+<!-- Rodapé -->
+<footer> 
+    <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank">Siga-nos no Instagram @anjosinfo</a></p>
 </footer>
-    <script>
-    const toggle = document.getElementById('theme-toggle'); // Seleciona botão toggle
-    toggle.addEventListener('click', () => {
-      document.body.classList.toggle('light'); // Alterna tema
-      toggle.classList.toggle('active'); // Anima botão
-    });
-    document.addEventListener("contextmenu", e => e.preventDefault()); // Bloqueia clique direito
 
-    document.addEventListener("keydown", e => {
+<!-- Scripts -->
+<script>
+    const toggle = document.getElementById('theme-toggle'); 
+    toggle.addEventListener('click', () => {
+        document.body.classList.toggle('light'); 
+        toggle.classList.toggle('active'); 
+    });
 
-      if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase()==="u")) e.preventDefault(); // Bloqueia dev tools
-    });
+    document.addEventListener("contextmenu", e => e.preventDefault()); 
 
-    const logo = document.getElementById("logo"); // Logo principal
-    const floatingLogo = document.getElementById("logo-floating"); // Logo flutuante
-    logo.addEventListener("mouseenter", () => floatingLogo.style.opacity = "1"); // Mostra logo flutuante
-    logo.addEventListener("mouseleave", () => floatingLogo.style.opacity = "0"); // Oculta logo flutuante
-    logo.addEventListener("mousemove", e => {
-      floatingLogo.style.left = `${e.clientX}px`; // Posiciona horizontal
-      floatingLogo.style.top = `${e.clientY}px`; // Posiciona vertical
-    });
-  </script>
+    document.addEventListener("keydown", e => {
+        if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase()==="u")) e.preventDefault(); 
+    });
+
+    const logo = document.getElementById("logo"); 
+    const floatingLogo = document.getElementById("logo-floating"); 
+    logo.addEventListener("mouseenter", () => floatingLogo.style.opacity = "1"); 
+    logo.addEventListener("mouseleave", () => floatingLogo.style.opacity = "0"); 
+    logo.addEventListener("mousemove", e => {
+        floatingLogo.style.left = `${e.clientX}px`; 
+        floatingLogo.style.top = `${e.clientY}px`; 
+    });
+</script>
 </body>
 </html>
