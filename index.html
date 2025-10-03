@@ -80,39 +80,62 @@
       </div>
     </section>
 
-    <!-- Serviços -->
-    <section id="servicos">
-      <h2>Serviços</h2>
-      <!-- Os serviços permanecem iguais, sem alterações -->
-      <!-- ... todo conteúdo de serviços aqui ... -->
-    </section>
-
-    <!-- Contato -->
-    <section id="contato">
+   <!-- Serviços --> <section id="servicos"> <h2>Serviços</h2> <div class="categoria-servico"> <h3>🖥️ Manutenção e Hardware</h3> <ul> 
+     <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
+     <li>⚙️ Diagnóstico e solução de problemas de hardware e software</li> 
+     <li>🧹 Limpeza interna e remoção de vírus e malwares</li> 
+     <li>💽 Formatação e reinstalação de sistemas operacionais</li>
+     <li>💻 Upgrade de hardware (RAM, SSD, placa de vídeo, etc.)</li>
+     <li>🛠️ Troca de peças danificadas (tela, teclado, fonte)</li> </ul>
+   </div> <div class="categoria-servico"> 
+     <h3>🔐 Software e Segurança</h3> <ul> 
+       <li>🛡️ Instalação de antivírus</li> 
+       <li>📦 Instalação e configuração do Pacote Microsoft Office</li>
+     </ul> </div> <div class="categoria-servico">
+       <h3>🌐 Redes e Conectividade</h3> <ul> 
+         <li>📶 Configuração de roteadores e redes Wi-Fi</li> 
+         <li>🌐 Expansão de rede sem fio e repetidores</li>
+         <li>🔌 Conexão de dispositivos IoT (impressoras, câmeras, smart TVs)</li> </ul>
+     </div> <div class="categoria-servico"> 
+       <h3>⚙️ Suporte Remoto e Consultoria</h3> <ul>
+         <li>🌐 Suporte e acesso remoto via TeamViewer</li>
+         <li>⚙️ Consultoria para otimização de sistemas</li>
+         <li>📈 Otimização de desempenho de PCs e notebooks</li> 
+       </ul> </div> <div class="categoria-servico">
+         <h3>📱 Serviços Adicionais</h3> <ul>
+           <li>🖨️ Instalação e configuração de impressoras e multifuncionais</li>
+           <li>📱 Configuração de celulares e sincronização com PC</li> 
+           <li>🛡️ Backup em nuvem e segurança de dados pessoais</li>
+           <li>🔑 Desbloqueio de senha para computadores e notebooks</li> 
+         </ul>
+       </div> 
+   </section>
+    <!-- Contato --> <section id="contato"> 
       <h2>Fale Conosco</h2>
-      <!-- Contato permanece igual -->
+      <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
+      <div class="contact-info">
+        <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte – MG</p>
+        <p>⏰ Segunda a Sexta: 09h às 18h</p>
+        <p>⏰ Sábado: 09h às 18h</p> 
+        <p>⏰ Domingo: 09h às 13h</p> 
+        <p>📸 Instagram: <a href="https://www.instagram.com/anjosinfo" target="_blank">@anjosinfo</a></p>
+      </div> 
     </section>
-
-    <!-- Mapa -->
-    <section class="mapa">
-      <h2>📍 Localização</h2>
-      <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy"></iframe>
-    </section>
-
-    <!-- Suporte Remoto -->
+    <!-- Mapa --> <section class="mapa">
+      <h2>📍 Localização</h2> <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy"></iframe> </section> 
+    <!-- Suporte Remoto --> 
     <section id="suporte-remoto">
-      <h2>Suporte Remoto</h2>
+      <h2>Suporte Remoto</h2> 
       <p>Para suporte remoto com a equipe AnjosInfo, baixe e execute o TeamViewer clicando no botão abaixo.</p>
       <a href="https://get.teamviewer.com/65699et" class="button" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
     </section>
   </main>
-
   <!-- WhatsApp flutuante -->
   <div class="whatsapp-wrapper">
     <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
     </a>
-    <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
+    <div class="whatsapp-slogan">Clique aqui e fale conosco!</div>
   </div>
 
   <!-- Rodapé -->
@@ -121,7 +144,27 @@
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
-  <!-- JS Externo -->
-  <script src="script.js"></script>
+  <!-- Scripts -->
+  <script>
+    function alternarTema() { 
+      document.body.classList.toggle("light"); 
+      localStorage.setItem("tema", document.body.classList.contains("light") ? "claro" : "escuro");
+    }
+    if(localStorage.getItem("tema") === "claro") document.body.classList.add("light");
+
+    const logo = document.getElementById("logo");
+    const floatingLogo = document.getElementById("logo-floating");
+    logo.addEventListener("mouseenter", () => floatingLogo.style.opacity = "1");
+    logo.addEventListener("mouseleave", () => floatingLogo.style.opacity = "0");
+    logo.addEventListener("mousemove", e => {
+      floatingLogo.style.left = `${e.clientX}px`;
+      floatingLogo.style.top = `${e.clientY}px`;
+    });
+
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.addEventListener("keydown", e => {
+      if (e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase() === "u")) e.preventDefault();
+    });
+  </script>
 </body>
 </html>
