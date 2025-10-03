@@ -22,5 +22,12 @@ logo.addEventListener("mousemove", e => {
   floatingLogo.style.top = `${e.clientY}px`;
 });
 
-// Mantém tema salvo
-if(localStorage.getItem("tema") === "claro") document.body.classList.add("light");
+<script>
+  const navToggle = document.getElementById('nav-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  navToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('show');
+  });
+</script>
+
