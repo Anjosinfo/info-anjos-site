@@ -39,23 +39,33 @@
 
         header { text-align: center; padding: 1rem 0; position: relative; }
 
-        /* Logo principal transparente */
+      /* Header sem fundo */
+header {
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    background: transparent; /* remove qualquer cor de fundo */
+}
+
+/* Logo principal transparente */
 #logo {
     max-height: 150px;
-    opacity: 0; /* totalmente transparente */
-    transition: opacity 0.3s ease;
+    background: transparent; /* remove qualquer fundo da imagem */
+    opacity: 1; /* pode deixar visível ou ajustar */
 }
 
 /* Logo flutuante transparente */
 #logo-floating {
     position: fixed;
     pointer-events: none;
-    opacity: 0; /* totalmente transparente */
+    opacity: 0.5; /* transparência desejada */
     width: 120px;
     z-index: 999;
     transform: translate(-50%, -50%);
     transition: opacity 0.2s ease;
+    background: transparent; /* remove qualquer fundo */
 }
+
 
 
         nav {
