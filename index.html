@@ -46,12 +46,28 @@
             color: var(--texto-escuro);
         }
 
-        /* Logo principal e flutuante totalmente transparente */
-#logo, #logo-floating {
-    max-height: 150px;
-    background: transparent !important; /* garante fundo transparente */
-    box-shadow: none; /* remove qualquer sombra que pareça fundo */
-    border: none; /* remove bordas */
+        /* =========================
+           Cabeçalho e logo
+        ========================= */
+        header { text-align: center; padding: 1rem 0; position: relative; }
+
+        #logo, #logo-floating {
+            max-height: 150px;
+            background: transparent !important; /* garante fundo transparente */
+            box-shadow: none;
+            border: none;
+        }
+
+        #logo-floating {
+            position: fixed;
+            pointer-events: none;
+            opacity: 0;
+            width: 120px;
+            z-index: 999;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.2s ease, transform 0.1s ease;
+        }
+
         /* =========================
            Menu de navegação
         ========================= */
@@ -211,7 +227,7 @@
 </div>
 
 <header>
-    <img src="logo.png" alt="Logo da AnjosInfo, empresa de suporte técnico em BH" id="logo">
+    <img src="logo.png" alt="Logo da AnjosInfo" id="logo">
     <img src="logo.png" alt="Logo flutuante" id="logo-floating">
 </header>
 
@@ -226,12 +242,14 @@
 
 <main> 
     <!-- Conteúdo principal, seções e cards permanecem iguais -->
+    <!-- Hero -->
     <section class="hero"> 
         <h1>Suporte Ágil e Eficiente para Você</h1>
         <blockquote class="slogan">Iniciando nossa jornada com dedicação para transformar seu imprevisto em confiança e qualidade.</blockquote>
         <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
+    <!-- Sobre Nós -->
     <section id="sobre">
         <h2>Sobre Nós</h2>
         <p>O AnjosInfo é quem garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
@@ -258,6 +276,7 @@
         </ul>
     </section>
 
+    <!-- Nossa Atuação -->
     <section id="atuacao"> 
         <h2>🌍 Nossa Atuação</h2> 
         <p>Atuamos em Belo Horizonte e Região Metropolitana, oferecendo suporte técnico para empresas, residências e profissionais autônomos. Atendimento presencial ou remoto.</p> 
@@ -280,8 +299,10 @@
         </div>
     </section>
 
+    <!-- Serviços -->
     <section id="servicos">
         <h2>Serviços</h2>
+
         <div class="categoria-servico">
             <h3>🖥️ Manutenção e Hardware</h3>
             <ul>
@@ -293,6 +314,7 @@
                 <li>🛠️ Troca de peças danificadas (tela, teclado, fonte)</li>
             </ul>
         </div>
+
         <div class="categoria-servico">
             <h3>🔐 Software e Segurança</h3>
             <ul>
@@ -301,6 +323,7 @@
                 <li>🛡️ Backup em nuvem e segurança de dados pessoais</li> 
             </ul>
         </div>
+
         <div class="categoria-servico">
             <h3>🌐 Redes e Conectividade</h3>
             <ul>
@@ -309,6 +332,7 @@
                 <li>🔌 Conexão de dispositivos IoT (impressoras, câmeras, smart TVs)</li>
             </ul>
         </div>
+
         <div class="categoria-servico">
             <h3>⚙️ Otimização e Suporte Remoto</h3>
             <ul>
@@ -318,6 +342,7 @@
                 <li>🔑 Desbloqueio de senha para computadores e notebooks</li>
             </ul>
         </div>
+
         <div class="categoria-servico">
             <h3>📱 Periféricos e Mobilidade</h3>
             <ul>
@@ -327,6 +352,7 @@
         </div>
     </section>
 
+    <!-- Contato -->
     <section id="contato">
         <h2>Fale Conosco</h2>
         <p>Estamos prontos para te atender! Entre em contato pelo botão do WhatsApp no canto inferior direito.</p>
@@ -339,11 +365,13 @@
         </div>
     </section>
 
+    <!-- Mapa -->
     <section class="mapa"> 
         <h2>📍 Localização</h2>
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3749.199925243179!2d-43.9554035!3d-19.8329245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa693994e636c73%3A0x63351d167f1b2691!2sRua%20Joaquim%20Ramos%20Filho%2C%2057%20-%20Jaqueline%2C%20Belo%20Horizonte%20-%20MG%2C%2031760-390!5e0!3m2!1spt-BR!2sbr!4v1699900000000!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
 
+    <!-- Suporte Remoto -->
     <section id="suporte-remoto"> 
         <h2>Suporte Remoto</h2>
         <p>Para suporte remoto com a equipe AnjosInfo, baixe e execute o TeamViewer clicando no botão abaixo.</p>
@@ -351,6 +379,7 @@
     </section>
 </main>
 
+<!-- WhatsApp flutuante -->
 <div class="whatsapp-wrapper"> 
     <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
         <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="Ícone do WhatsApp" />
@@ -358,11 +387,13 @@
     <div class="whatsapp-slogan">Clique aqui e fale conosco pelo WhatsApp!</div>
 </div>
 
+<!-- Rodapé -->
 <footer> 
     <p>© 2025 AnjosInfo — Todos os direitos reservados.</p>
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank">Siga-nos no Instagram @anjosinfo</a></p>
 </footer>
 
+<!-- Scripts -->
 <script>
     const toggle = document.getElementById('theme-toggle'); 
     toggle.addEventListener('click', () => {
