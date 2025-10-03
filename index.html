@@ -110,6 +110,51 @@
         }
         body.light li { color: #333; }
 
+/* =========================
+   Cards Sobre Nós / Missão / Visão / Valores
+========================= */
+.sobre-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.card-sobre {
+    background: rgba(0,0,0,0.6); /* fundo semitransparente sobre a imagem */
+    color: #fff;
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    flex: 1 1 250px;
+    max-width: 300px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s, background 0.4s, color 0.4s;
+    text-align: center;
+}
+
+.card-sobre:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.card-sobre h3 {
+    font-size: 1.3rem;
+    color: var(--cor-primaria);
+    margin-bottom: 1rem;
+}
+
+.card-sobre p, .card-sobre li {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+}
+
+body.light .card-sobre {
+    background: rgba(255,255,255,0.8);
+    color: var(--texto-escuro);
+}
+
         /* =========================
            Botões
         ========================= */
@@ -249,55 +294,46 @@
         <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
-    <!-- Sobre Nós -->
-    <section id="sobre">
-        <h2>Sobre Nós</h2>
-        <p>O AnjosInfo é quem garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
-
-        <p>A escolha do nome : O "Anjo" contribui significativamente para que o cliente estabeleça suas conexões e as melhores impressões possíveis da instituição, a partir do modo que foi acolhido. Esperamos caminhar junto no propósito "de garantir a alta performance, proteger dados e transformar a experiência digital", possibilitando aos nossos clientes o melhor Suporte em Tecnologia e a melhor experiência.</p>
-        
-        <p>A sua recepção e a solução que entregamos fará toda diferença. AnjosInfo e toda nossa equipe reforçam a importância de um bom Suporte Técnico (Help Desk) e da Melhor Experiência no Atendimento para que você se sinta sempre seguro.</p>
-        
-        <h3 id="missao">Missão</h3>
-        <ul>
-            <li>Garantir a tranquilidade e a continuidade digital dos nossos clientes, oferecendo suporte técnico humanizado, ágil e eficiente. Queremos que a tecnologia seja uma solução, e não um problema, simplificando o dia a dia e impulsionando a produtividade.</li>
-        </ul>
-
-        <h3 id="visao">Visão</h3>
-        <ul>
-            <li>Ser reconhecida em Belo Horizonte como a referência em suporte de informática e atendimento ao cliente, sendo a primeira escolha pela confiabilidade e pela capacidade de transformar desafios técnicos em experiências positivas e duradouras.</li>
-        </ul>
-
-        <h3 id="valores">Valores</h3>
-        <ul>
-            <li>Suporte Ágil e Descomplicado: garantindo que o cliente tenha o conhecimento e o acesso necessários para resolver problemas imediatamente ou de forma remota.</li>
-            <li>Soluções Abrangentes: Prestamos suporte completo em manutenção de hardware e software, remoção de vírus, backup de dados e desbloqueio de senhas dentre outros.</li>
-            <li>Compromisso com o Cliente: Focamos em um atendimento empático e transparente.</li>
-        </ul>
-    </section>
-
-    <!-- Nossa Atuação -->
-    <section id="atuacao"> 
-        <h2>🌍 Nossa Atuação</h2> 
-        <p>Atuamos em Belo Horizonte e Região Metropolitana, oferecendo suporte técnico para empresas, residências e profissionais autônomos. Atendimento presencial ou remoto.</p> 
-        <div class="atuacao-lista"> 
-            <div class="card-atuacao">
-                <div class="icon">🏢</div>
-                <h3>Empresas</h3>
-                <p>Suporte técnico em computadores e notebooks corporativos, instalação de softwares, otimização de desempenho, backup de dados, manutenção preventiva e corretiva, remoção de vírus e malwares.</p>
-            </div>
-            <div class="card-atuacao">
-                <div class="icon">🏠</div>
-                <h3>Residências</h3>
-                <p>Suporte em computadores pessoais, notebooks, redes domésticas, configuração de dispositivos móveis e manutenção preventiva para garantir que tudo funcione corretamente.</p>
-            </div>
-            <div class="card-atuacao">
-                <div class="icon">💻</div>
-                <h3>Atendimento Remoto</h3>
-                <p>Diagnóstico e resolução de problemas técnicos à distância, sem precisar sair de casa ou do escritório. Atendimento rápido e seguro via TeamViewer.</p>
-            </div>
+   <!-- Sobre Nós em Cards -->
+<section id="sobre">
+    <h2>Sobre Nós</h2>
+    <div class="sobre-cards">
+        <!-- Card Sobre Nós -->
+        <div class="card-sobre">
+            <h3>Sobre Nós</h3>
+            <p>O AnjosInfo garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
+            <p>A escolha do nome: O "Anjo" contribui para que o cliente estabeleça suas conexões e melhores impressões, seguindo o propósito de garantir alta performance, proteger dados e transformar a experiência digital.</p>
+            <p>A recepção e a solução que entregamos fazem toda a diferença. AnjosInfo reforça a importância de um bom Suporte Técnico (Help Desk) e da Melhor Experiência no Atendimento.</p>
         </div>
-    </section>
+
+        <!-- Card Missão -->
+        <div class="card-sobre">
+            <h3>Missão</h3>
+            <ul>
+                <li>Garantir a tranquilidade e continuidade digital dos clientes, oferecendo suporte técnico humanizado, ágil e eficiente.</li>
+                <li>Transformar a tecnologia em solução, simplificando o dia a dia e impulsionando a produtividade.</li>
+            </ul>
+        </div>
+
+        <!-- Card Visão -->
+        <div class="card-sobre">
+            <h3>Visão</h3>
+            <ul>
+                <li>Ser referência em Belo Horizonte em suporte de informática, confiável e capaz de transformar desafios técnicos em experiências positivas.</li>
+            </ul>
+        </div>
+
+        <!-- Card Valores -->
+        <div class="card-sobre">
+            <h3>Valores</h3>
+            <ul>
+                <li>Suporte Ágil e Descomplicado: conhecimento e acesso para resolver problemas rapidamente.</li>
+                <li>Soluções Abrangentes: suporte completo em hardware, software, backup e desbloqueio de senhas.</li>
+                <li>Compromisso com o Cliente: atendimento empático e transparente.</li>
+            </ul>
+        </div>
+    </div>
+</section>
 
     <!-- Serviços -->
     <section id="servicos">
