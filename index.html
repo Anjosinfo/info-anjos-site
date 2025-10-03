@@ -46,24 +46,12 @@
             color: var(--texto-escuro);
         }
 
-        /* =========================
-           Cabeçalho e logo
-        ========================= */
-        header { text-align: center; padding: 1rem 0; position: relative; }
-        #logo, #logo-floating {
-            max-height: 150px;
-            background: transparent; /* garante fundo transparente */
-        }
-        #logo-floating {
-            position: fixed;
-            pointer-events: none;
-            opacity: 0;
-            width: 120px;
-            z-index: 999;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.2s ease;
-        }
-
+        /* Logo principal e flutuante totalmente transparente */
+#logo, #logo-floating {
+    max-height: 150px;
+    background: transparent !important; /* garante fundo transparente */
+    box-shadow: none; /* remove qualquer sombra que pareça fundo */
+    border: none; /* remove bordas */
         /* =========================
            Menu de navegação
         ========================= */
