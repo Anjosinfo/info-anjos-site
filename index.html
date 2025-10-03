@@ -1,240 +1,194 @@
-<!DOCTYPE html> <!-- Define o documento como HTML5 -->
-<html lang="pt-br"> <!-- Define idioma da página como português do Brasil -->
+<!DOCTYPE html>
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8" /> <!-- Define codificação de caracteres UTF-8 -->
-  <meta name="viewport" content="width=device-width, initial-scale=1" /> <!-- Garante responsividade em dispositivos móveis -->
-  <meta name="description" content="Suporte técnico ágil e eficiente em Belo Horizonte, manutenção de computadores, backup, antivírus, desbloqueio de senha e suporte remoto."> <!-- Descrição do site para SEO -->
-  <title>Suporte Ágil e Eficiente para Você</title> <!-- Título que aparece na aba do navegador -->
-  <link rel="icon" type="image/png" href="favicon.png" /> <!-- Ícone do site (favicon) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Suporte técnico ágil e eficiente em Belo Horizonte, manutenção de computadores, backup, antivírus, desbloqueio de senha e suporte remoto.">
+  <title>Suporte Ágil e Eficiente</title>
+  <link rel="icon" href="favicon.png" type="image/png" />
 
   <style>
-    /* Reset básico */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    /* Corpo da página */
-    body { 
-      font-family: Arial, sans-serif; /* Fonte do site */
-      background: #000; /* Fundo preto */
-      color: #fff; /* Texto branco */
-      transition: background 0.4s, color 0.4s; /* Animação ao trocar tema */
+    :root {
+      --cor-primaria: #1877F2;
+      --cor-secundaria: #25d366;
+      --fundo-escuro: #000;
+      --fundo-claro: #f0f0f0;
+      --texto-escuro: #111;
+      --texto-claro: #fff;
+      --secao-escura: #111;
+      --secao-clara: #fff;
     }
 
-    /* Tema claro */
-    body.light { 
-      background: #f0f0f0; /* Fundo claro */
-      color: #111; /* Texto escuro */
+    /* Reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--fundo-escuro);
+      color: var(--texto-claro);
+      transition: background 0.4s, color 0.4s;
+    }
+    body.light {
+      background: var(--fundo-claro);
+      color: var(--texto-escuro);
     }
 
     /* Cabeçalho */
-    header { 
-      padding: 1rem 0; /* Espaço interno superior e inferior */
-      text-align: center; /* Centraliza conteúdo */
-      position: relative; /* Para posicionamento da logo flutuante */
+    header { text-align: center; padding: 1rem 0; position: relative; }
+    #logo { max-height: 150px; }
+    #logo-floating {
+      position: fixed;
+      pointer-events: none;
+      opacity: 0;
+      width: 120px;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s ease;
     }
 
-    /* Imagens de logo */
-    header img#logo, #logo-floating { 
-      height: auto; 
-      width: auto; 
+    /* Menu */
+    nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      background: var(--cor-primaria);
+      padding: 1rem 0;
     }
-
-    /* Logo principal */
-    #logo { 
-      max-height: 150px; /* Altura máxima */
+    nav a {
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: text-decoration 0.3s;
     }
-
-    /* Logo flutuante que segue o cursor */
-    #logo-floating { 
-      position: fixed; /* Fixa na tela */
-      pointer-events: none; /* Não interfere no mouse */
-      opacity: 0; /* Inicialmente invisível */
-      width: 120px; /* Largura fixa */
-      z-index: 999; /* Fica acima de outros elementos */
-      transform: translate(-50%, -50%); /* Centraliza em relação ao cursor */
-      transition: opacity 0.2s ease; /* Transição suave ao aparecer/desaparecer */
-    }
-
-    /* Menu de navegação */
-    nav { 
-      display: flex; /* Layout flexível */
-      justify-content: center; /* Centraliza horizontalmente */
-      gap: 1.5rem; /* Espaçamento entre links */
-      background-color: #1877F2; /* Fundo azul */
-      padding: 1rem 0; /* Espaço interno vertical */
-      flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
-    }
-
-    /* Links do menu */
-    nav a { 
-      color: #fff; /* Cor branca */
-      text-decoration: none; /* Remove sublinhado */
-      font-weight: bold; /* Negrito */
-    }
-
-    /* Efeito hover nos links */
-    nav a:hover { 
-      text-decoration: underline; /* Sublinha ao passar mouse */
-    }
-
-    /* Conteúdo principal */
-    main { 
-      max-width: 900px; /* Largura máxima */
-      margin: 2rem auto; /* Centraliza e dá espaçamento superior/inferior */
-      padding: 0 1rem; /* Espaçamento horizontal */
-    }
+    nav a:hover { text-decoration: underline; }
 
     /* Seções */
-    section { 
-      background: #111; /* Fundo escuro */
-      border-radius: 8px; /* Cantos arredondados */
-      padding: 2rem; /* Espaçamento interno */
-      margin-bottom: 2rem; /* Espaço inferior entre seções */
+    main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+    section {
+      background: var(--secao-escura);
+      border-radius: 8px;
+      padding: 2rem;
+      margin-bottom: 2rem;
+      transition: background 0.4s, color 0.4s;
     }
-
-    /* Tema claro para seções */
-    body.light section { 
-      background: #fff; /* Fundo branco */
+    body.light section { background: var(--secao-clara); }
+    h1,h2,h3 { color: var(--cor-primaria); margin-bottom: 1rem; }
+    ul { list-style: none; padding-left: 1rem; }
+    li {
+      border-left: 4px solid var(--cor-primaria);
+      padding-left: 0.5rem;
+      margin-bottom: 1rem;
+      color: #ddd;
     }
-
-    /* Títulos */
-    h1, h2, h3 { 
-      color: #1877F2; /* Azul */
-      margin-bottom: 1rem; /* Espaço inferior */
-    }
-
-    /* Listas */
-    ul { 
-      list-style: none; /* Remove marcadores */
-      padding-left: 1rem; /* Espaço à esquerda */
-    }
-
-    li { 
-      border-left: 4px solid #1877F2; /* Borda azul à esquerda */
-      margin-bottom: 1rem; /* Espaço inferior */
-      padding-left: 0.5rem; /* Espaço interno à esquerda */
-      color: #ddd; /* Cor do texto */
-    }
-
-    body.light li { 
-      color: #333; /* Cor do texto no tema claro */
-    }
+    body.light li { color: #333; }
 
     /* Botões */
-    a.button { 
-      display: inline-block; /* Mantém tamanho do botão */
-      background: #1877F2; /* Fundo azul */
-      color: #fff; /* Texto branco */
-      padding: 0.75rem 1.5rem; /* Espaço interno */
-      border-radius: 6px; /* Cantos arredondados */
-      text-decoration: none; /* Remove sublinhado */
-      box-shadow: 0 0 8px #1877F2aa; /* Sombra */
-      transition: background 0.3s; /* Animação ao mudar cor */
-      font-weight: bold; /* Negrito */
+    a.button {
+      display: inline-block;
+      background: var(--cor-primaria);
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 0 8px var(--cor-primaria)55;
+      transition: background 0.3s;
     }
+    a.button:hover { background: #0f5dc9; }
 
-    a.button:hover { 
-      background: #0f5dc9; /* Fundo mais escuro ao passar mouse */
-    }
-
-    /* Links de contato */
-    .contact-info a { 
-      color: #1877F2; /* Azul */
-      font-weight: bold; /* Negrito */
-      text-decoration: none; /* Sem sublinhado */
-    }
+    /* Contato */
+    .contact-info a { color: var(--cor-primaria); font-weight: bold; text-decoration: none; }
 
     /* Rodapé */
-    footer { 
-      background: #1877F2; /* Fundo azul */
-      color: #fff; /* Texto branco */
-      text-align: center; /* Centralizado */
-      padding: 1rem; /* Espaço interno */
-      user-select: none; /* Não permite seleção de texto */
+    footer {
+      background: var(--cor-primaria);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      user-select: none;
     }
 
     /* Mapas */
-    iframe { 
-      width: 100%; /* Ocupa toda largura */
-      height: 300px; /* Altura fixa */
-      border: 0; /* Sem borda */
-      border-radius: 8px; /* Cantos arredondados */
+    iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; }
+
+    /* WhatsApp flutuante */
+    .whatsapp-wrapper {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-width: 180px;
+      text-align: center;
+    }
+    .whatsapp-button img {
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px #000000aa;
+      transition: transform 0.3s;
+      background: var(--cor-secundaria);
+      padding: 8px;
+    }
+    .whatsapp-button img:hover { transform: scale(1.1); }
+    .whatsapp-slogan {
+      color: var(--cor-primaria);
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(24,119,242,0.15);
+      padding: 4px 8px;
+      border-radius: 12px;
+      user-select: none;
+      cursor: default;
     }
 
-    /* WhatsApp fixo */
-    .whatsapp-wrapper { 
-      position: fixed; /* Fixo na tela */
-      bottom: 20px; /* Distância inferior */
-      right: 20px; /* Distância direita */
-      z-index: 100; /* Fica acima */
-      display: flex; 
-      flex-direction: column; /* Coluna */
-      align-items: center; /* Centraliza horizontalmente */
-      gap: 6px; /* Espaço entre elementos */
-      max-width: 180px; /* Largura máxima */
-      text-align: center; /* Centraliza texto */
+    /* Toggle moderno */
+    .theme-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 200;
+      width: 50px;
+      height: 26px;
+      border-radius: 15px;
+      background: #555;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      padding: 3px;
+      transition: background 0.3s;
     }
-
-    .whatsapp-button img { 
-      width: 60px; 
-      height: 60px; 
-      border-radius: 50%; /* Círculo */
-      box-shadow: 0 0 10px #000000aa; /* Sombra */
-      transition: transform 0.3s; /* Animação ao passar mouse */
-      background: #25d366; /* Fundo verde do WhatsApp */
-      padding: 8px; /* Espaço interno */
-      box-sizing: border-box; 
+    .theme-toggle .ball {
+      width: 20px;
+      height: 20px;
+      background: #fff;
+      border-radius: 50%;
+      transition: transform 0.3s;
     }
+    .theme-toggle.active { background: var(--cor-primaria); }
+    .theme-toggle.active .ball { transform: translateX(24px); }
 
-    .whatsapp-button img:hover { 
-      transform: scale(1.1); /* Aumenta imagem ao passar mouse */
+    @media (max-width:500px){
+      .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; }
+      .theme-toggle .ball { width:18px; height:18px; }
     }
-
-    .whatsapp-slogan { 
-      color: #1877F2; /* Azul */
-      font-size: 0.85rem; /* Tamanho menor */
-      font-weight: 600; /* Semi-negrito */
-      background: rgba(24, 119, 242, 0.15); /* Fundo azul claro transparente */
-      padding: 4px 8px; /* Espaço interno */
-      border-radius: 12px; /* Cantos arredondados */
-      user-select: none; /* Não permite seleção de texto */
-      cursor: default; /* Cursor padrão */
-    }
-
-    /* Botão de tema */
-    .theme-toggle { 
-      position: fixed; /* Fixo na tela */
-      top: 20px; 
-      right: 20px; 
-      z-index: 200; 
-      padding: 10px 15px; 
-      background-color: #1877F2; 
-      color: #fff; 
-      border: none; 
-      border-radius: 20px; 
-      cursor: pointer; 
-      box-shadow: 0 0 10px #1877F288; 
-      font-weight: bold; 
-    }
-
-    .theme-toggle:hover { background-color: #0f5dc9; } /* Fundo mais escuro ao passar mouse */
-
-    @media (max-width: 500px) { 
-      .theme-toggle { top: 10px; right: 10px; padding: 8px 12px; font-size: 0.85rem; } 
-    } /* Ajusta botão em telas pequenas */
   </style>
 </head>
-
 <body>
-  <!-- Botão alternar tema -->
-  <button class="theme-toggle" onclick="alternarTema()">☀️/🌙</button>
 
-  <!-- Cabeçalho com logo -->
+  <!-- Toggle switch -->
+  <div class="theme-toggle" id="theme-toggle">
+    <div class="ball"></div>
+  </div>
+
+  <!-- Cabeçalho -->
   <header>
-    <img src="logo.jpeg" alt="Logo AnjosInfo" id="logo" /> <!-- Logo principal -->
-    <img src="logo.jpeg" alt="Logo flutuante" id="logo-floating" /> <!-- Logo flutuante -->
+    <img src="logo.jpeg" alt="Logo AnjosInfo" id="logo">
+    <img src="logo.jpeg" alt="Logo flutuante" id="logo-floating">
   </header>
 
-  <!-- Menu de navegação -->
+  <!-- Menu -->
   <nav aria-label="Menu Principal">
     <a href="#sobre">Sobre</a>
     <a href="#servicos">Serviços</a>
@@ -243,21 +197,18 @@
   </nav>
 
   <main>
-    <!-- Seção Hero -->
     <section class="hero">
-      <h1>Suporte Ágil e Eficiente para Você</h1> <!-- Título principal -->
-      <p class="italic">Iniciando nossa jornada com dedicação para transformar seu imprevisto em confiança e qualidade.</p>
-      <a href="#contato" class="button">Fale Conosco</a> <!-- Botão para contato -->
+      <h1>Suporte Ágil e Eficiente</h1>
+      <p class="italic">Transformando imprevistos em confiança e qualidade.</p>
+      <a href="#contato" class="button">Fale Conosco</a>
     </section>
 
-    <!-- Seção Sobre Nós -->
     <section id="sobre">
       <h2>Sobre Nós</h2>
-      <p>Na AnjosInfo, nossa missão é transformar o cotidiano das pessoas por meio de soluções tecnológicas inteligentes e acessíveis. Com foco em gestão eficiente e atendimento humanizado, oferecemos suporte técnico personalizado que alia rapidez e qualidade. 
-        Estamos comprometidos em simplificar processos e garantir que a tecnologia trabalhe a seu favor, sempre com transparência e confiança.</p>
+      <p>Na AnjosInfo, nossa missão é transformar o cotidiano das pessoas por meio de soluções tecnológicas inteligentes e acessíveis. Com atendimento humanizado, oferecemos suporte rápido e de qualidade.</p>
     </section>
 
-<section id="servicos">
+  <section id="servicos">
   <h2>Serviços</h2>
 
   <!-- 🖥️ Manutenção e Hardware -->
@@ -327,21 +278,19 @@
       </div>
     </section>
 
-    <!-- Mapa -->
     <section class="mapa">
       <h2>📍 Localização</h2>
       <iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho,+57,+Jaqueline,+Belo+Horizonte+-+MG&output=embed" loading="lazy"></iframe>
     </section>
 
-    <!-- Suporte Remoto -->
     <section id="suporte-remoto">
       <h2>Suporte Remoto</h2>
-      <p>Para suporte remoto com a equipe AnjosInfo, baixe e execute o TeamViewer clicando no botão abaixo.</p>
+      <p>Baixe e execute o TeamViewer clicando abaixo.</p>
       <a href="https://get.teamviewer.com/65699et" class="button" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
     </section>
   </main>
 
-  <!-- WhatsApp flutuante -->
+  <!-- WhatsApp -->
   <div class="whatsapp-wrapper">
     <a href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20InfoAnjos!" target="_blank" class="whatsapp-button">
       <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
@@ -355,25 +304,21 @@
     <p><a href="https://www.instagram.com/anjosinfo" target="_blank">Siga-nos no Instagram @anjosinfo</a></p>
   </footer>
 
-  <!-- Scripts -->
   <script>
-    // Alterna tema claro/escuro
-    function alternarTema() { 
-      document.body.classList.toggle("light"); 
-      localStorage.setItem("tema", document.body.classList.contains("light") ? "claro" : "escuro");
-    }
-
-    // Bloqueia clique direito
-    document.addEventListener("contextmenu", e => e.preventDefault());
-
-    // Bloqueia teclas de desenvolvedor
-    document.addEventListener("keydown", e => {
-      if (e.key === "F12" || 
-          (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || 
-          (e.ctrlKey && e.key.toLowerCase() === "u")) e.preventDefault();
+    // Toggle tema moderno
+    const toggle = document.getElementById('theme-toggle');
+    toggle.addEventListener('click', () => {
+      document.body.classList.toggle('light');
+      toggle.classList.toggle('active');
     });
 
-    // Logo flutuante segue cursor
+    // Bloqueio básico
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    document.addEventListener("keydown", e => {
+      if(e.key === "F12" || (e.ctrlKey && e.shiftKey && ["i","j","c"].includes(e.key.toLowerCase())) || (e.ctrlKey && e.key.toLowerCase()==="u")) e.preventDefault();
+    });
+
+    // Logo flutuante
     const logo = document.getElementById("logo");
     const floatingLogo = document.getElementById("logo-floating");
     logo.addEventListener("mouseenter", () => floatingLogo.style.opacity = "1");
@@ -382,10 +327,6 @@
       floatingLogo.style.left = `${e.clientX}px`;
       floatingLogo.style.top = `${e.clientY}px`;
     });
-
-    // Mantém tema persistente ao carregar
-    if(localStorage.getItem("tema") === "claro") document.body.classList.add("light");
   </script>
 </body>
 </html>
-
