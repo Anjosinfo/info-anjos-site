@@ -9,227 +9,120 @@
 
     <style>
         :root {
-            --cor-primaria: #1877F2; 
-            --cor-secundaria: #25d366; 
-            --fundo-escuro: #000; 
-            --fundo-claro: #f0f0f0; 
-            --texto-escuro: #111; 
-            --texto-claro: #fff; 
-            --secao-escura: #111; 
-            --secao-clara: #fff; 
-        }
+    --cor-primaria: #1877F2;
+    --cor-secundaria: #25d366;
+    --texto-claro: #fff;
+    --texto-escuro: #111;
+    --secao-clara: rgba(255,255,255,0.9);
+    --secao-escura: rgba(17,17,17,0.85);
+}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            background: url("imagem fundo.jpeg") no-repeat center center fixed;
-            background-size: cover;
-            color: var(--texto-claro);
-            transition: background 0.4s, color 0.4s;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: url("imagem fundo.jpeg") no-repeat center center fixed;
+    background-size: cover;
+    color: var(--texto-claro);
+}
 
-        body.light {
-            background: url("imagem fundo.jpeg") no-repeat center center fixed;
-            background-size: cover;
-            color: var(--texto-escuro);
-        }
+/* HEADER */
+header {
+    text-align: center;
+    padding: 2rem 0;
+    background: #fff; /* fundo branco */
+}
 
-        header { 
-            text-align: center; 
-            padding: 1rem 0; 
-        }
+/* LOGO */
+#logo {
+    max-height: 150px;
+}
 
-        #logo { 
-            max-height: 150px; 
-        }
+/* NAV MENU */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    background: var(--cor-primaria); /* azul */
+    padding: 1rem 0;
+}
+nav a {
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+nav a:hover { text-decoration: underline; }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            background: var(--cor-primaria);
-            padding: 1rem 0;
-        }
-        nav a {
-            color: #fff;
-            font-weight: bold;
-            text-decoration: none;
-            transition: text-decoration 0.3s;
-        }
-        nav a:hover { text-decoration: underline; }
+/* HERO */
+section.hero {
+    background: transparent;
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--texto-claro);
+}
 
-        main { 
-            max-width: 900px; 
-            margin: 2rem auto; 
-            padding: 0 1rem; 
-        }
+/* MAIN SECTIONS */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+section {
+    background: var(--secao-escura);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
 
-        section {
-            background: var(--secao-escura);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            transition: background 0.4s, color 0.4s;
-        }
+/* TEXTOS */
+h1,h2,h3 { color: var(--cor-primaria); margin-bottom: 1rem; }
+ul { list-style: none; padding-left: 1rem; }
+li {
+    border-left: 4px solid var(--cor-primaria);
+    padding-left: 0.5rem;
+    margin-bottom: 1rem;
+    color: #ddd;
+}
 
-        body.light section { background: var(--secao-clara); }
+/* BOTÕES */
+a.button {
+    display: inline-block;
+    background: var(--cor-primaria);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 0 8px var(--cor-primaria)55;
+}
+a.button:hover { background: #0f5dc9; }
 
-        h1,h2,h3 { color: var(--cor-primaria); margin-bottom: 1rem; }
-        ul { list-style: none; padding-left: 1rem; }
-        li {
-            border-left: 4px solid var(--cor-primaria);
-            padding-left: 0.5rem;
-            margin-bottom: 1rem;
-            color: #ddd;
-        }
-        body.light li { color: #333; }
+/* CARDS DE ATUAÇÃO */
+.atuacao-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+}
+.card-atuacao {
+    background: var(--secao-clara);
+    color: var(--texto-escuro);
+    border-radius: 12px;
+    padding: 2rem 1.5rem;
+    flex: 1 1 250px;
+    max-width: 300px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    text-align: center;
+}
+.card-atuacao h3 { margin: 1rem 0; font-size: 1.3rem; color: var(--cor-primaria); }
+.card-atuacao p { font-size: 0.95rem; line-height: 1.5; }
+.card-atuacao .icon { font-size: 3rem; margin-bottom: 0.8rem; }
 
-        a.button {
-            display: inline-block;
-            background: var(--cor-primaria);
-            color: #fff;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            box-shadow: 0 0 8px var(--cor-primaria)55;
-            transition: background 0.3s;
-        }
-        a.button:hover { background: #0f5dc9; }
-
-        .contact-info a { 
-            color: var(--cor-primaria); 
-            font-weight: bold; 
-            text-decoration: none; 
-        }
-
-        footer {
-            background: var(--cor-primaria);
-            color: #fff;
-            text-align: center;
-            padding: 1rem;
-            user-select: none;
-        }
-
-        iframe { 
-            width: 100%; 
-            height: 300px; 
-            border: 0; 
-            border-radius: 8px; 
-        }
-
-        .whatsapp-wrapper {
-            position: fixed; 
-            bottom: 20px; 
-            right: 20px; 
-            display: flex; 
-            flex-direction: column; 
-            gap: 6px; 
-            max-width: 180px; 
-            text-align: center;
-        }
-
-        .whatsapp-button img {
-            width: 60px; 
-            height: 60px; 
-            border-radius: 50%; 
-            box-shadow: 0 0 10px #000000aa; 
-            transition: transform 0.3s; 
-            background: var(--cor-secundaria); 
-            padding: 8px;
-        }
-
-        .whatsapp-button img:hover { transform: scale(1.1); }
-
-        .whatsapp-slogan {
-            color: var(--cor-primaria); 
-            font-size: 0.85rem; 
-            font-weight: 600; 
-            background: rgba(24,119,242,0.15); 
-            padding: 4px 8px; 
-            border-radius: 12px; 
-            user-select: none; 
-            cursor: default;
-        }
-
-        .theme-toggle {
-            position: fixed; 
-            top: 20px; 
-            right: 20px; 
-            z-index: 200; 
-            width: 50px; 
-            height: 26px; 
-            border-radius: 15px; 
-            background: #555; 
-            cursor: pointer; 
-            display: flex; 
-            align-items: center; 
-            padding: 3px; 
-            transition: background 0.3s;
-        }
-
-        .theme-toggle .ball { 
-            width: 20px; 
-            height: 20px; 
-            background: #fff; 
-            border-radius: 50%; 
-            transition: transform 0.3s; 
-        }
-
-        .theme-toggle.active { background: var(--cor-primaria); }
-        .theme-toggle.active .ball { transform: translateX(24px); }
-
-        @media (max-width:500px){
-            .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; }
-            .theme-toggle .ball { width:18px; height:18px; }
-        }
-
-        .atuacao-lista {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            justify-content: center;
-        }
-
-        .card-atuacao {
-            background: var(--secao-clara);
-            color: var(--texto-escuro);
-            border-radius: 12px;
-            padding: 2rem 1.5rem;
-            flex: 1 1 250px;
-            max-width: 300px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-        }
-
-        .card-atuacao:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .card-atuacao h3 {
-            margin: 1rem 0;
-            font-size: 1.3rem;
-            color: var(--cor-primaria);
-        }
-
-        .card-atuacao p {
-            font-size: 0.95rem;
-            line-height: 1.5;
-        }
-
-        .card-atuacao .icon {
-            font-size: 3rem;
-            margin-bottom: 0.8rem;
-            transition: transform 0.3s;
-        }
-
-        .card-atuacao .icon:hover {
-            transform: scale(1.2) rotate(10deg);
-        }
     </style>
 </head>
 
