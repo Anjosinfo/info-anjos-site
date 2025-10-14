@@ -8,9 +8,6 @@
     <link rel="icon" href="favicon.png" type="image/png" />
 
     <style>
-        /* =========================
-           Variáveis CSS (cores e fundos)
-        ========================= */
         :root {
             --cor-primaria: #1877F2; 
             --cor-secundaria: #25d366; 
@@ -22,48 +19,31 @@
             --secao-clara: #fff; 
         }
 
-        /* =========================
-           Reset CSS
-        ========================= */
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
-        /* =========================
-           Corpo da página
-        ========================= */
         body {
-    font-family: Arial, sans-serif;
-    background: url("imagem fundo.png") no-repeat center center fixed;
-    background-size: cover;
-    margin: 0;
-    padding: 0;
-    color: var(--texto-claro);
-    transition: background 0.4s, color 0.4s;
-}
-
-body.light {
-    background: url("imagem fundo.png") no-repeat center center fixed;
-    background-size: cover;
-    color: var(--texto-escuro);
-}
-
-        /* =========================
-           Cabeçalho e logo
-        ========================= */
-        header { text-align: center; padding: 1rem 0; position: relative; }
-        #logo { max-height: 150px; }
-        #logo-floating {
-            position: fixed;
-            pointer-events: none;
-            opacity: 0;
-            width: 120px;
-            z-index: 999;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.2s ease;
+            font-family: Arial, sans-serif;
+            background: url("imagem fundo.png") no-repeat center center fixed;
+            background-size: cover;
+            color: var(--texto-claro);
+            transition: background 0.4s, color 0.4s;
         }
 
-        /* =========================
-           Menu de navegação
-        ========================= */
+        body.light {
+            background: url("imagem fundo.png") no-repeat center center fixed;
+            background-size: cover;
+            color: var(--texto-escuro);
+        }
+
+        header { 
+            text-align: center; 
+            padding: 1rem 0; 
+        }
+
+        #logo { 
+            max-height: 150px; 
+        }
+
         nav {
             display: flex;
             justify-content: center;
@@ -80,10 +60,12 @@ body.light {
         }
         nav a:hover { text-decoration: underline; }
 
-        /* =========================
-           Conteúdo principal
-        ========================= */
-        main { max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+        main { 
+            max-width: 900px; 
+            margin: 2rem auto; 
+            padding: 0 1rem; 
+        }
+
         section {
             background: var(--secao-escura);
             border-radius: 8px;
@@ -91,6 +73,7 @@ body.light {
             margin-bottom: 2rem;
             transition: background 0.4s, color 0.4s;
         }
+
         body.light section { background: var(--secao-clara); }
 
         h1,h2,h3 { color: var(--cor-primaria); margin-bottom: 1rem; }
@@ -103,9 +86,6 @@ body.light {
         }
         body.light li { color: #333; }
 
-        /* =========================
-           Botões
-        ========================= */
         a.button {
             display: inline-block;
             background: var(--cor-primaria);
@@ -119,11 +99,12 @@ body.light {
         }
         a.button:hover { background: #0f5dc9; }
 
-        .contact-info a { color: var(--cor-primaria); font-weight: bold; text-decoration: none; }
+        .contact-info a { 
+            color: var(--cor-primaria); 
+            font-weight: bold; 
+            text-decoration: none; 
+        }
 
-        /* =========================
-           Rodapé
-        ========================= */
         footer {
             background: var(--cor-primaria);
             color: #fff;
@@ -132,37 +113,79 @@ body.light {
             user-select: none;
         }
 
-        iframe { width: 100%; height: 300px; border: 0; border-radius: 8px; }
+        iframe { 
+            width: 100%; 
+            height: 300px; 
+            border: 0; 
+            border-radius: 8px; 
+        }
 
-        /* =========================
-           WhatsApp flutuante
-        ========================= */
         .whatsapp-wrapper {
-            position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 6px; max-width: 180px; text-align: center;
-        }
-        .whatsapp-button img {
-            width: 60px; height: 60px; border-radius: 50%; box-shadow: 0 0 10px #000000aa; transition: transform 0.3s; background: var(--cor-secundaria); padding: 8px;
-        }
-        .whatsapp-button img:hover { transform: scale(1.1); }
-        .whatsapp-slogan {
-            color: var(--cor-primaria); font-size: 0.85rem; font-weight: 600; background: rgba(24,119,242,0.15); padding: 4px 8px; border-radius: 12px; user-select: none; cursor: default;
+            position: fixed; 
+            bottom: 20px; 
+            right: 20px; 
+            display: flex; 
+            flex-direction: column; 
+            gap: 6px; 
+            max-width: 180px; 
+            text-align: center;
         }
 
-        /* =========================
-           Toggle de tema
-        ========================= */
-        .theme-toggle {
-            position: fixed; top: 20px; right: 20px; z-index: 200; width: 50px; height: 26px; border-radius: 15px; background: #555; cursor: pointer; display: flex; align-items: center; padding: 3px; transition: background 0.3s;
+        .whatsapp-button img {
+            width: 60px; 
+            height: 60px; 
+            border-radius: 50%; 
+            box-shadow: 0 0 10px #000000aa; 
+            transition: transform 0.3s; 
+            background: var(--cor-secundaria); 
+            padding: 8px;
         }
-        .theme-toggle .ball { width: 20px; height: 20px; background: #fff; border-radius: 50%; transition: transform 0.3s; }
+
+        .whatsapp-button img:hover { transform: scale(1.1); }
+
+        .whatsapp-slogan {
+            color: var(--cor-primaria); 
+            font-size: 0.85rem; 
+            font-weight: 600; 
+            background: rgba(24,119,242,0.15); 
+            padding: 4px 8px; 
+            border-radius: 12px; 
+            user-select: none; 
+            cursor: default;
+        }
+
+        .theme-toggle {
+            position: fixed; 
+            top: 20px; 
+            right: 20px; 
+            z-index: 200; 
+            width: 50px; 
+            height: 26px; 
+            border-radius: 15px; 
+            background: #555; 
+            cursor: pointer; 
+            display: flex; 
+            align-items: center; 
+            padding: 3px; 
+            transition: background 0.3s;
+        }
+
+        .theme-toggle .ball { 
+            width: 20px; 
+            height: 20px; 
+            background: #fff; 
+            border-radius: 50%; 
+            transition: transform 0.3s; 
+        }
+
         .theme-toggle.active { background: var(--cor-primaria); }
         .theme-toggle.active .ball { transform: translateX(24px); }
 
-        @media (max-width:500px){ .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; } .theme-toggle .ball { width:18px; height:18px; } }
+        @media (max-width:500px){
+            .theme-toggle { top:10px; right:10px; width:40px; height:22px; padding:2px; }
+            .theme-toggle .ball { width:18px; height:18px; }
+        }
 
-        /* =========================
-           Cards Nossa Atuação
-        ========================= */
         .atuacao-lista {
             display: flex;
             flex-wrap: wrap;
@@ -178,13 +201,8 @@ body.light {
             flex: 1 1 250px;
             max-width: 300px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-            transition: transform 0.3s, box-shadow 0.3s, background 0.4s, color 0.4s;
+            transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
-        }
-
-        body.dark .card-atuacao {
-            background: var(--secao-escura);
-            color: var(--texto-claro);
         }
 
         .card-atuacao:hover {
@@ -193,7 +211,7 @@ body.light {
         }
 
         .card-atuacao h3 {
-            margin: 1rem 0 1rem 0;
+            margin: 1rem 0;
             font-size: 1.3rem;
             color: var(--cor-primaria);
         }
@@ -208,6 +226,7 @@ body.light {
             margin-bottom: 0.8rem;
             transition: transform 0.3s;
         }
+
         .card-atuacao .icon:hover {
             transform: scale(1.2) rotate(10deg);
         }
@@ -220,7 +239,7 @@ body.light {
 </div>
 
 <header>
-    <img src="logo.png" alt="Logo da AnjosInfo, empresa de suporte técnico em BH" id="logo"
+    <img src="logo.png" alt="Logo da AnjosInfo" id="logo">
 </header>
 
 <nav aria-label="Menu Principal">
@@ -405,5 +424,3 @@ body.light {
         floatingLogo.style.top = `${e.clientY}px`; 
     });
 </script>
-</body>
-</html>
