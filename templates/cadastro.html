@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cadastrar Cliente - AnjosInfo</title>
+<style>
+  body { font-family: "Poppins", sans-serif; background:#0b0c10; color:#eef2f7; display:flex; justify-content:center; align-items:center; height:100vh; margin:0;}
+  .container { background:#0f1115; padding:40px; border-radius:14px; box-shadow:0 12px 32px rgba(0,0,0,0.7); width:100%; max-width:400px; }
+  h1 { color:#00aaff; text-align:center; margin-bottom:24px; }
+  form { display:flex; flex-direction:column; gap:14px; }
+  input { padding:12px; border-radius:8px; border:none; font-size:1rem; }
+  button { padding:12px; border:none; border-radius:10px; background:#0056D2; color:#fff; font-weight:700; cursor:pointer; transition:0.3s; }
+  button:hover { background:#00aaff; }
+  .msg { text-align:center; margin-bottom:14px; padding:10px; border-radius:8px; }
+  .sucesso { background:#1abc9c; color:#fff; }
+  .erro { background:#e74c3c; color:#fff; }
+  a { color:#00aaff; text-align:center; display:block; margin-top:12px; text-decoration:none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Cadastrar Cliente</h1>
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="msg {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <form method="POST">
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="text" name="telefone" placeholder="Telefone" required>
+    <input type="email" name="email" placeholder="E-mail" required>
+    <button type="submit">Cadastrar</button>
+  </form>
+  <a href="{{ url_for('index') }}">Voltar ao site</a>
+</div>
+</body>
+</html>

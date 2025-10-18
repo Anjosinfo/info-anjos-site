@@ -1,10 +1,10 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash
 import sqlite3
 
 app = Flask(__name__)
 app.secret_key = 'secret123'
 
-# Inicializa banco de dados
+# Inicializa banco de clientes
 def init_db():
     conn = sqlite3.connect('clientes.db')
     cursor = conn.cursor()
@@ -21,34 +21,30 @@ def init_db():
 
 init_db()
 
+# Página inicial
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/cadastrar', methods=['POST'])
-def cadastrar():
-    nome = request.form.get('nome')
-    telefone = request.form.get('telefone')
-    email = request.form.get('email')
-    if not nome or not telefone or not email:
-        return jsonify({"status":"erro","mensagem":"Preencha todos os campos"}), 400
-    
-    conn = sqlite3.connect('clientes.db')
-    cursor = conn.cursor()
-    cursor.execute('INSERT INTO clientes (nome, telefone, email) VALUES (?, ?, ?)',
-                   (nome, telefone, email))
-    conn.commit()
-    conn.close()
-    return jsonify({"status":"sucesso","mensagem":f"Cliente {nome} cadastrado com sucesso!"})
+# Página de cadastro
+@app.route('/cadastrar-cliente', methods=['GET', 'POST'])
+def cadastrar_cliente():
+    if request.method == 'POST':
+        nome = request.form.get('nome')
+        telefone = request.form.get('telefone')
+        email = request.form.get('email')
+        if not nome or not telefone or not email:
+            flash("Preencha todos os campos!", "erro")
+            return redirect(url_for('cadastrar_cliente'))
+        conn = sqlite3.connect('clientes.db')
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO clientes (nome, telefone, email) VALUES (?, ?, ?)', (nome, telefone, email))
+        conn.commit()
+        conn.close()
+        flash(f"Cliente {nome} cadastrado com sucesso!", "sucesso")
+        return redirect(url_for('cadastrar_cliente'))
+    return render_template('cadastro.html')
 
-@app.route('/clientes', methods=['GET'])
-def listar_clientes():
-    conn = sqlite3.connect('clientes.db')
-    cursor = conn.cursor()
-    cursor.execute('SELECT * FROM clientes')
-    clientes = cursor.fetchall()
-    conn.close()
-    return jsonify(clientes)
-
+# Rodar app
 if __name__ == '__main__':
     app.run(debug=True)
