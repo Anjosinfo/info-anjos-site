@@ -293,18 +293,70 @@ ul.service-list li:hover {
 }
 
 /* ===== SERVIÇOS EM LINHA ===== */
+/* ===== CARROSSEL DE SERVIÇOS ===== */
+.carousel-container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 40px;
+}
+
 #servicos .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 24px;
-  justify-content: center;
-  align-items: stretch;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+}
+
+#servicos .grid::-webkit-scrollbar {
+  display: none;
 }
 
 #servicos .card {
+  flex: 0 0 320px;
+  min-height: 360px;
   text-align: left;
   justify-content: flex-start;
-  min-height: 360px;
+  scroll-snap-align: start;
+}
+
+#servicos .grid {
+  scroll-snap-type: x mandatory;
+}
+
+/* ===== BOTÕES DE NAVEGAÇÃO ===== */
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0,86,210,0.3);
+  color: #fff;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.carousel-btn:hover {
+  background: var(--accent);
+  box-shadow: 0 0 15px rgba(0,170,255,0.4);
+}
+
+.carousel-btn.left {
+  left: 0;
+}
+
+.carousel-btn.right {
+  right: 0;
 }
 
    
@@ -463,11 +515,13 @@ ul.service-list li:hover {
     </section>
 
     <!-- SERVIÇOS -->
-    <section id="servicos" class="section-padding">
-      <h2 class="section-title">Serviços</h2>
+   <section id="servicos">
+  <h2>Serviços</h2>
+  <div class="carousel-container">
+    <button class="carousel-btn left" id="servicos-left">&#10094;</button>
 
-      <div class="grid" style="max-width:1180px;margin:0 auto">
-        <div class="card">
+    <div class="grid" id="servicos-carousel">
+      <div class="card">
           <h3 style="color:var(--accent);margin-bottom:8px">💻 Manutenção e Hardware</h3>
           <ul class="service-list">
             <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
@@ -512,10 +566,25 @@ ul.service-list li:hover {
           <ul class="service-list">
             <li>🖨️ Instalação e configuração de impressoras e multifuncionais</li>
             <li>📱 Configuração de celulares e sincronização com PC</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+           <button class="carousel-btn right" id="servicos-right">&#10095;</button>
+  </div>
+</section>
+<script>
+  const servicosCarousel = document.getElementById('servicos-carousel');
+  const leftBtn = document.getElementById('servicos-left');
+  const rightBtn = document.getElementById('servicos-right');
+
+  const scrollAmount = 340; // distância que o carrossel move por clique
+
+  leftBtn.addEventListener('click', () => {
+    servicosCarousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  rightBtn.addEventListener('click', () => {
+    servicosCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+</script>
+
 
     <!-- SUPORTE REMOTO -->
     <section id="suporte-remoto" class="section-padding">
