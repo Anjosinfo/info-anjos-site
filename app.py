@@ -4,7 +4,7 @@ import sqlite3
 app = Flask(__name__)
 app.secret_key = 'secret123'
 
-# Criar banco
+# Inicializa banco de dados
 def init_db():
     conn = sqlite3.connect('clientes.db')
     cursor = conn.cursor()
@@ -25,12 +25,6 @@ init_db()
 def index():
     return render_template('index.html')
 
-# Página de cadastro
-@app.route('/cadastrar-cliente')
-def cadastrar_cliente_page():
-    return render_template('cadastro.html')
-
-# Receber cadastro
 @app.route('/cadastrar', methods=['POST'])
 def cadastrar():
     nome = request.form.get('nome')
@@ -38,9 +32,11 @@ def cadastrar():
     email = request.form.get('email')
     if not nome or not telefone or not email:
         return jsonify({"status":"erro","mensagem":"Preencha todos os campos"}), 400
+    
     conn = sqlite3.connect('clientes.db')
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO clientes (nome, telefone, email) VALUES (?, ?, ?)', (nome, telefone, email))
+    cursor.execute('INSERT INTO clientes (nome, telefone, email) VALUES (?, ?, ?)',
+                   (nome, telefone, email))
     conn.commit()
     conn.close()
     return jsonify({"status":"sucesso","mensagem":f"Cliente {nome} cadastrado com sucesso!"})
