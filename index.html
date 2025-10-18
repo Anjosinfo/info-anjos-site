@@ -184,182 +184,223 @@
     }
 
     /* ===== GRID PADRONIZADO ===== */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
-  align-items: stretch;
-  justify-content: center;
-  max-width: 1180px;
-  margin: 0 auto;
-}
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: stretch;
+      justify-content: center;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
 
-/* ===== CARD PADRONIZADO ===== */
-.card {
-  background: radial-gradient(circle at top left, rgba(0,86,210,0.08) 0%, rgba(0,0,0,0.8) 90%);
-  padding: 28px;
-  border-radius: var(--radius);
-  border: 1px solid rgba(255,255,255,0.05);
-  box-shadow: 0 12px 32px rgba(0,0,0,0.7), inset 0 0 15px rgba(0,86,210,0.05);
-  transition: all .3s ease;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  min-height: 340px; /* padroniza altura */
-  position: relative;
-  overflow: hidden;
-  text-align: left;
-}
+    /* ===== CARD PADRONIZADO ===== */
+    .card {
+      background: radial-gradient(circle at top left, rgba(0,86,210,0.08) 0%, rgba(0,0,0,0.8) 90%);
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.7), inset 0 0 15px rgba(0,86,210,0.05);
+      transition: all .3s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      min-height: 340px; /* padroniza altura */
+      position: relative;
+      overflow: hidden;
+      text-align: left;
+    }
 
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(0,170,255,0.15), transparent 60%);
-  opacity: 0;
-  transition: opacity .4s ease;
-}
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,170,255,0.15), transparent 60%);
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
 
-.card:hover::before {
-  opacity: 1;
-}
+    .card:hover::before {
+      opacity: 1;
+    }
 
-.card:hover {
-  transform: translateY(-6px) scale(1.02);
-  box-shadow: 0 20px 48px rgba(0,0,0,0.8), 0 0 25px rgba(0,170,255,0.15);
-}
+    .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.8), 0 0 25px rgba(0,170,255,0.15);
+    }
 
-/* ===== ÍCONE ===== */
-.icon-circle {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 auto 18px;
-  font-size: 1.8rem;
-  background: radial-gradient(circle at center, var(--primary) 0%, rgba(0,0,0,0.8) 90%);
-  box-shadow: 0 0 18px rgba(0,170,255,0.2);
-  color: #fff;
-  transition: transform .3s ease, box-shadow .3s ease;
-}
+    /* ===== ÍCONE ===== */
+    .icon-circle {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 18px;
+      font-size: 1.8rem;
+      background: radial-gradient(circle at center, var(--primary) 0%, rgba(0,0,0,0.8) 90%);
+      box-shadow: 0 0 18px rgba(0,170,255,0.2);
+      color: #fff;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
 
-.card:hover .icon-circle {
-  transform: scale(1.1);
-  box-shadow: 0 0 25px rgba(0,170,255,0.35);
-}
+    .card:hover .icon-circle {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(0,170,255,0.35);
+    }
 
-/* ===== TÍTULO ===== */
-.card h3 {
-  color: var(--accent);
-  margin-bottom: 12px;
-  font-size: 1.2rem;
-  text-align: center;
-  text-shadow: 0 0 8px rgba(0,170,255,0.15);
-}
+    /* ===== TÍTULO ===== */
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+      text-align: center;
+      text-shadow: 0 0 8px rgba(0,170,255,0.15);
+    }
 
-/* ===== LISTA DE SERVIÇOS ===== */
-ul.service-list {
-  color: var(--muted);
-  list-style: none;
-  padding-left: 0;
-  margin-top: 10px;
-}
+    /* ===== LISTA DE SERVIÇOS ===== */
+    ul.service-list {
+      color: var(--muted);
+      list-style: none;
+      padding-left: 0;
+      margin-top: 10px;
+    }
 
-ul.service-list li {
-  margin-bottom: 10px;
-  padding: 6px 0 6px 8px;
-  border-left: 2px solid rgba(0,170,255,0.15);
-  transition: all 0.2s ease;
-}
+    ul.service-list li {
+      margin-bottom: 10px;
+      padding: 6px 0 6px 8px;
+      border-left: 2px solid rgba(0,170,255,0.15);
+      transition: all 0.2s ease;
+    }
 
-ul.service-list li:hover {
-  color: #fff;
-  border-left-color: var(--accent);
-  background: rgba(0,170,255,0.05);
-  border-radius: 6px;
-  padding-left: 12px;
-}
+    ul.service-list li:hover {
+      color: #fff;
+      border-left-color: var(--accent);
+      background: rgba(0,170,255,0.05);
+      border-radius: 6px;
+      padding-left: 12px;
+    }
 
-/* ===== AJUSTE DE ALINHAMENTO NAS SEÇÕES ===== */
-#atuacao .grid .card {
-  text-align: center;
-  justify-content: space-between;
-}
+    /* ===== AJUSTE DE ALINHAMENTO NAS SEÇÕES ===== */
+    #atuacao .grid .card {
+      text-align: center;
+      justify-content: space-between;
+    }
 
-#atuacao .card p {
-  flex-grow: 1;
-}
+    #atuacao .card p {
+      flex-grow: 1;
+    }
 
-/* ===== SERVIÇOS EM LINHA ===== */
-/* ===== CARROSSEL DE SERVIÇOS ===== */
-.carousel-container {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  padding: 0 40px;
-}
+    /* ===== AJUSTE DE ALTURA DOS CARDS DE ATUAÇÃO ===== */
+    #atuacao .grid .card {
+      text-align: center;
+      justify-content: flex-start;
+      display: flex;
+      flex-direction: column;
+      min-height: 360px;
+      height: 100%;
+    }
 
-#servicos .grid {
-  display: flex;
-  flex-wrap: nowrap;
-  gap: 24px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scrollbar-width: none;
-}
+    #atuacao .icon-circle {
+      margin-bottom: 16px;
+    }
 
-#servicos .grid::-webkit-scrollbar {
-  display: none;
-}
+    /* ===== SERVIÇOS - CARROSSEL PADRONIZADO ===== */
+    #servicos {
+      text-align: center;
+      padding: 48px 0;
+      background: transparent;
+    }
 
-#servicos .card {
-  flex: 0 0 320px;
-  min-height: 360px;
-  text-align: left;
-  justify-content: flex-start;
-  scroll-snap-align: start;
-}
+    #servicos h2 {
+      color: var(--accent);
+      margin-bottom: 24px;
+      text-shadow: 0 0 8px rgba(0,170,255,0.15);
+    }
 
-#servicos .grid {
-  scroll-snap-type: x mandatory;
-}
+    /* Container do carrossel */
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      padding: 0 50px;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
 
-/* ===== BOTÕES DE NAVEGAÇÃO ===== */
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0,86,210,0.3);
-  color: #fff;
-  border: none;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-size: 1.6rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
+    /* Faixa dos cards */
+    #servicos .grid {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 24px;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      scroll-snap-type: x mandatory;
+      align-items: stretch;
+    }
 
-.carousel-btn:hover {
-  background: var(--accent);
-  box-shadow: 0 0 15px rgba(0,170,255,0.4);
-}
+    #servicos .grid::-webkit-scrollbar {
+      display: none;
+    }
 
-.carousel-btn.left {
-  left: 0;
-}
+    /* Cards uniformes */
+    #servicos .card {
+      flex: 0 0 320px;
+      min-height: 360px;
+      height: 100%;
+      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      text-align: left;
+      padding: 28px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(255,255,255,0.05);
+      background: radial-gradient(circle at top left, rgba(0,86,210,0.08) 0%, rgba(0,0,0,0.8) 90%);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.7), inset 0 0 15px rgba(0,86,210,0.05);
+      transition: all .3s ease;
+    }
 
-.carousel-btn.right {
-  right: 0;
-}
+    #servicos .card:hover {
+      transform: translateY(-6px) scale(1.02);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.8), 0 0 25px rgba(0,170,255,0.15);
+    }
 
-   
+    /* ===== BOTÕES DE NAVEGAÇÃO DO CARROSSEL ===== */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0,86,210,0.35);
+      color: #fff;
+      border: none;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 1.8rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .carousel-btn:hover {
+      background: var(--accent);
+      box-shadow: 0 0 20px rgba(0,170,255,0.45);
+    }
+
+    .carousel-btn.left {
+      left: 0;
+    }
+
+    .carousel-btn.right {
+      right: 0;
+    }
+
     /* ===== CONTATO ===== */
     .contact-grid {
       display: grid;
@@ -566,7 +607,11 @@ ul.service-list li:hover {
           <ul class="service-list">
             <li>🖨️ Instalação e configuração de impressoras e multifuncionais</li>
             <li>📱 Configuração de celulares e sincronização com PC</li>
-           <button class="carousel-btn right" id="servicos-right">&#10095;</button>
+          </ul>
+        </div>
+    </div>
+
+    <button class="carousel-btn right" id="servicos-right">&#10095;</button>
   </div>
 </section>
 <script>
@@ -584,8 +629,6 @@ ul.service-list li:hover {
     servicosCarousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   });
 </script>
-
-
     <!-- SUPORTE REMOTO -->
     <section id="suporte-remoto" class="section-padding">
       <h2 class="section-title">Suporte Remoto</h2>
@@ -641,62 +684,5 @@ ul.service-list li:hover {
      aria-label="Fale conosco no WhatsApp">
     <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
-
-  <!-- JS: menu toggle -->
-  <script>
-    (function(){
-      const toggle = document.getElementById('menuToggle');
-      const nav = document.getElementById('nav');
-      const menu = document.getElementById('mainMenu');
-
-      function applyResponsive(){
-        if (window.innerWidth <= 900){
-          menu.style.display = 'none';
-          toggle.style.display = 'flex';
-        } else {
-          menu.style.display = 'flex';
-          menu.style.flexDirection = 'row';
-          menu.style.position = 'static';
-          menu.style.background = 'transparent';
-          menu.style.padding = '0';
-          toggle.style.display = 'none';
-          toggle.setAttribute('aria-expanded','false');
-        }
-      }
-      applyResponsive();
-      window.addEventListener('resize', applyResponsive);
-
-      toggle.addEventListener('click', () => {
-        const expanded = toggle.getAttribute('aria-expanded') === 'true';
-        toggle.setAttribute('aria-expanded', String(!expanded));
-
-        if (menu.style.display === 'flex') {
-          menu.style.display = 'none';
-        } else {
-          menu.style.display = 'flex';
-          menu.style.flexDirection = 'column';
-          menu.style.position = 'absolute';
-          menu.style.top = '68px';
-          menu.style.right = '16px';
-          menu.style.background = 'linear-gradient(180deg, rgba(11,12,16,0.98), rgba(10,10,10,0.96))';
-          menu.style.padding = '12px';
-          menu.style.borderRadius = '10px';
-          menu.style.gap = '10px';
-          menu.style.minWidth = '180px';
-          menu.style.zIndex = 1450;
-        }
-      });
-
-      // fechar menu ao clicar em link (mobile)
-      menu.querySelectorAll('a').forEach(a=>{
-        a.addEventListener('click', () => {
-          if (window.innerWidth <= 900){
-            menu.style.display = 'none';
-            toggle.setAttribute('aria-expanded','false');
-          }
-        });
-      });
-    })();
-  </script>
 </body>
 </html>
