@@ -249,6 +249,40 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
       <button class="carousel-btn right" id="servicos-right">&#10095;</button>
     </div>
   </section>
+  <section id="cadastro-clientes" class="section-padding">
+  <h2 class="section-title">Cadastro de Clientes</h2>
+  <form id="cadastroForm">
+    <input type="text" name="nome" placeholder="Nome" required>
+    <input type="text" name="telefone" placeholder="Telefone" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <button type="submit" class="btn-primary">Cadastrar</button>
+  </form>
+</section>
+
+<script>
+const form = document.getElementById('cadastroForm');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(form);
+
+  const response = await fetch('/cadastrar', {
+    method: 'POST',
+    body: formData
+  });
+
+  const data = await response.json();
+
+  if(data.status === 'sucesso'){
+    alert(data.mensagem);
+    form.reset();
+  } else {
+    alert('Erro: ' + data.mensagem);
+  }
+});
+</script>
+
 
   <!-- SUPORTE REMOTO -->
   <section id="suporte-remoto" class="section-padding">
@@ -281,6 +315,16 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
     </div>
   </section>
 </main>
+<div class="card">
+  <h3 style="color:var(--accent);margin-bottom:8px">Cadastro de Clientes</h3>
+  <form id="form-cadastro" style="display:flex;flex-direction:column;gap:10px">
+    <input type="text" name="nome" placeholder="Nome" required style="padding:8px;border-radius:6px;border:1px solid #ccc">
+    <input type="text" name="telefone" placeholder="Telefone" required style="padding:8px;border-radius:6px;border:1px solid #ccc">
+    <input type="email" name="email" placeholder="Email" required style="padding:8px;border-radius:6px;border:1px solid #ccc">
+    <button type="submit" class="btn-primary" style="margin-top:6px">Cadastrar</button>
+  </form>
+  <p id="mensagem-cadastro" style="margin-top:10px;color:var(--accent)"></p>
+</div>
 
 <footer>
   <div style="max-width:1180px;margin:0 auto;padding:6px 18px">
@@ -291,6 +335,36 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
 <a href="https://wa.me/553131039546" target="_blank" class="whatsapp-button" aria-label="Fale conosco no WhatsApp">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
+<script>
+document.getElementById('form-cadastro').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const form = e.target;
+  const mensagem = document.getElementById('mensagem-cadastro');
+  
+  const data = new FormData(form);
+
+  try {
+    const res = await fetch('/cadastrar', {
+      method: 'POST',
+      body: data
+    });
+
+    const result = await res.json();
+
+    if(res.ok){
+      mensagem.style.color = '#00ff99';
+      mensagem.textContent = result.mensagem;
+      form.reset();
+    } else {
+      mensagem.style.color = '#ff5555';
+      mensagem.textContent = result.mensagem;
+    }
+  } catch(err){
+    mensagem.style.color = '#ff5555';
+    mensagem.textContent = "Erro ao enviar o cadastro.";
+  }
+});
+</script>
 
 <script>
 const servicosCarousel = document.getElementById('servicos-carousel');
