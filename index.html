@@ -7,134 +7,306 @@
   <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
 
   <style>
-    /* ===== RESET & FONT ===== */
-    *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%}
-    body{
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      background:#0b0c10;
-      color:#eef2f7;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
+    /* ===== RESET ===== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    a{color:inherit;text-decoration:none}
+    html, body {
+      height: 100%;
+    }
+
+    /* ===== BASE ===== */
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: #0b0c10;
+      color: #eef2f7;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    html {
+      scroll-padding-top: 90px;
+    }
 
     /* ===== VARS ===== */
-    :root{
-      --black:#000;
-      --bg:#0b0c10;
-      --card:#0f1115;
-      --accent:#00aaff;
-      --primary:#0056D2;
-      --muted:#aeb6c3;
-      --radius:12px;
-      --glass: rgba(255,255,255,0.03);
+    :root {
+      --bg: #0b0c10;
+      --card: #0f1115;
+      --accent: #00aaff;
+      --primary: #0056D2;
+      --muted: #aeb6c3;
+      --radius: 12px;
     }
 
-    /* ===== HEADER FIXO ===== */
-    header{
-      position:fixed;left:0;right:0;top:0;z-index:1400;
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 1400;
       background: linear-gradient(90deg, rgba(11,12,16,0.96), rgba(0,0,0,0.92));
-      border-bottom:1px solid rgba(255,255,255,0.03);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
       backdrop-filter: blur(6px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.6);
     }
-    .nav-inner{
-      max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;
-      gap:16px;padding:12px 20px;flex-wrap:wrap;
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 20px;
+      flex-wrap: wrap;
     }
-    .logo img{
-      height:56px; display:block;
+    .logo img {
+      height: 56px;
+      display: block;
       filter: drop-shadow(0 6px 18px rgba(0,170,255,0.15));
       transition: transform .25s ease;
     }
-    .logo img:hover{ transform:scale(1.03) }
-
-    nav{flex:1 1 auto; display:flex; justify-content:center}
-    nav ul{display:flex; gap:24px; list-style:none; align-items:center; margin:0}
-    nav a{color:var(--muted); font-weight:600; padding:8px 6px; border-radius:8px; transition:color .18s}
-    nav a:hover{color:var(--accent)}
-
-    .nav-actions{display:flex; align-items:center; gap:12px}
-    .btn-remote{
-      background:var(--primary); color:#fff; padding:10px 14px; border-radius:999px; font-weight:700;
-      box-shadow:0 8px 22px rgba(0,86,210,0.18);
+    .logo img:hover {
+      transform: scale(1.03);
     }
-    .btn-remote:hover{background:var(--accent)}
-
-    /* mobile toggle */
-    .menu-toggle{display:none; width:44px; height:44px; border-radius:10px; align-items:center; justify-content:center; cursor:pointer}
-    .menu-toggle .bar{width:20px;height:2px;background:var(--accent);display:block;margin:3px 0;border-radius:2px}
-
-    /* ===== MAIN / HERO ===== */
-    main{max-width:1180px;margin:120px auto 40px;padding:0 18px}
-    .hero{display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap}
-    .hero-left{flex:1 1 480px}
-    .hero h1{font-size:2.4rem;color:#fff;margin-bottom:10px}
-    .hero p{color:var(--muted);margin-bottom:12px}
-    .actions{display:flex;gap:12px;margin-top:12px}
-    .btn-primary{background:var(--primary);color:#fff;padding:10px 14px;border-radius:10px;font-weight:700}
-    .btn-primary:hover{background:var(--accent)}
-
-    .hero-right{width:340px;flex:0 0 340px}
-    .hero-right .card{
-      height:220px;border-radius:14px;background:linear-gradient(180deg, rgba(0,86,210,0.08), rgba(0,0,0,0.14));
-      display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.6)
+    nav {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: center;
+    }
+    nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center;
+    }
+    nav a {
+      color: var(--muted);
+      font-weight: 600;
+      padding: 8px 6px;
+      border-radius: 8px;
+      transition: color .18s;
+    }
+    nav a:hover {
+      color: var(--accent);
     }
 
-    /* ===== SECTIONS & CARDS ===== */
-    .section-padding{padding:48px 0}
-    h2.section-title{color:var(--accent);text-align:center;margin-bottom:18px}
-    p.lead{color:var(--muted);text-align:center;max-width:900px;margin:0 auto 20px}
-
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;align-items:start}
-
-    .card{
-      background:linear-gradient(180deg,var(--card), #0b0c10);
-      padding:20px;border-radius:var(--radius);box-shadow:0 10px 28px rgba(0,0,0,0.6);
-      border:1px solid rgba(255,255,255,0.02);transition:transform .2s,box-shadow .2s;
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    .card:hover{transform:translateY(-6px);box-shadow:0 20px 48px rgba(0,0,0,0.7)}
-
-    .icon-circle{width:64px;height:64px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-bottom:12px;background:linear-gradient(180deg,var(--primary), rgba(0,0,0,0.08));color:#fff}
-
-    ul.service-list{margin-left:16px;color:var(--muted)}
-    ul.service-list li{margin-bottom:8px}
-
-    /* contato & map */
-    .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:start}
-
-    iframe.map{width:100%;height:320px;border:0;border-radius:10px}
-
-    /* footer */
-    footer{margin-top:36px;background:linear-gradient(90deg,var(--primary), rgba(0,170,255,0.35));text-align:center;padding:18px;color:#fff}
-
-    /* whatsapp */
-    .whatsapp{position:fixed;right:18px;bottom:18px;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 30px rgba(0,0,0,0.6);font-size:22px;z-index:1600}
-
-    /* responsive */
-    @media (max-width:900px){
-      nav ul{display:none}
-      .menu-toggle{display:flex}
-      .hero-right{width:100%;flex-basis:100%}
-      main{margin:100px auto 30px}
+    .btn-remote {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 8px 22px rgba(0,86,210,0.18);
+    }
+    .btn-remote:hover {
+      background: var(--accent);
     }
 
-    @media (max-width:480px){
-      .logo img{height:48px}
-      .hero h1{font-size:1.6rem}
-      .section-padding{padding:28px 0}
+    /* ===== MENU MOBILE ===== */
+    .menu-toggle {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .menu-toggle .bar {
+      width: 20px;
+      height: 2px;
+      background: var(--accent);
+      display: block;
+      margin: 3px 0;
+      border-radius: 2px;
+    }
+
+    /* ===== HERO ===== */
+    main {
+      max-width: 1180px;
+      margin: 120px auto 40px;
+      padding: 0 18px;
+    }
+    .hero {
+      display: flex;
+      gap: 28px;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .hero-left {
+      flex: 1 1 680px;
+      display: flex;
+      justify-content: center;
+    }
+    .hero-left .card {
+      background: linear-gradient(180deg, rgba(0,86,210,0.08), rgba(0,0,0,0.14));
+      padding: 32px;
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+      text-align: center;
+    }
+    .hero h1 {
+      color: #fff;
+      margin-bottom: 16px;
+      font-size: 2.4rem;
+    }
+    .hero p {
+      color: var(--muted);
+      margin-bottom: 14px;
+    }
+    .actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-weight: 700;
+      min-width: 160px;
+      text-align: center;
+    }
+    .btn-primary:hover {
+      background: var(--accent);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section-padding {
+      padding: 48px 0;
+    }
+    h2.section-title {
+      color: var(--accent);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+    p.lead {
+      color: var(--muted);
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      align-items: start;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--card), #0b0c10);
+      padding: 20px;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.6);
+      border: 1px solid rgba(255,255,255,0.02);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(0,0,0,0.7);
+    }
+
+    .icon-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+      background: linear-gradient(180deg, var(--primary), rgba(0,0,0,0.08));
+      color: #fff;
+    }
+
+    ul.service-list {
+      margin-left: 16px;
+      color: var(--muted);
+    }
+    ul.service-list li {
+      margin-bottom: 8px;
+    }
+
+    /* ===== CONTATO ===== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      align-items: start;
+      max-width: 1180px;
+      margin: 0 auto;
+    }
+    iframe.map {
+      width: 100%;
+      height: 320px;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      margin-top: 36px;
+      background: linear-gradient(90deg, var(--primary), rgba(0,170,255,0.35));
+      text-align: center;
+      padding: 18px;
+      color: #fff;
+    }
+
+    /* ===== WHATSAPP ===== */
+    .whatsapp-button {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 999;
+    }
+    .whatsapp-button img {
+      width: 60px;
+      height: 60px;
+      transition: transform 0.2s;
+    }
+    .whatsapp-button img:hover {
+      transform: scale(1.08);
+    }
+
+    /* ===== RESPONSIVO ===== */
+    @media (max-width: 900px) {
+      nav ul { display: none; }
+      .menu-toggle { display: flex; }
+      .hero-right { width: 100%; }
+      main { margin: 100px auto 30px; }
+    }
+
+    @media (max-width: 480px) {
+      .logo img { height: 48px; }
+      .hero h1 { font-size: 1.6rem; }
+      .section-padding { padding: 28px 0; }
     }
   </style>
 </head>
-<body>
 
+<body>
   <!-- HEADER -->
   <header>
     <div class="nav-inner">
-      <div class="logo" aria-hidden="false">
-        <!-- APENAS A LOGO COMO IMAGEM -->
+      <div class="logo">
         <a href="#top"><img src="logo.jpeg" alt="Logo AnjosInfo"></a>
       </div>
 
@@ -166,14 +338,18 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-left">
-        <h1>Suporte Ágil e Eficiente para Você</h1>
-        <p class="lead">O <strong>AnjosInfo</strong> é quem garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
-
-        <p style="color:var(--muted)">A escolha do nome: o <strong>"Anjo"</strong> contribui significativamente para que o cliente estabeleça suas conexões e as melhores impressões possíveis da instituição, a partir do modo que foi acolhido. Esperamos caminhar junto no propósito de garantir alta performance, proteger dados e transformar a experiência digital, possibilitando aos nossos clientes o melhor suporte em tecnologia e a melhor experiência.</p>
-
-        <div class="actions" style="margin-top:14px">
-          <a class="btn-primary" href="#contato">Fale Conosco</a>
-          <a class="btn-primary" href="https://get.teamviewer.com/65699et" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
+        <div class="card">
+          <h1>Suporte Ágil e Eficiente para Você</h1>
+          <p class="lead">
+            O <strong>AnjosInfo</strong> é quem garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.
+          </p>
+          <p>
+            A escolha do nome <strong>"Anjo"</strong> contribui significativamente para que o cliente estabeleça suas conexões e as melhores impressões possíveis da instituição, a partir do modo que foi acolhido. Esperamos caminhar junto no propósito de garantir alta performance, proteger dados e transformar a experiência digital, possibilitando aos nossos clientes o melhor suporte em tecnologia e a melhor experiência.
+          </p>
+          <div class="actions">
+            <a class="btn-primary" href="#contato">Fale Conosco</a>
+            <a class="btn-primary" href="https://get.teamviewer.com/65699et" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
+          </div>
         </div>
       </div>
     </section>
@@ -181,7 +357,7 @@
     <!-- SOBRE / MISSÃO / VISÃO / VALORES -->
     <section id="sobre" class="section-padding">
       <h2 class="section-title">Sobre Nós</h2>
-      <div class="grid" style="max-width:1180px;margin:0 auto">
+      <div class="grid">
         <article class="card">
           <h3 style="color:var(--accent);margin-bottom:8px">Missão</h3>
           <p style="color:var(--muted)">Garantir a tranquilidade e a continuidade digital dos nossos clientes, oferecendo suporte técnico humanizado, ágil e eficiente. Queremos que a tecnologia seja uma solução, e não um problema, simplificando o dia a dia e impulsionando a produtividade.</p>
@@ -301,7 +477,8 @@
         <div class="card">
           <h3 style="color:var(--accent);margin-bottom:8px">Fale Conosco</h3>
           <p style="color:var(--muted)">📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte - MG</p>
-          <p style="color:var(--muted)">⏰ Horários: Segunda a Sexta 09h–18h </p>
+          <p style="color:var(--muted)"> Horários:</p>
+            <p style="color:var(--muted)">⏰ Segunda a Sexta 09h–18h </p>
            <p style="color:var(--muted)">⏰ Sábado 09h–18h </p>
            <p style="color:var(--muted)">⏰ Domingo 09h–13h</p>
           <p style="color:var(--muted)">📞 (31) 3103-9546</p>
@@ -309,8 +486,14 @@
         </div>
 
         <div class="card" style="padding:10px">
-          <!-- ajuste o src do iframe com as coordenadas corretas se desejar -->
-          <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.084898055713!2d-43.9417!3d-19.9234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU1JzI0LjIiUyA0M8KwNTYnMzAuMSJX!5e0!3m2!1spt-BR!2sbr!4v0000000000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Localização AnjosInfo"></iframe>
+          <!--mapa -->
+          <iframe class="map"
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.821482994385!2d-43.9227772!3d-19.817741799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa69710de3a6ddf%3A0x8480714f37b267d1!2sR.%20Joaquim%20Ramos%20Filho%2C%2057%20-%20Jaqueline%2C%20Belo%20Horizonte%20-%20MG%2C%2031731-360!5e0!3m2!1spt-BR!2sbr!4v1739868135133!5m2!1spt-BR!2sbr"
+  width="100%" height="320" style="border:0;border-radius:10px;"
+  allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+  aria-label="Localização AnjosInfo - Rua Joaquim Ramos Filho, 57, Belo Horizonte MG">
+</iframe>
+
         </div>
       </div>
     </section>
@@ -325,8 +508,12 @@
   </footer>
 
   <!-- WHATSAPP FLUTUANTE -->
-  <a class="whatsapp" href="https://wa.me/553131039546?text=Olá,%20gostaria%20de%20saber%20mais%20sobre%20os%20serviços%20da%20AnjosInfo" target="_blank" rel="noopener noreferrer" aria-label="Chamar no WhatsApp">
-    💬
+  <a href="https://wa.me/5531995198284"
+     target="_blank"
+     rel="noopener noreferrer"
+     class="whatsapp-button"
+     aria-label="Fale conosco no WhatsApp">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
   </a>
 
   <!-- JS: menu toggle -->
