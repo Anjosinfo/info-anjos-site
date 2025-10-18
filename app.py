@@ -51,6 +51,9 @@ def listar_clientes():
     clientes = cursor.fetchall()
     conn.close()
     return jsonify(clientes)
+@app.route('/cadastro')
+def cadastro():
+    return render_template('cadastro.html')
 
 # Permite rodar direto com "python app.py"
 if __name__ == "__main__":
