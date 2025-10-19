@@ -1,8 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for
+import os
 import sqlite3
+from flask import Flask, render_template, request, redirect, url_for
 
+# ← Criação do app Flask (obrigatório antes das rotas)
 app = Flask(__name__)
 
+# --- Funções e rotas abaixo ---
 def buscar_clientes():
     conn = sqlite3.connect('clientes.db')
     conn.row_factory = sqlite3.Row
@@ -20,16 +23,23 @@ def index():
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
-        nome = request.form['nome']
-        email = request.form['email']
-        telefone = request.form['telefone']
-        conn = sqlite3.connect('clientes.db')
-        cursor = conn.cursor()
-        cursor.execute("INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?)",
-                       (nome, email, telefone))
-        conn.commit()
-        conn.close()
-        return redirect(url_for('index'))
+        try:
+            nome = request.form['nome']
+            email = request.form['email']
+            telefone = request.form['telefone']
+
+            conn = sqlite3.connect('clientes.db')
+            cursor = conn.cursor()
+            cursor.execute(
+                "INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?)",
+                (nome, email, telefone)
+            )
+            conn.commit()
+            conn.close()
+            return redirect(url_for('index'))
+        except Exception as e:
+            return f"Ocorreu um erro: {e}"
+
     return render_template('cadastro.html')
 
 @app.route('/excluir/<int:id>')
@@ -41,6 +51,6 @@ def excluir(id):
     conn.close()
     return redirect(url_for('index'))
 
-if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=int(os.environ.get("PORT", 5000)))
-import os
+if __
+== '__main__':
+    app.run(debug=True)
