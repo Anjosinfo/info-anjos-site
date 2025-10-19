@@ -1,56 +1,51 @@
-import os
-import sqlite3
 from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+import os
 
-# ← Criação do app Flask (obrigatório antes das rotas)
 app = Flask(__name__)
 
-# --- Funções e rotas abaixo ---
-def buscar_clientes():
-    conn = sqlite3.connect('clientes.db')
-    conn.row_factory = sqlite3.Row
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM clientes")
-    clientes = cursor.fetchall()
-    conn.close()
-    return clientes
+# 🔹 Substitua pela URL do PostgreSQL fornecida pelo Render
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://clientes_db_t9i1_user:74EgSpCFxpXBtjufFcrhG2LKYfgEv6it@dpg-d3qktql6ubrc7381v990-a/clientes_db_t9i1'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
+db = SQLAlchemy(app)
+
+# 🔹 Modelo de cliente
+class Cliente(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(100), nullable=False)
+    telefone = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+
+# 🔹 Cria as tabelas automaticamente (apenas na primeira vez)
+with app.app_context():
+    db.create_all()
+
+# 🔹 Rotas
 @app.route('/')
 def index():
-    clientes = buscar_clientes()
+    clientes = Cliente.query.all()
     return render_template('lista_clientes.html', clientes=clientes)
 
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
-        try:
-            nome = request.form['nome']
-            email = request.form['email']
-            telefone = request.form['telefone']
-
-            conn = sqlite3.connect('clientes.db')
-            cursor = conn.cursor()
-            cursor.execute(
-                "INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?)",
-                (nome, email, telefone)
-            )
-            conn.commit()
-            conn.close()
-            return redirect(url_for('index'))
-        except Exception as e:
-            return f"Ocorreu um erro: {e}"
-
+        nome = request.form['nome']
+        telefone = request.form['telefone']
+        email = request.form['email']
+        novo_cliente = Cliente(nome=nome, telefone=telefone, email=email)
+        db.session.add(novo_cliente)
+        db.session.commit()
+        return redirect(url_for('index'))
     return render_template('cadastro.html')
 
 @app.route('/excluir/<int:id>')
 def excluir(id):
-    conn = sqlite3.connect('clientes.db')
-    cursor = conn.cursor()
-    cursor.execute("DELETE FROM clientes WHERE id = ?", (id,))
-    conn.commit()
-    conn.close()
+    cliente = Cliente.query.get_or_404(id)
+    db.session.delete(cliente)
+    db.session.commit()
     return redirect(url_for('index'))
 
-if __
-== '__main__':
-    app.run(debug=True)
+# 🔹 Executar app
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=True)
