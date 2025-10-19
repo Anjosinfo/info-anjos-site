@@ -1,47 +1,43 @@
 import sqlite3
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-# --- Função para conectar ao banco ---
-def get_db_connection():
-    conn = sqlite3.connect('clientes.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+# 🔹 Substitua aqui pela SUA URL copiada do Render
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql+psycopg2://usuario:senha@host:porta/nomedobanco'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-# --- Página inicial: mostra a lista de clientes ---
+db = SQLAlchemy(app)
+
+# 🔹 Modelo da tabela clientes
+class Cliente(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(100), nullable=False)
+    telefone = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+
+# 🔹 Cria as tabelas no banco do Render
+with app.app_context():
+    db.create_all()
+
 @app.route('/')
 def index():
-    conn = get_db_connection()
-    clientes = conn.execute('SELECT * FROM clientes').fetchall()
-    conn.close()
-    return render_template('index.html', clientes=clientes)
+    return render_template('index.html')
 
-# --- Página de cadastro ---
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
         nome = request.form['nome']
-        email = request.form['email']
         telefone = request.form['telefone']
+        email = request.form['email']
 
-        conn = get_db_connection()
-        conn.execute('INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?)',
-                     (nome, email, telefone))
-        conn.commit()
-        conn.close()
+        novo_cliente = Cliente(nome=nome, telefone=telefone, email=email)
+        db.session.add(novo_cliente)
+        db.session.commit()
 
-        return redirect(url_for('index'))
+        return "Cliente cadastrado com sucesso!"
     return render_template('cadastro.html')
-
-# --- Rota para excluir um cliente ---
-@app.route('/excluir/<int:id_cliente>')
-def excluir(id_cliente):
-    conn = get_db_connection()
-    conn.execute('DELETE FROM clientes WHERE id = ?', (id_cliente,))
-    conn.commit()
-    conn.close()
-    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     app.run(debug=True)
