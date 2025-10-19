@@ -9,7 +9,6 @@ def index():
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
-        # Lógica do formulário aqui
         nome = request.form['nome']
         email = request.form['email']
         telefone = request.form['telefone']
