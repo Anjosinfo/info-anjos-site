@@ -1,45 +1,21 @@
-from flask import Flask, render_template, request, redirect
-import sqlite3
+from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
 
-# --- Página inicial: lista de clientes ---
 @app.route('/')
 def index():
-    conn = sqlite3.connect('clientes.db')
-    c = conn.cursor()
-    c.execute('SELECT * FROM clientes')
-    clientes = c.fetchall()
-    conn.close()
-    return render_template('index.html', clientes=clientes)
+    return render_template('index.html')
 
-# --- Página de cadastro ---
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
     if request.method == 'POST':
+        # Lógica do formulário aqui
         nome = request.form['nome']
         email = request.form['email']
         telefone = request.form['telefone']
-
-        conn = sqlite3.connect('clientes.db')
-        c = conn.cursor()
-        c.execute('INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?)',
-                  (nome, email, telefone))
-        conn.commit()
-        conn.close()
-        return redirect('/')
-
+        print(f"Cliente cadastrado: {nome}, {email}, {telefone}")
+        return redirect(url_for('index'))
     return render_template('cadastro.html')
-
-# --- Excluir cliente ---
-@app.route('/excluir/<int:id>')
-def excluir(id):
-    conn = sqlite3.connect('clientes.db')
-    c = conn.cursor()
-    c.execute('DELETE FROM clientes WHERE id = ?', (id,))
-    conn.commit()
-    conn.close()
-    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)

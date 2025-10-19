@@ -1,47 +1,55 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <title>Novo Cliente</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f2f2f2;
-            text-align: center;
-            padding: 20px;
-        }
-        form {
-            background: white;
-            width: 300px;
-            margin: 40px auto;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        input {
-            width: 90%;
-            padding: 8px;
-            margin: 10px 0;
-        }
-        button {
-            background: #28a745;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #218838;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Clientes - Anjos Info</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-    <h1>Novo Cliente</h1>
-    <form method="POST">
-        <input type="text" name="nome" placeholder="Nome" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="text" name="telefone" placeholder="Telefone" required><br>
-        <button type="submit">Salvar</button>
+
+  <div class="container">
+    <h1>Cadastro de Clientes</h1>
+
+    <form action="/add" method="POST">
+      <label for="nome">Nome:</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite o nome do cliente" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Digite o email do cliente" required>
+
+      <label for="telefone">Telefone:</label>
+      <input type="tel" id="telefone" name="telefone" placeholder="Digite o telefone do cliente" required>
+
+      <button type="submit">Salvar Cliente</button>
     </form>
-    <a href="/">Voltar</a>
+
+    {% if clientes %}
+      <h2 style="margin-top: 30px; text-align:center; color:#66fcf1;">Lista de Clientes</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Telefone</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for cliente in clientes %}
+            <tr>
+              <td>{{ cliente[0] }}</td>
+              <td>{{ cliente[1] }}</td>
+              <td>{{ cliente[2] }}</td>
+              <td>{{ cliente[3] }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% endif %}
+
+    <a href="https://anjosinfo.com.br" class="voltar">← Voltar para o site principal</a>
+  </div>
+
 </body>
 </html>
