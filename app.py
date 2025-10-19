@@ -1,36 +1,34 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, render_template, request, redirect
 import sqlite3
-import os
 
 app = Flask(__name__)
-app.secret_key = 'secret123'
 
-# Criar banco
-def init_db():
-    db_path = os.path.join(os.path.dirname(__file__), 'clientes.db')
-    conn = sqlite3.connect(db_path)
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS clientes (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL,
-            telefone TEXT NOT NULL,
-            email TEXT NOT NULL
-        )
-    ''')
-    conn.commit()
-    conn.close()
-
-init_db()
-
-# ROTA PRINCIPAL — precisa estar exatamente assim 👇
+# Página inicial (lista os clientes)
 @app.route('/')
 def index():
-    return render_template('index.html')
+    conn = sqlite3.connect('clientes.db')
+    c = conn.cursor()
+    c.execute("SELECT * FROM clientes")
+    clientes = c.fetchall()
+    conn.close()
+    return render_template('index.html', clientes=clientes)
 
 # Página de cadastro
-@app.route('/cadastro')
+@app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
+    if request.method == 'POST':
+        nome = request.form['nome']
+        email = request.form['email']
+        telefone = request.form['telefone']
+
+        conn = sqlite3.connect('clientes.db')
+        c = conn.cursor()
+        c.execute("INSERT INTO clientes (nome, email, telefone) VALUES (?, ?, ?)", (nome, email, telefone))
+        conn.commit()
+        conn.close()
+
+        return redirect('/')
     return render_template('cadastro.html')
 
-# (demais rotas: cadastrar, listar_clientes...)
+if __name__ == '__main__':
+    app.run(debug=True)
