@@ -1,50 +1,42 @@
-from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy
+from flask import Flask, request, jsonify
+import psycopg2
 import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
-# Redirecionar para domínio principal
-@app.before_request
-def redirecionar_para_dominio():
-    dominio_principal = "anjosinfo.com.br"
-    if dominio_principal not in request.host:
-        return redirect(f"https://{dominio_principal}{request.path}", code=301)
+# Conexão com PostgreSQL via variável de ambiente
+conn = psycopg2.connect(os.getenv("DATABASE_URL"), sslmode='require')
+cursor = conn.cursor()
 
-# Config banco
-uri = os.getenv("DATABASE_URL")
-if uri and uri.startswith("postgres://"):
-    uri = uri.replace("postgres://", "postgresql://", 1)
-app.config["SQLALCHEMY_DATABASE_URI"] = uri or "sqlite:///clientes.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-db = SQLAlchemy(app)
-
-# Modelo de tabela
-class Cliente(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(100), nullable=False)
-    email = db.Column(db.String(120), nullable=False)
-    telefone = db.Column(db.String(20), nullable=False)
-
-@app.route("/", methods=["GET", "POST"])
-def index():
-    if request.method == "POST":
-        cliente = Cliente(
-            nome=request.form["nome"],
-            email=request.form["email"],
-            telefone=request.form["telefone"]
+@app.route('/cadastrar-cliente', methods=['POST'])
+def cadastrar_cliente():
+    data = request.get_json()
+    nome = data.get('nome')
+    email = data.get('email')
+    telefone = data.get('telefone')
+    try:
+        cursor.execute(
+            "INSERT INTO clientes (nome, email, telefone) VALUES (%s,%s,%s) RETURNING id, nome, email, telefone, data_cadastro",
+            (nome,email,telefone)
         )
-        db.session.add(cliente)
-        db.session.commit()
-        return redirect("/clientes")
-    return render_template("index.html")
+        cliente = cursor.fetchone()
+        conn.commit()
+        return jsonify({"cliente":{
+            "id":cliente[0],
+            "nome":cliente[1],
+            "email":cliente[2],
+            "telefone":cliente[3],
+            "data_cadastro":cliente[4].isoformat()
+        }}), 201
+    except Exception as e:
+        conn.rollback()
+        return jsonify({"error":str(e)}),500
 
-@app.route("/clientes")
-def clientes():
-    todos = Cliente.query.all()
-    return render_template("clientes.html", clientes=todos)
+@app.route('/')
+def index():
+    return "API rodando!"
 
-if __name__ == "__main__":
-    with app.app_context():
-        db.create_all()
-    app.run(debug=True)
+if __name__=='__main__':
+    app.run(host='0.0.0.0', port=int(os.environ.get('PORT',5000)))
