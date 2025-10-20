@@ -6,9 +6,21 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app)
 
-# Conexão com PostgreSQL via variável de ambiente
+# Conexão com PostgreSQL usando variável de ambiente DATABASE_URL
 conn = psycopg2.connect(os.getenv("DATABASE_URL"), sslmode='require')
 cursor = conn.cursor()
+
+# Criação da tabela clientes caso não exista
+cursor.execute("""
+CREATE TABLE IF NOT EXISTS clientes (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    telefone VARCHAR(50),
+    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+""")
+conn.commit()
 
 @app.route('/cadastrar-cliente', methods=['POST'])
 def cadastrar_cliente():
