@@ -1,51 +1,50 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
 
-# 🔹 Substitua pela URL do PostgreSQL fornecida pelo Render
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://clientes_db_t9i1_user:74EgSpCFxpXBtjufFcrhG2LKYfgEv6it@dpg-d3qktql6ubrc7381v990-a/clientes_db_t9i1'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+# Redirecionar para domínio principal
+@app.before_request
+def redirecionar_para_dominio():
+    dominio_principal = "anjosinfo.com.br"
+    if dominio_principal not in request.host:
+        return redirect(f"https://{dominio_principal}{request.path}", code=301)
 
+# Config banco
+uri = os.getenv("DATABASE_URL")
+if uri and uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+app.config["SQLALCHEMY_DATABASE_URI"] = uri or "sqlite:///clientes.db"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
-# 🔹 Modelo de cliente
+# Modelo de tabela
 class Cliente(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nome = db.Column(db.String(100), nullable=False)
-    telefone = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(120), nullable=False)
+    telefone = db.Column(db.String(20), nullable=False)
 
-# 🔹 Cria as tabelas automaticamente (apenas na primeira vez)
-with app.app_context():
-    db.create_all()
-
-# 🔹 Rotas
-@app.route('/')
+@app.route("/", methods=["GET", "POST"])
 def index():
-    clientes = Cliente.query.all()
-    return render_template('lista_clientes.html', clientes=clientes)
-
-@app.route('/cadastro', methods=['GET', 'POST'])
-def cadastro():
-    if request.method == 'POST':
-        nome = request.form['nome']
-        telefone = request.form['telefone']
-        email = request.form['email']
-        novo_cliente = Cliente(nome=nome, telefone=telefone, email=email)
-        db.session.add(novo_cliente)
+    if request.method == "POST":
+        cliente = Cliente(
+            nome=request.form["nome"],
+            email=request.form["email"],
+            telefone=request.form["telefone"]
+        )
+        db.session.add(cliente)
         db.session.commit()
-        return redirect(url_for('index'))
-    return render_template('cadastro.html')
+        return redirect("/clientes")
+    return render_template("index.html")
 
-@app.route('/excluir/<int:id>')
-def excluir(id):
-    cliente = Cliente.query.get_or_404(id)
-    db.session.delete(cliente)
-    db.session.commit()
-    return redirect(url_for('index'))
+@app.route("/clientes")
+def clientes():
+    todos = Cliente.query.all()
+    return render_template("clientes.html", clientes=todos)
 
-# 🔹 Executar app
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get("PORT", 5000)), debug=True)
+if __name__ == "__main__":
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)
