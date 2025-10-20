@@ -1,56 +1,64 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
-import os
+from flask import Flask, render_template, request, jsonify
+import sqlite3
 
 app = Flask(__name__)
-CORS(app)
 
-# Configuração do banco PostgreSQL (Render usa DATABASE_URL)
-app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
-app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+# Criação automática da tabela
+def criar_tabela():
+    with sqlite3.connect("clientes.db") as con:
+        con.execute("""
+            CREATE TABLE IF NOT EXISTS clientes (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                nome TEXT NOT NULL,
+                email TEXT NOT NULL,
+                telefone TEXT,
+                endereco TEXT
+            )
+        """)
+criar_tabela()
 
-db = SQLAlchemy(app)
+# --- ROTAS DE PÁGINAS ---
+@app.route('/')
+def home():
+    return render_template('index.html')
 
-# Modelo da tabela clientes
-class Cliente(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    nome = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=False)
-    telefone = db.Column(db.String(50))
-    data_cadastro = db.Column(db.DateTime, server_default=db.func.now())
+@app.route('/cadastro')
+def cadastro():
+    return render_template('cadastro.html')
 
-# Cria as tabelas automaticamente se não existirem
-with app.app_context():
-    db.create_all()
+@app.route('/clientes')
+def clientes():
+    return render_template('clientes.html')
 
-@app.route("/cadastrar-cliente", methods=["POST"])
-def cadastrar_cliente():
-    data = request.get_json()
-    try:
-        cliente = Cliente(
-            nome=data["nome"],
-            email=data["email"],
-            telefone=data.get("telefone")
-        )
-        db.session.add(cliente)
-        db.session.commit()
-        return jsonify({
-            "cliente": {
-                "id": cliente.id,
-                "nome": cliente.nome,
-                "email": cliente.email,
-                "telefone": cliente.telefone,
-                "data_cadastro": cliente.data_cadastro.isoformat() if cliente.data_cadastro else None
-            }
-        }), 201
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"error": str(e)}), 500
+# --- API DE CLIENTES ---
+@app.route('/api/clientes', methods=['POST'])
+def salvar_cliente():
+    dados = request.get_json()
+    with sqlite3.connect("clientes.db") as con:
+        cur = con.cursor()
+        cur.execute("""
+            INSERT INTO clientes (nome, email, telefone, endereco)
+            VALUES (?, ?, ?, ?)
+        """, (dados["nome"], dados["email"], dados["telefone"], dados["endereco"]))
+        con.commit()
+    return jsonify({"mensagem": "✅ Cliente cadastrado com sucesso!"})
 
-@app.route("/")
-def index():
-    return "API da Anjo's Info rodando com sucesso!"
+@app.route('/api/clientes', methods=['GET'])
+def listar_clientes():
+    with sqlite3.connect("clientes.db") as con:
+        con.row_factory = sqlite3.Row
+        cur = con.cursor()
+        cur.execute("SELECT * FROM clientes ORDER BY id DESC")
+        clientes = [dict(row) for row in cur.fetchall()]
+    return jsonify(clientes)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
+@app.route('/api/clientes/<int:id>', methods=['DELETE'])
+def excluir_cliente(id):
+    with sqlite3.connect("clientes.db") as con:
+        cur = con.cursor()
+        cur.execute("DELETE FROM clientes WHERE id = ?", (id,))
+        con.commit()
+    return jsonify({"mensagem": "Cliente excluído com sucesso!"})
+
+if __name__ == '__main__':
+    app.run(debug=True)
