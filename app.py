@@ -1,54 +1,56 @@
 from flask import Flask, request, jsonify
-import psycopg2
-import os
 from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+import os
 
 app = Flask(__name__)
 CORS(app)
 
-# Conexão com PostgreSQL usando variável de ambiente DATABASE_URL
-conn = psycopg2.connect(os.getenv("DATABASE_URL"), sslmode='require')
-cursor = conn.cursor()
+# Configuração do banco PostgreSQL (Render usa DATABASE_URL)
+app.config["SQLALCHEMY_DATABASE_URI"] = os.getenv("DATABASE_URL")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# Criação da tabela clientes caso não exista
-cursor.execute("""
-CREATE TABLE IF NOT EXISTS clientes (
-    id SERIAL PRIMARY KEY,
-    nome VARCHAR(255) NOT NULL,
-    email VARCHAR(255) NOT NULL,
-    telefone VARCHAR(50),
-    data_cadastro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-""")
-conn.commit()
+db = SQLAlchemy(app)
 
-@app.route('/cadastrar-cliente', methods=['POST'])
+# Modelo da tabela clientes
+class Cliente(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(255), nullable=False)
+    email = db.Column(db.String(255), nullable=False)
+    telefone = db.Column(db.String(50))
+    data_cadastro = db.Column(db.DateTime, server_default=db.func.now())
+
+# Cria as tabelas automaticamente se não existirem
+with app.app_context():
+    db.create_all()
+
+@app.route("/cadastrar-cliente", methods=["POST"])
 def cadastrar_cliente():
     data = request.get_json()
-    nome = data.get('nome')
-    email = data.get('email')
-    telefone = data.get('telefone')
     try:
-        cursor.execute(
-            "INSERT INTO clientes (nome, email, telefone) VALUES (%s,%s,%s) RETURNING id, nome, email, telefone, data_cadastro",
-            (nome,email,telefone)
+        cliente = Cliente(
+            nome=data["nome"],
+            email=data["email"],
+            telefone=data.get("telefone")
         )
-        cliente = cursor.fetchone()
-        conn.commit()
-        return jsonify({"cliente":{
-            "id":cliente[0],
-            "nome":cliente[1],
-            "email":cliente[2],
-            "telefone":cliente[3],
-            "data_cadastro":cliente[4].isoformat()
-        }}), 201
+        db.session.add(cliente)
+        db.session.commit()
+        return jsonify({
+            "cliente": {
+                "id": cliente.id,
+                "nome": cliente.nome,
+                "email": cliente.email,
+                "telefone": cliente.telefone,
+                "data_cadastro": cliente.data_cadastro.isoformat() if cliente.data_cadastro else None
+            }
+        }), 201
     except Exception as e:
-        conn.rollback()
-        return jsonify({"error":str(e)}),500
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
 
-@app.route('/')
+@app.route("/")
 def index():
-    return "API rodando!"
+    return "API da Anjo's Info rodando com sucesso!"
 
-if __name__=='__main__':
-    app.run(host='0.0.0.0', port=int(os.environ.get('PORT',5000)))
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 5000)))
