@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /* ======= Estilo base ======= */
 body {
   font-family: "Poppins", sans-serif;
@@ -19,6 +20,39 @@ header {
   top: 0;
   z-index: 1000;
   box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+=======
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #f0f0f0;
+  line-height: 1.6;
+}
+
+a {
+  color: #00d8ff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===== CABEÇALHO ===== */
+header {
+  background-color: #1e1e1e;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #00d8ff;
+>>>>>>> 15ef49a845d8e31233f8b208b9d2f499653d68f7
 }
 
 .logo-container {
@@ -30,6 +64,7 @@ header {
 .logo {
   height: 60px;
   border-radius: 10px;
+<<<<<<< HEAD
 }
 
 .site-title {
@@ -158,4 +193,140 @@ footer {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+=======
+}
+
+nav a {
+  margin-left: 20px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #00ffa0;
+}
+
+/* ===== SEÇÕES ===== */
+main {
+  padding: 30px;
+}
+
+h1, h2 {
+  color: #00d8ff;
+  margin-bottom: 15px;
+}
+
+h2 span {
+  color: #00ffa0;
+}
+
+/* ===== FORMULÁRIO ===== */
+form {
+  background-color: #1e1e1e;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 5px;
+  border: 1px solid #333;
+  background-color: #2a2a2a;
+  color: #fff;
+}
+
+input:focus {
+  outline: none;
+  border-color: #00d8ff;
+}
+
+/* ===== BOTÕES ===== */
+button {
+  padding: 10px 20px;
+  background-color: #00d8ff;
+  color: #121212;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #00ffa0;
+  color: #121212;
+}
+
+.btn-excluir {
+  background-color: #ff4d4d;
+}
+
+.btn-excluir:hover {
+  background-color: #ff1a1a;
+}
+
+/* ===== TABELAS ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #333;
+}
+
+th {
+  background-color: #1e1e1e;
+  color: #00d8ff;
+}
+
+tr:hover {
+  background-color: #2a2a2a;
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+  background-color: #1e1e1e;
+  text-align: center;
+  padding: 15px 0;
+  border-top: 2px solid #00d8ff;
+  margin-top: 30px;
+  color: #aaa;
+}
+
+/* ===== MENSAGEM ===== */
+.mensagem {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+  header, main, footer {
+    padding: 15px;
+  }
+
+  nav a {
+    display: block;
+    margin: 5px 0;
+  }
+
+  form {
+    width: 100%;
+  }
+>>>>>>> 15ef49a845d8e31233f8b208b9d2f499653d68f7
 }

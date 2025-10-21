@@ -8,7 +8,11 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
 
+<<<<<<< HEAD
   <!-- Ícones Font Awesome -->
+=======
+  <!-- Font Awesome -->
+>>>>>>> 15ef49a845d8e31233f8b208b9d2f499653d68f7
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 
@@ -27,6 +31,7 @@
   <main>
     <section class="form-section">
       <h2><i class="fa-solid fa-user-plus"></i> Cadastrar Novo Cliente</h2>
+<<<<<<< HEAD
       <form id="formCliente">
         <div class="form-group">
           <label for="nome">Nome:</label>
@@ -89,5 +94,41 @@
       }
     });
   </script>
+=======
+
+      {% if mensagem %}
+        <p class="mensagem" style="color: limegreen;">{{ mensagem }}</p>
+      {% endif %}
+
+      <form method="POST">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+
+        <div class="form-group">
+          <label for="telefone">Telefone:</label>
+          <input type="text" id="telefone" name="telefone">
+        </div>
+
+        <div class="form-group">
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco" name="endereco">
+        </div>
+
+        <button type="submit" class="btn-enviar"><i class="fa-solid fa-save"></i> Salvar Cliente</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 <strong>AnjosInfo</strong> — Todos os direitos reservados.</p>
+  </footer>
+>>>>>>> 15ef49a845d8e31233f8b208b9d2f499653d68f7
 </body>
 </html>

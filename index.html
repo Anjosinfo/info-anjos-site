@@ -1,9 +1,10 @@
 <!DOCTYPE html> 
 <html lang="pt-BR"> 
-  <head> <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width,initial-scale=1" /> 
-     <title>AnjosInfo - Suporte Ágil e Eficiente</title> 
-     <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
+  <head> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" /> 
+    <title>AnjosInfo - Suporte Ágil e Eficiente</title> 
+    <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
 
 <style>
 /* ===== RESET ===== */
@@ -48,11 +49,11 @@ nav ul { display: flex; gap: 24px; list-style: none; align-items: center; }
 nav a { color: var(--muted); font-weight: 600; padding: 8px 6px; border-radius: 8px; transition: color .18s; }
 nav a:hover { color: var(--accent); }
 .nav-actions { display: flex; align-items: center; gap: 12px; }
-.btn-remote {
+.btn-remote, .btn-local {
   background: var(--primary); color: #fff; padding: 10px 14px; border-radius: 999px;
   font-weight: 700; box-shadow: 0 8px 22px rgba(0,86,210,0.18);
 }
-.btn-remote:hover { background: var(--accent); }
+.btn-remote:hover, .btn-local:hover { background: var(--accent); }
 
 /* ===== HERO ===== */
 main { max-width: 1180px; margin: 120px auto 40px; padding: 0 18px; }
@@ -113,7 +114,7 @@ ul.service-list li:hover { color: #fff; border-left-color: var(--accent); backgr
 .carousel-btn.right { right: 0; }
 
 /* ===== CONTATO ===== */
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
 iframe.map { width: 100%; height: 320px; border: 0; border-radius: 10px; }
 
 /* ===== FOOTER ===== */
@@ -134,6 +135,7 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
 <header>
   <div class="nav-inner">
     <div class="logo"><a href="#top"><img src="logo.jpeg" alt="Logo AnjosInfo"></a></div>
+<<<<<<< HEAD
   <nav id="nav" aria-label="Menu principal">
   <ul id="mainMenu">
     <li><a href="#sobre">Sobre Nós</a></li>
@@ -146,9 +148,24 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
 
   </ul>
 </nav>
+=======
+    <nav id="nav" aria-label="Menu principal">
+      <ul id="mainMenu">
+        <li><a href="#sobre">Sobre Nós</a></li>
+        <li><a href="#atuacao">Atuação</a></li>
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#suporte-remoto">Suporte Remoto</a></li>
+        <li><a href="#contato">Contato</a></li>
+      </ul>
+    </nav>
+>>>>>>> 15ef49a845d8e31233f8b208b9d2f499653d68f7
 
     <div class="nav-actions">
+      <!-- Botão de Suporte Remoto -->
       <a class="btn-remote" href="#suporte-remoto" title="Suporte Remoto" rel="noopener">🎧 Suporte Remoto</a>
+
+      <!-- Botão para abrir cadastro local -->
+      <a class="btn-local" href="http://127.0.0.1:5000/clientes" target="_blank" title="Cadastro de Clientes">📋 Cadastro de Clientes</a>
     </div>
   </div>
 </header>
@@ -159,9 +176,8 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
     <div class="hero-left">
       <div class="card">
         <h1>Suporte Ágil e Eficiente para Você</h1>
-        <p class="lead">O <strong>AnjosInfo</strong> é quem garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
+        <p class="lead">O <strong>AnjosInfo</strong> garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
         <p>A escolha do nome <strong>"Anjo"</strong> contribui significativamente para que o cliente estabeleça suas conexões e as melhores impressões possíveis da instituição, a partir do modo que foi acolhido. Esperamos caminhar junto no propósito de garantir alta performance, proteger dados e transformar a experiência digital, possibilitando aos nossos clientes o melhor suporte em tecnologia e a melhor experiência.</p>
-        <div class="actions"><a class="btn-primary" href="#contato">Fale Conosco</a></div>
       </div>
     </div>
   </section>
@@ -274,9 +290,9 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
         <p>⏰ Sábado 09h–18h</p>
         <p>⏰ Domingo 09h–13h</p>
         <p style="color:var(--muted)">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">
-  (31) 3103-9546
-</p>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">
+          (31) 3103-9546
+        </p>
         <p>✉️ anjosinfo2025@gmail.com</p>
       </div>
       <div class="card" style="padding:10px">
