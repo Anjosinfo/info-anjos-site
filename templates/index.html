@@ -1,22 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AnjosInfo - Início</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnjosInfo - Início</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <h1>AnjosInfo</h1>
-    <nav>
-      <a href="{{ url_for('index') }}">Início</a> |
-      <a href="{{ url_for('cadastro') }}">Cadastrar Cliente</a> |
-      <a href="{{ url_for('clientes') }}">Lista de Clientes</a>
-    </nav>
-  </header>
-  <main>
-    <h2>Bem-vindo ao sistema de cadastro de clientes!</h2>
-  </main>
+    <div class="container">
+        <header>
+            <nav>
+                <div class="logo">
+                    <img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo AnjosInfo">
+                    <h1>AnjosInfo</h1>
+                </div>
+                <ul>
+                    <li><a href="/" class="active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="/clientes"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="/cadastro"><i class="fas fa-user-plus"></i> Cadastro</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <h2><i class="fas fa-star"></i> Bem-vindo à AnjosInfo</h2>
+            
+            <div class="card-container">
+                <a href="/cadastro" class="card">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Cadastro</h3>
+                    <p>Cadastre um novo cliente</p>
+                </a>
+                
+                <a href="/clientes" class="card">
+                    <i class="fas fa-users"></i>
+                    <h3>Clientes</h3>
+                    <p>Gerencie seus clientes</p>
+                </a>
+                
+                <a href="/clientes/lista" class="card">
+                    <i class="fas fa-list"></i>
+                    <h3>Listagem</h3>
+                    <p>Veja todos os clientes</p>
+                </a>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 AnjosInfo. Todos os direitos reservados.</p>
+        </footer>
+    </div>
 </body>
 </html>
