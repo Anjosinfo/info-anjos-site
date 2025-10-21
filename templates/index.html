@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnjosInfo - Início</title>
+
+  <!-- Estilo -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo" class="logo">
+      <h1 class="site-title">AnjosInfo</h1>
+    </div>
+    <nav>
+     <nav>
+  <a href="/clientes"><i class="fa-solid fa-list"></i> Clientes</a>
+</nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h2>Bem-vindo(a) à <span>AnjosInfo</span>!</h2>
+      <p>Suporte técnico rápido e confiável — cadastre e gerencie seus clientes com facilidade.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 <strong>AnjosInfo</strong> — Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>

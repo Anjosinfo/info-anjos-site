@@ -3,125 +3,91 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastro de Clientes - AnjosInfo</title>
-  <style>
-    body {
-      font-family: "Poppins", Arial, sans-serif;
-      background: #0b0c10;
-      color: #fff;
-      margin: 0;
-      padding: 40px;
-      text-align: center;
-    }
-    h1 { color: #00aaff; margin-bottom: 24px; }
-    form {
-      background: #111319;
-      padding: 24px;
-      border-radius: 12px;
-      max-width: 400px;
-      margin: 0 auto;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.4);
-    }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 8px 0;
-      border-radius: 6px;
-      border: none;
-      outline: none;
-    }
-    button {
-      background: #0056D2;
-      color: #fff;
-      border: none;
-      padding: 10px 16px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      margin-top: 12px;
-    }
-    button:hover { background: #00aaff; }
-    table {
-      width: 90%;
-      margin: 30px auto;
-      border-collapse: collapse;
-      background: #111319;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      color: #ddd;
-    }
-    th { background: #0056D2; color: #fff; }
-  </style>
+  <title>Cadastrar Cliente - AnjosInfo</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
+
 <body>
-  <h1>Cadastro de Clientes</h1>
+  <header>
+    <div class="logo-container">
+      <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo" class="logo">
+      <h1 class="site-title">AnjosInfo</h1>
+    </div>
+    <nav>
+      <a href="/"><i class="fa-solid fa-house"></i> Início</a>
+      <a href="/clientes"><i class="fa-solid fa-list"></i> Clientes</a>
+    </nav>
+  </header>
 
-  <form id="clienteForm">
-    <input type="text" id="nome" placeholder="Nome" required>
-    <input type="email" id="email" placeholder="Email" required>
-    <input type="text" id="telefone" placeholder="Telefone">
-    <input type="text" id="endereco" placeholder="Endereço">
-    <button type="submit">Salvar Cliente</button>
-  </form>
+  <main>
+    <section class="form-section">
+      <h2><i class="fa-solid fa-user-plus"></i> Cadastrar Novo Cliente</h2>
+      <form id="formCliente">
+        <div class="form-group">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required>
+        </div>
 
-  <p id="mensagem" style="margin-top:15px;"></p>
+        <div class="form-group">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required>
+        </div>
 
-  <h2 style="margin-top:40px; color:#00aaff;">Lista de Clientes</h2>
-  <table id="tabelaClientes">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nome</th>
-        <th>Email</th>
-        <th>Telefone</th>
-        <th>Endereço</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+        <div class="form-group">
+          <label for="telefone">Telefone:</label>
+          <input type="text" id="telefone" name="telefone">
+        </div>
+
+        <div class="form-group">
+          <label for="endereco">Endereço:</label>
+          <input type="text" id="endereco" name="endereco">
+        </div>
+
+        <button type="submit" class="btn-enviar"><i class="fa-solid fa-save"></i> Salvar Cliente</button>
+      </form>
+
+      <p id="mensagem" class="mensagem"></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 <strong>AnjosInfo</strong> — Todos os direitos reservados.</p>
+  </footer>
 
   <script>
-    async function carregarClientes() {
-      const resposta = await fetch("/api/clientes");
-      const clientes = await resposta.json();
-      const tbody = document.querySelector("#tabelaClientes tbody");
-      tbody.innerHTML = "";
-      clientes.forEach(c => {
-        tbody.innerHTML += `
-          <tr>
-            <td>${c.id}</td>
-            <td>${c.nome}</td>
-            <td>${c.email}</td>
-            <td>${c.telefone || ""}</td>
-            <td>${c.endereco || ""}</td>
-          </tr>`;
-      });
-    }
+    // Função de envio do formulário
+    document.getElementById("formCliente").addEventListener("submit", async function(event) {
+      event.preventDefault();
 
-    document.getElementById("clienteForm").addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const dados = {
+      const cliente = {
         nome: document.getElementById("nome").value,
         email: document.getElementById("email").value,
         telefone: document.getElementById("telefone").value,
         endereco: document.getElementById("endereco").value
       };
-      const resposta = await fetch("/api/clientes", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(dados)
-      });
-      const json = await resposta.json();
-      document.getElementById("mensagem").textContent = json.mensagem;
-      e.target.reset();
-      carregarClientes();
-    });
 
-    carregarClientes();
+      try {
+        const response = await fetch("/api/clientes", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(cliente)
+        });
+
+        const data = await response.json();
+        document.getElementById("mensagem").textContent = data.mensagem;
+        document.getElementById("mensagem").style.color = "limegreen";
+
+        document.getElementById("formCliente").reset();
+      } catch (error) {
+        document.getElementById("mensagem").textContent = "Erro ao cadastrar cliente.";
+        document.getElementById("mensagem").style.color = "red";
+      }
+    });
   </script>
 </body>
 </html>

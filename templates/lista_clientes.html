@@ -5,76 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Clientes Cadastrados - AnjosInfo</title>
   <style>
-    body {
-      font-family: Poppins, Arial;
-      background: #0b0c10;
-      color: #fff;
-      margin: 0;
-      padding: 40px;
-      text-align: center;
-    }
-    header {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 30px;
-    }
-    header img {
-      height: 80px;
-      filter: drop-shadow(0 0 10px rgba(0,170,255,0.3));
-    }
-    h1 {
-      color: #00aaff;
-      margin-bottom: 20px;
-    }
-    table {
-      width: 90%;
-      margin: 0 auto;
-      border-collapse: collapse;
-      background: #111319;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-    th, td {
-      padding: 12px;
-      border-bottom: 1px solid #222;
-    }
-    th {
-      background: #0056D2;
-    }
-    tr:hover {
-      background: rgba(0,170,255,0.1);
-    }
-    button {
-      background: #ff4444;
-      border: none;
-      padding: 6px 12px;
-      color: #fff;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #ff6666;
-    }
-    a.btn {
-      display: inline-block;
-      margin-top: 25px;
-      background: #00aaff;
-      color: #fff;
-      padding: 10px 14px;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-    a.btn:hover {
-      background: #0088cc;
-    }
+    body { font-family: Poppins, Arial; background: #0b0c10; color: #fff; text-align: center; padding: 40px; }
+    h1 { color: #00aaff; margin-bottom: 20px; }
+    table { width: 90%; margin: 0 auto; border-collapse: collapse; background: #111319; border-radius: 10px; overflow: hidden; }
+    th, td { padding: 12px; border-bottom: 1px solid #222; }
+    th { background: #0056D2; }
+    tr:hover { background: rgba(0,170,255,0.1); }
+    button { background: #ff4444; border: none; padding: 6px 12px; color: #fff; border-radius: 6px; cursor: pointer; }
+    button:hover { background: #ff6666; }
+    a.btn { display: inline-block; margin-top: 25px; background: #00aaff; color: #fff; padding: 10px 14px; border-radius: 8px; text-decoration: none; }
   </style>
 </head>
 <body>
-  <header>
-    <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo">
-  </header>
-
   <h1>Clientes Cadastrados</h1>
 
   <table id="tabelaClientes">
@@ -91,11 +33,12 @@
   </table>
 
   <a href="/clientes" class="btn">Cadastrar Novo Cliente</a>
+  <a href="/" class="btn">Voltar ao Site</a>
 
   <script>
     async function carregarClientes() {
-      const resposta = await fetch("/api/clientes");
-      const clientes = await resposta.json();
+      const resp = await fetch("/api/clientes");
+      const clientes = await resp.json();
       const tbody = document.querySelector("#tabelaClientes tbody");
       tbody.innerHTML = "";
       clientes.forEach(c => {
@@ -105,19 +48,17 @@
           <td>${c.email}</td>
           <td>${c.telefone || ""}</td>
           <td>${c.endereco || ""}</td>
-          <td><button onclick="excluirCliente(${c.id})">Excluir</button></td>
+          <td><button onclick="excluir(${c.id})">Excluir</button></td>
         `;
         tbody.appendChild(tr);
       });
     }
-
-    async function excluirCliente(id) {
+    async function excluir(id) {
       if (confirm("Deseja excluir este cliente?")) {
         await fetch(`/api/clientes/${id}`, { method: "DELETE" });
         carregarClientes();
       }
     }
-
     carregarClientes();
   </script>
 </body>
