@@ -3,132 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cadastrar Cliente - AnjosInfo</title>
-
+  <title>Cadastrar Cliente</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-
-<<<<<<< HEAD
-  <!-- Ícones Font Awesome -->
-=======
-  <!-- Font Awesome -->
->>>>>>> 15ef49a845d8e31233f8b208b9d2f499653d68f7
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
-
 <body>
-  <header>
-    <div class="logo-container">
-      <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo" class="logo">
-      <h1 class="site-title">AnjosInfo</h1>
-    </div>
-    <nav>
-      <a href="/"><i class="fa-solid fa-house"></i> Início</a>
-      <a href="/clientes"><i class="fa-solid fa-list"></i> Clientes</a>
-    </nav>
-  </header>
+  <h1>Cadastrar Novo Cliente</h1>
+  <form method="POST">
+    <label>Nome:</label>
+    <input type="text" name="nome" required>
 
-  <main>
-    <section class="form-section">
-      <h2><i class="fa-solid fa-user-plus"></i> Cadastrar Novo Cliente</h2>
-<<<<<<< HEAD
-      <form id="formCliente">
-        <div class="form-group">
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required>
-        </div>
+    <label>E-mail:</label>
+    <input type="email" name="email" required>
 
-        <div class="form-group">
-          <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
+    <label>Telefone:</label>
+    <input type="text" name="telefone">
 
-        <div class="form-group">
-          <label for="telefone">Telefone:</label>
-          <input type="text" id="telefone" name="telefone">
-        </div>
+    <label>Endereço:</label>
+    <input type="text" name="endereco">
 
-        <div class="form-group">
-          <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" name="endereco">
-        </div>
-
-        <button type="submit" class="btn-enviar"><i class="fa-solid fa-save"></i> Salvar Cliente</button>
-      </form>
-
-      <p id="mensagem" class="mensagem"></p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 <strong>AnjosInfo</strong> — Todos os direitos reservados.</p>
-  </footer>
-
-  <script>
-    // Função de envio do formulário
-    document.getElementById("formCliente").addEventListener("submit", async function(event) {
-      event.preventDefault();
-
-      const cliente = {
-        nome: document.getElementById("nome").value,
-        email: document.getElementById("email").value,
-        telefone: document.getElementById("telefone").value,
-        endereco: document.getElementById("endereco").value
-      };
-
-      try {
-        const response = await fetch("/api/clientes", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(cliente)
-        });
-
-        const data = await response.json();
-        document.getElementById("mensagem").textContent = data.mensagem;
-        document.getElementById("mensagem").style.color = "limegreen";
-
-        document.getElementById("formCliente").reset();
-      } catch (error) {
-        document.getElementById("mensagem").textContent = "Erro ao cadastrar cliente.";
-        document.getElementById("mensagem").style.color = "red";
-      }
-    });
-  </script>
-=======
-
-      {% if mensagem %}
-        <p class="mensagem" style="color: limegreen;">{{ mensagem }}</p>
-      {% endif %}
-
-      <form method="POST">
-        <div class="form-group">
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required>
-        </div>
-
-        <div class="form-group">
-          <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-
-        <div class="form-group">
-          <label for="telefone">Telefone:</label>
-          <input type="text" id="telefone" name="telefone">
-        </div>
-
-        <div class="form-group">
-          <label for="endereco">Endereço:</label>
-          <input type="text" id="endereco" name="endereco">
-        </div>
-
-        <button type="submit" class="btn-enviar"><i class="fa-solid fa-save"></i> Salvar Cliente</button>
-      </form>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 <strong>AnjosInfo</strong> — Todos os direitos reservados.</p>
-  </footer>
->>>>>>> 15ef49a845d8e31233f8b208b9d2f499653d68f7
+    <button type="submit">Salvar</button>
+  </form>
+  <br>
+  <a href="{{ url_for('clientes') }}">Ver Clientes</a>
 </body>
 </html>

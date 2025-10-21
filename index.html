@@ -137,18 +137,6 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
     <div class="logo"><a href="#top"><img src="logo.jpeg" alt="Logo AnjosInfo"></a></div>
 <<<<<<< HEAD
   <nav id="nav" aria-label="Menu principal">
-  <ul id="mainMenu">
-    <li><a href="#sobre">Sobre Nós</a></li>
-    <li><a href="#atuacao">Atuação</a></li>
-    <li><a href="#servicos">Serviços</a></li>
-    <li><a href="#suporte-remoto">Suporte Remoto</a></li>
-    <li><a href="#contato">Contato</a></li>
-    <li><a href="#contato">Contato</a></li>
-    <li><a href="/clientes">Clientes</a></li>
-
-  </ul>
-</nav>
-=======
     <nav id="nav" aria-label="Menu principal">
       <ul id="mainMenu">
         <li><a href="#sobre">Sobre Nós</a></li>
@@ -156,16 +144,13 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#suporte-remoto">Suporte Remoto</a></li>
         <li><a href="#contato">Contato</a></li>
+        <li><a href="/clientes">Clientes</a></li>
       </ul>
     </nav>
->>>>>>> 15ef49a845d8e31233f8b208b9d2f499653d68f7
-
-    <div class="nav-actions">
-      <!-- Botão de Suporte Remoto -->
-      <a class="btn-remote" href="#suporte-remoto" title="Suporte Remoto" rel="noopener">🎧 Suporte Remoto</a>
 
       <!-- Botão para abrir cadastro local -->
-      <a class="btn-local" href="http://127.0.0.1:5000/clientes" target="_blank" title="Cadastro de Clientes">📋 Cadastro de Clientes</a>
+    <a class="btn-local" href="{{ url_for('cadastro_page') }}" title="Cadastrar Novo Cliente">📋 Cadastrar Cliente</a>
+
     </div>
   </div>
 </header>

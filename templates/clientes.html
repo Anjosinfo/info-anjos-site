@@ -3,90 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lista de Clientes - AnjosInfo</title>
-
+  <title>Clientes Cadastrados</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-  <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="logo-container">
-      <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo" class="logo">
-      <h1 class="site-title">AnjosInfo</h1>
-    </div>
-    <nav>
-      <a href="/"><i class="fa-solid fa-house"></i> Início</a>
-      <a href="/cadastro"><i class="fa-solid fa-user-plus"></i> Cadastro</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="table-section">
-      <h2><i class="fa-solid fa-list"></i> Lista de Clientes</h2>
-
-      {% if clientes %}
-        <table>
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Nome</th>
-              <th>E-mail</th>
-              <th>Telefone</th>
-              <th>Endereço</th>
-              <th>Ações</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for c in clientes %}
-            <tr id="cliente-{{ c.id }}">
-              <td>{{ c.id }}</td>
-              <td>{{ c.nome }}</td>
-              <td>{{ c.email }}</td>
-              <td>{{ c.telefone }}</td>
-              <td>{{ c.endereco }}</td>
-              <td>
-                <button onclick="excluirCliente({{ c.id }})" class="btn-excluir">
-                  <i class="fa-solid fa-trash"></i> Excluir
-                </button>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      {% else %}
-        <p>Nenhum cliente cadastrado ainda.</p>
-      {% endif %}
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 <strong>AnjosInfo</strong> — Todos os direitos reservados.</p>
-  </footer>
-
-  <script>
-    async function excluirCliente(id) {
-      if (!confirm("Deseja realmente excluir este cliente?")) return;
-
-      try {
-        const response = await fetch(`/api/clientes/${id}`, {
-          method: "DELETE"
-        });
-        const data = await response.json();
-        if (response.ok) {
-          // Remove linha da tabela
-          const row = document.getElementById(`cliente-${id}`);
-          row.remove();
-          alert(data.mensagem);
-        } else {
-          alert(data.erro || "Erro ao excluir cliente.");
-        }
-      } catch (error) {
-        alert("Erro ao excluir cliente.");
-      }
-    }
-  </script>
+  <h1>Lista de Clientes</h1>
+  {% if clientes %}
+    <ul>
+      {% for c in clientes %}
+        <li><strong>{{ c.nome }}</strong> - {{ c.email }} - {{ c.telefone }} - {{ c.endereco }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Nenhum cliente cadastrado ainda.</p>
+  {% endif %}
+  <br>
+  <a href="{{ url_for('cadastro') }}">Cadastrar Novo</a>
 </body>
 </html>

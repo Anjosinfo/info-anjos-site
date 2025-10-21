@@ -1,64 +1,38 @@
-const apiUrl = "/api/clientes";
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("formCadastro");
+  if (!form) return; // só roda se o formulário existir
 
-async function carregarClientes() {
-  const res = await fetch(apiUrl);
-  const dados = await res.json();
-  const tabela = document.querySelector("#tabelaClientes tbody");
-  tabela.innerHTML = "";
-  dados.forEach(c => {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${c.id}</td>
-      <td>${c.nome}</td>
-      <td>${c.email}</td>
-      <td>${c.telefone || ""}</td>
-      <td>${c.endereco || ""}</td>
-      <td>
-        <button onclick="editar(${c.id}, '${c.nome}', '${c.email}', '${c.telefone || ""}', '${c.endereco || ""}')">Editar</button>
-        <button onclick="deletar(${c.id})">Excluir</button>
-      </td>`;
-    tabela.appendChild(tr);
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById("nome").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const telefone = document.getElementById("telefone").value.trim();
+    const endereco = document.getElementById("endereco") ? document.getElementById("endereco").value.trim() : "";
+
+    if (!nome || !email) {
+      alert("Por favor, preencha o nome e o e-mail!");
+      return;
+    }
+
+    try {
+      const resposta = await fetch("/api/clientes", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nome, email, telefone, endereco }),
+      });
+
+      if (resposta.ok) {
+        const data = await resposta.json();
+        alert(data.mensagem || "Cliente cadastrado com sucesso!");
+        form.reset();
+      } else {
+        const erro = await resposta.json();
+        alert("Erro: " + (erro.erro || "Não foi possível cadastrar."));
+      }
+    } catch (error) {
+      console.error("Erro ao conectar com o servidor:", error);
+      alert("Erro de conexão com o servidor!");
+    }
   });
-}
-
-document.getElementById("formCliente").addEventListener("submit", async e => {
-  e.preventDefault();
-  const id = document.getElementById("idCliente").value;
-  const cliente = {
-    nome: document.getElementById("nome").value,
-    email: document.getElementById("email").value,
-    telefone: document.getElementById("telefone").value,
-    endereco: document.getElementById("endereco").value
-  };
-
-  const method = id ? "PUT" : "POST";
-  const url = id ? `${apiUrl}/${id}` : apiUrl;
-
-  const res = await fetch(url, {
-    method,
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(cliente)
-  });
-  const data = await res.json();
-  document.getElementById("mensagem").innerText = data.mensagem;
-  document.getElementById("formCliente").reset();
-  document.getElementById("idCliente").value = "";
-  carregarClientes();
 });
-
-function editar(id, nome, email, telefone, endereco) {
-  document.getElementById("idCliente").value = id;
-  document.getElementById("nome").value = nome;
-  document.getElementById("email").value = email;
-  document.getElementById("telefone").value = telefone;
-  document.getElementById("endereco").value = endereco;
-}
-
-async function deletar(id) {
-  if (confirm("Excluir este cliente?")) {
-    await fetch(`${apiUrl}/${id}`, { method: "DELETE" });
-    carregarClientes();
-  }
-}
-
-carregarClientes();
