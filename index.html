@@ -1,20 +1,24 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>AnjosInfo - Suporte Ágil e Eficiente</title>
-<meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+  <head> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" /> 
+    <title>AnjosInfo - Suporte Ágil e Eficiente</title> 
+    <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
 
 <style>
 /* ===== RESET ===== */
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { height: 100%; }
+
+/* ===== BASE ===== */
 body {
   font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
   background: #0b0c10; color: #eef2f7; line-height: 1.5;
+  -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
 }
 a { color: inherit; text-decoration: none; }
+html { scroll-padding-top: 90px; }
 
 /* ===== VARS ===== */
 :root {
@@ -45,9 +49,11 @@ nav ul { display: flex; gap: 24px; list-style: none; align-items: center; }
 nav a { color: var(--muted); font-weight: 600; padding: 8px 6px; border-radius: 8px; transition: color .18s; }
 nav a:hover { color: var(--accent); }
 .nav-actions { display: flex; align-items: center; gap: 12px; }
-.btn-remote, .btn-cliente { background: var(--primary); color: #fff; padding: 10px 14px; border-radius: 999px;
-  font-weight: 700; box-shadow: 0 8px 22px rgba(0,86,210,0.18); }
-.btn-remote:hover, .btn-cliente:hover { background: var(--accent); }
+.btn-remote, .btn-local {
+  background: var(--primary); color: #fff; padding: 10px 14px; border-radius: 999px;
+  font-weight: 700; box-shadow: 0 8px 22px rgba(0,86,210,0.18);
+}
+.btn-remote:hover, .btn-local:hover { background: var(--accent); }
 
 /* ===== HERO ===== */
 main { max-width: 1180px; margin: 120px auto 40px; padding: 0 18px; }
@@ -108,7 +114,7 @@ ul.service-list li:hover { color: #fff; border-left-color: var(--accent); backgr
 .carousel-btn.right { right: 0; }
 
 /* ===== CONTATO ===== */
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
 iframe.map { width: 100%; height: 320px; border: 0; border-radius: 10px; }
 
 /* ===== FOOTER ===== */
@@ -119,27 +125,11 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
 .whatsapp-button img { width: 60px; height: 60px; transition: transform 0.2s; }
 .whatsapp-button img:hover { transform: scale(1.08); }
 
-/* ===== MODAL CLIENTE ===== */
-.modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.75); justify-content: center; align-items: center; z-index: 1000; }
-.modal-content { background: var(--card); padding: 24px; border-radius: 12px; max-width: 400px; width: 100%; }
-.modal-content h2 { margin-bottom: 16px; color: var(--accent); }
-.modal-content label { display: block; margin-top: 8px; color: #fff; }
-.modal-content input { width: 100%; padding: 8px; margin-top: 4px; border-radius: 6px; border: 1px solid #333; background: #1a1c22; color: #eef2f7; }
-.modal-content button { margin-top: 16px; width: 100%; cursor: pointer; background: var(--primary); color: #fff; border: none; border-radius: 8px; font-weight: bold; }
-.modal-content button:hover { background: var(--accent); }
-
-/* ===== CLIENTES LISTA ===== */
-#clientes-lista { margin-top: 20px; max-width: 800px; margin-left: auto; margin-right: auto; display:none; }
-#clientes-lista table { width: 100%; border-collapse: collapse; }
-#clientes-lista th, #clientes-lista td { padding: 8px; border: 1px solid #333; text-align: left; }
-#clientes-lista th { background: var(--primary); color: #fff; }
-
 /* ===== RESPONSIVO ===== */
 @media (max-width: 900px) { nav ul { display: none; } .menu-toggle { display: flex; } .hero-right { width: 100%; } main { margin: 100px auto 30px; } }
 @media (max-width: 480px) { .logo img { height: 48px; } .hero h1 { font-size: 1.6rem; } .section-padding { padding: 28px 0; } }
 </style>
 </head>
-
 <body>
 <!-- HEADER -->
 <header>
@@ -154,10 +144,13 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
         <li><a href="#contato">Contato</a></li>
       </ul>
     </nav>
+
     <div class="nav-actions">
-      <a class="btn-remote" href="#suporte-remoto" title="Suporte Remoto">🎧 Suporte Remoto</a>
-      <a class="btn-cliente" id="btn-cadastrar">➕ Cadastro Cliente</a>
-      <a class="btn-cliente" id="btn-lista">📋 Lista de Clientes</a>
+      <!-- Botão de Suporte Remoto -->
+      <a class="btn-remote" href="#suporte-remoto" title="Suporte Remoto" rel="noopener">🎧 Suporte Remoto</a>
+
+      <!-- Botão para abrir cadastro local -->
+      <a class="btn-local" href="http://127.0.0.1:5000/clientes" target="_blank" title="Cadastro de Clientes">📋 Cadastro de Clientes</a>
     </div>
   </div>
 </header>
@@ -168,8 +161,8 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
     <div class="hero-left">
       <div class="card">
         <h1>Suporte Ágil e Eficiente para Você</h1>
-        <p class="lead">O <strong>AnjosInfo</strong> é quem garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas.</p>
-        <p>A escolha do nome <strong>"Anjo"</strong> contribui significativamente para que o cliente estabeleça suas conexões e as melhores impressões possíveis da instituição.</p>
+        <p class="lead">O <strong>AnjosInfo</strong> garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
+        <p>A escolha do nome <strong>"Anjo"</strong> contribui significativamente para que o cliente estabeleça suas conexões e as melhores impressões possíveis da instituição, a partir do modo que foi acolhido. Esperamos caminhar junto no propósito de garantir alta performance, proteger dados e transformar a experiência digital, possibilitando aos nossos clientes o melhor suporte em tecnologia e a melhor experiência.</p>
       </div>
     </div>
   </section>
@@ -180,18 +173,18 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
     <div class="grid">
       <article class="card">
         <h3>Missão</h3>
-        <p>Garantir a tranquilidade e a continuidade digital dos nossos clientes, oferecendo suporte técnico humanizado, ágil e eficiente.</p>
+        <p>Garantir a tranquilidade e a continuidade digital dos nossos clientes, oferecendo suporte técnico humanizado, ágil e eficiente. Queremos que a tecnologia seja uma solução, e não um problema, simplificando o dia a dia e impulsionando a produtividade.</p>
       </article>
       <article class="card">
         <h3>Visão</h3>
-        <p>Ser reconhecida em Belo Horizonte como referência em suporte de informática e atendimento ao cliente.</p>
+        <p>Ser reconhecida em Belo Horizonte como referência em suporte de informática e atendimento ao cliente, sendo a primeira escolha pela confiabilidade e pela capacidade de transformar desafios técnicos em experiências positivas e duradouras.</p>
       </article>
       <article class="card">
         <h3>Valores</h3>
         <ul class="service-list">
-          <li>🤝 Suporte Ágil e Descomplicado</li>
-          <li>🧰 Soluções Abrangentes</li>
-          <li>💬 Compromisso com o Cliente</li>
+          <li>🤝 <strong>Suporte Ágil e Descomplicado:</strong> Atendimento remoto e presencial com foco na solução.</li>
+          <li>🧰 <strong>Soluções Abrangentes:</strong> Manutenção, remoção de vírus, backup, desbloqueio de senhas e mais.</li>
+          <li>💬 <strong>Compromisso com o Cliente:</strong> Atendimento empático, transparente e eficiente.</li>
         </ul>
       </article>
     </div>
@@ -200,11 +193,11 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
   <!-- ATUAÇÃO -->
   <section id="atuacao" class="section-padding" style="background:transparent">
     <h2 class="section-title">🌍 Nossa Atuação</h2>
-    <p class="lead">Atuamos em Belo Horizonte e Região Metropolitana, oferecendo suporte técnico para empresas, residências e profissionais autônomos.</p>
+    <p class="lead">Atuamos em Belo Horizonte e Região Metropolitana, oferecendo suporte técnico para empresas, residências e profissionais autônomos — com atendimento presencial ou remoto.</p>
     <div class="grid">
-      <div class="card"><div class="icon-circle">🏢</div><h3>Empresas</h3><p>Suporte técnico em computadores corporativos, instalação de softwares, backup, manutenção preventiva e corretiva.</p></div>
-      <div class="card"><div class="icon-circle">🏠</div><h3>Residências</h3><p>Suporte em computadores pessoais, notebooks, redes domésticas, configuração de dispositivos móveis e manutenção preventiva.</p></div>
-      <div class="card"><div class="icon-circle">💻</div><h3>Suporte Ágil</h3><p>Diagnóstico e resolução de problemas técnicos à distância via TeamViewer.</p></div>
+      <div class="card"><div class="icon-circle">🏢</div><h3>Empresas</h3><p>Suporte técnico em computadores e notebooks corporativos, instalação de softwares, otimização de desempenho, backup de dados, manutenção preventiva e corretiva, remoção de vírus e malwares.</p></div>
+      <div class="card"><div class="icon-circle">🏠</div><h3>Residências</h3><p>Suporte em computadores pessoais, notebooks, redes domésticas, configuração de dispositivos móveis e manutenção preventiva para garantir que tudo funcione corretamente.</p></div>
+      <div class="card"><div class="icon-circle">💻</div><h3>Suporte Ágil</h3><p>Diagnóstico e resolução de problemas técnicos à distância, sem precisar sair de casa ou do escritório. Atendimento rápido e seguro via <strong>TeamViewer</strong>.</p></div>
     </div>
   </section>
 
@@ -265,9 +258,9 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
   <!-- SUPORTE REMOTO -->
   <section id="suporte-remoto" class="section-padding">
     <h2>Suporte Remoto</h2>
-    <p class="lead">Para suporte remoto ágil e seguro, baixe e execute o TeamViewer.</p>
+    <p class="lead">Para suporte remoto ágil e seguro, baixe e execute o TeamViewer. Nossa equipe estará pronta para ajudar rapidamente.</p>
     <div style="text-align:center">
-      <a class="btn-primary" href="https://get.teamviewer.com/65699et" target="_blank">Baixar TeamViewer</a>
+      <a class="btn-primary" href="https://get.teamviewer.com/65699et" target="_blank" rel="noopener noreferrer">Baixar TeamViewer</a>
     </div>
   </section>
 
@@ -288,10 +281,9 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
         <p>✉️ anjosinfo2025@gmail.com</p>
       </div>
       <div class="card" style="padding:10px">
-        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.821482994385!2d-43.9227772!3d-19.817741799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa69710de3a6ddf%3A0x8480714f37b267d1!2sR.%20Joaquim%20Ramos%20Filho%2C%2057%20-%20Jaqueline%2C%20Belo%20Horizonte%20-%20MG%2C%2031731-360!5e0!3m2!1spt-BR!2sbr!4v1739868135133!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.821482994385!2d-43.9227772!3d-19.817741799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa69710de3a6ddf%3A0x8480714f37b267d1!2sR.%20Joaquim%20Ramos%20Filho%2C%2057%20-%20Jaqueline%2C%20Belo%20Horizonte%20-%20MG%2C%2031731-360!5e0!3m2!1spt-BR!2sbr!4v1739868135133!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Localização AnjosInfo"></iframe>
       </div>
     </div>
-    <div id="clientes-lista"></div>
   </section>
 </main>
 
@@ -301,60 +293,14 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
   </div>
 </footer>
 
-<a href="https://wa.me/553131039546" target="_blank" class="whatsapp-button">
+<a href="https://wa.me/553131039546" target="_blank" class="whatsapp-button" aria-label="Fale conosco no WhatsApp">
   <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
 </a>
-
-<!-- MODAL CLIENTE -->
-<div class="modal" id="modal-cliente">
-  <div class="modal-content">
-    <h2>Cadastrar Cliente</h2>
-    <label>Nome</label><input type="text" id="nome">
-    <label>Email</label><input type="email" id="email">
-    <label>Telefone</label><input type="text" id="telefone">
-    <label>Endereço</label><input type="text" id="endereco">
-    <button id="btn-enviar">Cadastrar</button>
-  </div>
-</div>
 
 <script>
 const servicosCarousel = document.getElementById('servicos-carousel');
 document.getElementById('servicos-left').onclick = () => servicosCarousel.scrollBy({ left: -340, behavior: 'smooth' });
 document.getElementById('servicos-right').onclick = () => servicosCarousel.scrollBy({ left: 340, behavior: 'smooth' });
-
-// Modal cliente
-const modal = document.getElementById('modal-cliente');
-document.getElementById('btn-cadastrar').onclick = () => modal.style.display = 'flex';
-document.getElementById('btn-lista').onclick = () => { fetchClientes(); };
-document.getElementById('btn-enviar').onclick = async () => {
-  const data = {
-    nome: document.getElementById('nome').value,
-    email: document.getElementById('email').value,
-    telefone: document.getElementById('telefone').value,
-    endereco: document.getElementById('endereco').value
-  };
-  const res = await fetch('https://info-anjos-site-qzvc.onrender.com/api/clientes', {
-    method: 'POST', headers: { 'Content-Type':'application/json' }, body: JSON.stringify(data)
-  });
-  const json = await res.json();
-  alert(json.mensagem);
-  modal.style.display = 'none';
-};
-
-// Fetch clientes
-async function fetchClientes(){
-  const res = await fetch('https://info-anjos-site-qzvc.onrender.com/api/clientes');
-  const clientes = await res.json();
-  let html = '<table><tr><th>ID</th><th>Nome</th><th>Email</th><th>Telefone</th><th>Endereço</th></tr>';
-  clientes.forEach(c => html += `<tr><td>${c.id}</td><td>${c.nome}</td><td>${c.email}</td><td>${c.telefone || ''}</td><td>${c.endereco || ''}</td></tr>`);
-  html += '</table>';
-  const lista = document.getElementById('clientes-lista');
-  lista.innerHTML = html;
-  lista.style.display = 'block';
-}
-
-// Fechar modal ao clicar fora
-window.onclick = e => { if(e.target === modal) modal.style.display = 'none'; }
 </script>
 </body>
 </html>
