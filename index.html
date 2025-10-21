@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>AnjosInfo - Suporte Ágil e Eficiente</title>
-<meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
+<!DOCTYPE html> 
+<html lang="pt-BR"> 
+  <head> 
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" /> 
+    <title>AnjosInfo - Suporte Ágil e Eficiente</title> 
+    <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
 
 <style>
 /* ===== RESET ===== */
@@ -54,6 +54,11 @@ nav a:hover { color: var(--accent); }
   font-weight: 700; box-shadow: 0 8px 22px rgba(0,86,210,0.18);
 }
 .btn-remote:hover { background: var(--accent); }
+.btn-render {
+  background: var(--primary); color: #fff; padding: 8px 12px; border-radius: 8px;
+  font-weight: 600; transition: background 0.3s;
+}
+.btn-render:hover { background: var(--accent); }
 
 /* ===== HERO ===== */
 main { max-width: 1180px; margin: 120px auto 40px; padding: 0 18px; }
@@ -114,7 +119,7 @@ ul.service-list li:hover { color: #fff; border-left-color: var(--accent); backgr
 .carousel-btn.right { right: 0; }
 
 /* ===== CONTATO ===== */
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
 iframe.map { width: 100%; height: 320px; border: 0; border-radius: 10px; }
 
 /* ===== FOOTER ===== */
@@ -126,12 +131,11 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
 .whatsapp-button img:hover { transform: scale(1.08); }
 
 /* ===== RESPONSIVO ===== */
-@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } nav ul { display: none; } .menu-toggle { display: flex; } .hero-right { width: 100%; } main { margin: 100px auto 30px; } }
+@media (max-width: 900px) { nav ul { display: none; } .menu-toggle { display: flex; } .hero-right { width: 100%; } main { margin: 100px auto 30px; } }
 @media (max-width: 480px) { .logo img { height: 48px; } .hero h1 { font-size: 1.6rem; } .section-padding { padding: 28px 0; } }
 </style>
-</head>
+  </head>
 <body>
-
 <!-- HEADER -->
 <header>
   <div class="nav-inner">
@@ -146,10 +150,8 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
       </ul>
     </nav>
     <div class="nav-actions">
-      <a class="btn-remote" href="#suporte-remoto" title="Suporte Remoto" rel="noopener">🎧 Suporte Remoto</a>
-      <!-- Botões para Render -->
-      <a class="btn-remote" href="https://info-anjos-site-qzvc.onrender.com/" target="_blank">➕ Cadastrar Cliente</a>
-    
+      <a class="btn-render" href="https://info-anjos-site-qzvc.onrender.com/clientes" target="_blank">📝 Cadastro Clientes</a>
+      <a class="btn-render" href="https://info-anjos-site-qzvc.onrender.com/clientes/lista" target="_blank">📋 Lista Clientes</a>
     </div>
   </div>
 </header>
@@ -200,7 +202,7 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
     </div>
   </section>
 
-  <!-- SERVIÇOS -->
+  <!-- SERVIÇOS COM CARROSSEL -->
   <section id="servicos">
     <h2>Serviços</h2>
     <div class="carousel-container">
@@ -263,7 +265,7 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
     </div>
   </section>
 
-  <!-- CONTATO -->
+  <!-- CONTATO COM MAPA AO LADO -->
   <section id="contato" class="section-padding">
     <h2>Contato</h2>
     <div class="contact-grid">
