@@ -1,10 +1,10 @@
-<!DOCTYPE html> 
-<html lang="pt-BR"> 
-<head> 
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" /> 
-  <title>AnjosInfo - Suporte Ágil e Eficiente</title> 
-  <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>AnjosInfo - Suporte Ágil e Eficiente</title>
+<meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
 
 <style>
 /* ===== RESET ===== */
@@ -114,7 +114,7 @@ ul.service-list li:hover { color: #fff; border-left-color: var(--accent); backgr
 .carousel-btn.right { right: 0; }
 
 /* ===== CONTATO ===== */
-.contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
 iframe.map { width: 100%; height: 320px; border: 0; border-radius: 10px; }
 
 /* ===== FOOTER ===== */
@@ -126,11 +126,12 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
 .whatsapp-button img:hover { transform: scale(1.08); }
 
 /* ===== RESPONSIVO ===== */
-@media (max-width: 900px) { nav ul { display: none; } .menu-toggle { display: flex; } .hero-right { width: 100%; } main { margin: 100px auto 30px; } }
+@media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } nav ul { display: none; } .menu-toggle { display: flex; } .hero-right { width: 100%; } main { margin: 100px auto 30px; } }
 @media (max-width: 480px) { .logo img { height: 48px; } .hero h1 { font-size: 1.6rem; } .section-padding { padding: 28px 0; } }
 </style>
 </head>
 <body>
+
 <!-- HEADER -->
 <header>
   <div class="nav-inner">
@@ -142,13 +143,13 @@ footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rg
         <li><a href="#servicos">Serviços</a></li>
         <li><a href="#suporte-remoto">Suporte Remoto</a></li>
         <li><a href="#contato">Contato</a></li>
-        <li><a href="https://SEU_RENDERSITE_URL/clientes" target="_blank" rel="noopener">Clientes</a></li>
-        <li><a href="https://SEU_RENDERSITE_URL/clientes/lista" target="_blank" rel="noopener">Cadastro</a></li>
       </ul>
     </nav>
-
     <div class="nav-actions">
       <a class="btn-remote" href="#suporte-remoto" title="Suporte Remoto" rel="noopener">🎧 Suporte Remoto</a>
+      <!-- Botões para Render -->
+      <a class="btn-remote" href="https://SEU_RENDERSITE_URL/clientes/lista" target="_blank">➕ Cadastrar Cliente</a>
+      <a class="btn-remote" href="https://SEU_RENDERSITE_URL/clientes" target="_blank">📋 Lista de Clientes</a>
     </div>
   </div>
 </header>
