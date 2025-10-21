@@ -16,23 +16,19 @@
         <a href="#top"><img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo"></a>
       </div>
 
-      <!-- Menu principal -->
-      <nav id="nav" aria-label="Menu principal">
-        <ul id="mainMenu">
-          <li><a href="#sobre">Sobre Nós</a></li>
-          <li><a href="#atuacao">Atuação</a></li>
-          <li><a href="#servicos">Serviços</a></li>
-          <li><a href="#suporte-remoto">Suporte Remoto</a></li>
-          <li><a href="#contato">Contato</a></li>
-          <li><a href="/clientes">Clientes</a></li>
-          <li>
-            <a class="btn-cadastro" href="{{ url_for('cadastro_page') }}" title="Cadastrar Novo Cliente">
-              📋 Cadastrar Cliente
-            </a>
-          </li>
-        </ul>
-      </nav>
-    </div>
+      <header>
+  <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo" class="logo">
+  <nav>
+    <ul>
+      <li><a href="/">Início</a></li>
+      <li><a href="/clientes">Clientes</a></li>
+      <li><a href="http://127.0.0.1:5000/cadastro">Cadastrar Cliente</a></li>
+      <li><a href="/sobre">Sobre</a></li>
+      <li><a href="/contato">Contato</a></li>
+    </ul>
+  </nav>
+</header>
+
   </header>
 
   <main id="top">
