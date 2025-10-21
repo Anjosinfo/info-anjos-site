@@ -5,8 +5,132 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>AnjosInfo - Suporte Ágil e Eficiente</title>
   <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <style>
+    /* ===== RESET ===== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+
+    /* ===== BASE ===== */
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      background: #0b0c10;
+      color: #eef2f7;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    html { scroll-padding-top: 90px; }
+
+    /* ===== VARS ===== */
+    :root {
+      --bg: #0b0c10;
+      --card: #0f1115;
+      --accent: #00aaff;
+      --primary: #0056D2;
+      --muted: #aeb6c3;
+      --radius: 12px;
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      z-index: 1400;
+      background: linear-gradient(90deg, rgba(11,12,16,0.96), rgba(0,0,0,0.92));
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
+
+    .nav-inner {
+      max-width: 1180px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 12px 20px;
+      flex-wrap: wrap;
+    }
+
+    .logo img {
+      height: 56px;
+      display: block;
+      filter: drop-shadow(0 6px 18px rgba(0,170,255,0.15));
+      transition: transform .25s ease;
+    }
+
+    .logo img:hover { transform: scale(1.03); }
+
+    nav { flex: 1 1 auto; display: flex; justify-content: center; }
+    nav ul {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+      align-items: center;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-weight: 600;
+      padding: 8px 6px;
+      border-radius: 8px;
+      transition: color .18s;
+    }
+
+    nav a:hover { color: var(--accent); }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn-remote, .btn-local {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 14px;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 8px 22px rgba(0,86,210,0.18);
+      transition: all .2s ease;
+    }
+
+    .btn-remote:hover, .btn-local:hover {
+      background: var(--accent);
+      box-shadow: 0 8px 24px rgba(0,170,255,0.35);
+    }
+
+    /* resto do CSS igual ao seu */
+  </style>
 </head>
+
+<body>
+  <!-- ===== HEADER ===== -->
+  <header>
+    <div class="nav-inner">
+      <div class="logo">
+        <a href="#top"><img src="logo.jpeg" alt="Logo AnjosInfo"></a>
+      </div>
+
+      <nav id="nav" aria-label="Menu principal">
+        <ul id="mainMenu">
+          <li><a href="#sobre">Sobre Nós</a></li>
+          <li><a href="#atuacao">Atuação</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#suporte-remoto">Suporte Remoto</a></li>
+          <li><a href="#contato">Contato</a></li>
+          <li><a href="/clientes">Clientes</a></li>
+          <!-- 🔹 BOTÃO NOVO ADICIONADO -->
+          <li><a class="btn-local" href="http://127.0.0.1:5000/cadastro">📋 Cadastrar Cliente</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
 <body>
   <!-- HEADER -->
@@ -15,21 +139,6 @@
       <div class="logo">
         <a href="#top"><img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo"></a>
       </div>
-
-      <header>
-  <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="Logo AnjosInfo" class="logo">
-  <nav>
-    <ul>
-      <li><a href="/">Início</a></li>
-      <li><a href="/clientes">Clientes</a></li>
-      <li><a href="http://127.0.0.1:5000/cadastro">Cadastrar Cliente</a></li>
-      <li><a href="/sobre">Sobre</a></li>
-      <li><a href="/contato">Contato</a></li>
-    </ul>
-  </nav>
-</header>
-
-  </header>
 
   <main id="top">
     <!-- HERO -->
