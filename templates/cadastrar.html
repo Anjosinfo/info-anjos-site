@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block conteudo %}
+
+<!-- LOGO NO TOPO -->
+<div class="text-center mb-4 mt-3">
+  <img src="{{ url_for('static', filename='logo.jpeg') }}" alt="AnjosInfo" style="max-width: 180px;">
+</div>
+
+<!-- Título centralizado -->
+<div class="text-center mb-4">
+  <h2 class="fw-bold text-primary">➕ Cadastrar Cliente</h2>
+  <a href="{{ url_for('home') }}" class="btn btn-outline-light mt-2">🏠 Voltar ao Painel</a>
+</div>
+
+<!-- FORMULÁRIO CENTRALIZADO -->
+<div class="d-flex justify-content-center align-items-center" style="min-height: 60vh;">
+  <form method="POST" action="{{ url_for('cadastrar_cliente') }}">
+    <div class="mb-3">
+      <label for="nome" class="form-label text-white">Nome:</label>
+      <input type="text" class="form-control" id="nome" name="nome" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label text-white">Email:</label>
+      <input type="email" class="form-control" id="email" name="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="telefone" class="form-label text-white">Telefone:</label>
+      <input type="tel" class="form-control" id="telefone" name="telefone">
+    </div>
+
+    <div class="mb-3">
+      <label for="endereco" class="form-label text-white">Endereço:</label>
+      <textarea class="form-control" id="endereco" name="endereco" rows="2"></textarea>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-success btn-lg">💾 Cadastrar</button>
+    </div>
+  </form>
+</div>
+
+{% endblock %}
