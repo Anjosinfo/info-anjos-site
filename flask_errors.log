@@ -1,0 +1,26 @@
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on http://127.0.0.1:5000
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 915-299-592
+ * Detected change in 'C:\\Users\\Jessica Anjos\\Documents\\info-anjos-site\\migrar_sqlite_para_duckdb.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 915-299-592
+ * Detected change in 'C:\\Users\\Jessica Anjos\\Documents\\info-anjos-site\\migrar_sqlite_para_duckdb.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 915-299-592
+ * Detected change in 'C:\\Users\\Jessica Anjos\\Documents\\info-anjos-site\\abrir_duckdb.py', reloading
+ * Restarting with stat
+Traceback (most recent call last):
+  File "C:\Users\Jessica Anjos\Documents\info-anjos-site\app.py", line 176, in <module>
+    sincronizar_sqlite_duck()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\Jessica Anjos\Documents\info-anjos-site\app.py", line 50, in sincronizar_sqlite_duck
+    con = duckdb.connect(DUCK_PATH)
+_duckdb.IOException: IO Error: Cannot open file "c:\users\jessica anjos\documents\info-anjos-site\clientes_duck.db": O arquivo já está sendo usado por outro processo.
+
+File is already open in 
+C:\Users\Jessica Anjos\AppData\Local\Programs\Python\Python314\python.exe (PID 420)

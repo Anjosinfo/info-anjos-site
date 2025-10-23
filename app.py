@@ -1,22 +1,22 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 import sqlite3
 import os
+import duckdb
 
 app = Flask(__name__)
 app.secret_key = "anjosinfo123"
 
 DB_PATH = "clientes.db"
+DUCK_PATH = "clientes_duck.db"
 
 # ======== BANCO DE DADOS ========
 def conectar():
     return sqlite3.connect(DB_PATH, timeout=10)
 
 def criar_banco():
-    # Cria o banco se não existir
     novo_banco = not os.path.exists(DB_PATH)
     with conectar() as conexao:
         cursor = conexao.cursor()
-        # Tabela clientes
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS clientes (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -26,7 +26,6 @@ def criar_banco():
             endereco TEXT
         )
         """)
-        # Tabela usuários
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS usuarios (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -34,19 +33,39 @@ def criar_banco():
             senha TEXT NOT NULL
         )
         """)
-        # Se banco for novo ou usuário admin não existir, insere admin
         cursor.execute("SELECT * FROM usuarios WHERE usuario='admin'")
         if not cursor.fetchone():
             cursor.execute("INSERT INTO usuarios (usuario, senha) VALUES (?, ?)", ("admin", "1234"))
         conexao.commit()
         if novo_banco:
-            print("✅ Banco criado com usuário admin/1234")
+            print("✅ Banco SQLite criado com usuário admin/1234")
+
+# ======== SINCRONIZAÇÃO AUTOMÁTICA COM DUCKDB ========
+def sincronizar_sqlite_duck():
+    if not os.path.exists(DB_PATH):
+        print("⚠️ Banco SQLite não encontrado, criando...")
+        criar_banco()
+
+    print("🔗 Sincronizando SQLite → DuckDB...")
+    con = duckdb.connect(DUCK_PATH)
+    con.execute(f"ATTACH DATABASE '{DB_PATH}' AS sqlite_db (TYPE SQLITE)")
+
+    tabelas = [t[0] for t in con.execute("SHOW TABLES FROM sqlite_db").fetchall()]
+    print(f"📋 Tabelas detectadas: {tabelas}")
+
+    for tabela in tabelas:
+        if tabela == "sqlite_sequence":
+            continue
+        print(f"➡️  Copiando tabela: {tabela}")
+        con.execute(f"CREATE OR REPLACE TABLE main.{tabela} AS SELECT * FROM sqlite_db.{tabela}")
+
+    con.close()
+    print(f"✅ Sincronização concluída! Banco DuckDB atualizado: {DUCK_PATH}")
 
 # ======== PROTEÇÃO DE LOGIN ========
 @app.before_request
 def verificar_login():
     rotas_publicas = ['login', 'static']
-    # Permite acesso a login e arquivos estáticos sem sessão
     if request.endpoint not in rotas_publicas and not session.get('logado'):
         return redirect(url_for('login'))
 
@@ -64,7 +83,6 @@ def login():
             if user:
                 session["logado"] = True
                 session["usuario"] = usuario
-                # Redireciona direto para dashboard, sem mensagem de boas-vindas
                 return redirect(url_for("home"))
             else:
                 flash("❌ Usuário ou senha incorretos!", "danger")
@@ -155,4 +173,5 @@ def logout():
 # ======== EXECUÇÃO ========
 if __name__ == "__main__":
     criar_banco()
+    sincronizar_sqlite_duck()
     app.run(debug=True)
