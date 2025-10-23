@@ -1,158 +1,79 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
-import sqlite3
+from flask import Flask, render_template, request, jsonify
+from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
-app.secret_key = "anjosinfo123"
 
-DB_PATH = "clientes.db"
+# ===== CONFIGURAÇÃO DO BANCO =====
+basedir = os.path.abspath(os.path.dirname(__file__))
+app.config["SQLALCHEMY_DATABASE_URI"] = f"sqlite:///{os.path.join(basedir, 'clientes.db')}"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
-# ======== BANCO DE DADOS ========
-def conectar():
-    return sqlite3.connect(DB_PATH, timeout=10)
+db = SQLAlchemy(app)
 
-def criar_banco():
-    # Cria o banco se não existir
-    novo_banco = not os.path.exists(DB_PATH)
-    with conectar() as conexao:
-        cursor = conexao.cursor()
-        # Tabela clientes
-        cursor.execute("""
-        CREATE TABLE IF NOT EXISTS clientes (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL,
-            email TEXT UNIQUE NOT NULL,
-            telefone TEXT,
-            endereco TEXT
-        )
-        """)
-        # Tabela usuários
-        cursor.execute("""
-        CREATE TABLE IF NOT EXISTS usuarios (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            usuario TEXT UNIQUE NOT NULL,
-            senha TEXT NOT NULL
-        )
-        """)
-        # Se banco for novo ou usuário admin não existir, insere admin
-        cursor.execute("SELECT * FROM usuarios WHERE usuario='admin'")
-        if not cursor.fetchone():
-            cursor.execute("INSERT INTO usuarios (usuario, senha) VALUES (?, ?)", ("admin", "1234"))
-        conexao.commit()
-        if novo_banco:
-            print("✅ Banco criado com usuário admin/1234")
+# ===== MODELO =====
+class Cliente(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(100), nullable=False)
+    email = db.Column(db.String(120), nullable=False)
+    telefone = db.Column(db.String(20))
+    endereco = db.Column(db.String(200))
 
-# ======== PROTEÇÃO DE LOGIN ========
-@app.before_request
-def verificar_login():
-    rotas_publicas = ['login', 'static']
-    # Permite acesso a login e arquivos estáticos sem sessão
-    if request.endpoint not in rotas_publicas and not session.get('logado'):
-        return redirect(url_for('login'))
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "nome": self.nome,
+            "email": self.email,
+            "telefone": self.telefone,
+            "endereco": self.endereco,
+        }
 
-# ======== ROTAS ========
+# ===== CRIAR BANCO SE NÃO EXISTIR =====
+with app.app_context():
+    db.create_all()
 
-@app.route("/", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        usuario = request.form["usuario"].strip()
-        senha = request.form["senha"].strip()
-        with conectar() as conexao:
-            cursor = conexao.cursor()
-            cursor.execute("SELECT * FROM usuarios WHERE usuario=? AND senha=?", (usuario, senha))
-            user = cursor.fetchone()
-            if user:
-                session["logado"] = True
-                session["usuario"] = usuario
-                # Redireciona direto para dashboard, sem mensagem de boas-vindas
-                return redirect(url_for("home"))
-            else:
-                flash("❌ Usuário ou senha incorretos!", "danger")
-                return redirect(url_for("login"))
-    return render_template("login.html")
-
-@app.route("/home")
+# ===== ROTAS =====
+@app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("index.html")
 
 @app.route("/clientes")
-def listar_clientes():
-    with conectar() as conexao:
-        cursor = conexao.cursor()
-        cursor.execute("SELECT * FROM clientes")
-        clientes = cursor.fetchall()
-    return render_template("listar.html", clientes=clientes)
+def clientes():
+    return render_template("clientes.html")
 
-@app.route("/cadastrar", methods=["GET", "POST"])
-def cadastrar_cliente():
-    if request.method == "POST":
-        nome = request.form["nome"].strip()
-        email = request.form["email"].strip()
-        telefone = request.form["telefone"].strip()
-        endereco = request.form["endereco"].strip()
-        try:
-            with conectar() as conexao:
-                cursor = conexao.cursor()
-                cursor.execute("""
-                    INSERT INTO clientes (nome, email, telefone, endereco)
-                    VALUES (?, ?, ?, ?)
-                """, (nome, email, telefone, endereco))
-            flash("✅ Cliente cadastrado com sucesso!", "success")
-            return redirect(url_for("listar_clientes"))
-        except Exception as e:
-            flash(f"❌ Erro ao cadastrar cliente: {e}", "danger")
-            return redirect(url_for("cadastrar_cliente"))
-    return render_template("cadastrar.html")
+@app.route("/clientes/lista")
+def lista_clientes():
+    return render_template("lista_clientes.html")
 
-@app.route("/editar/<int:id>", methods=["GET", "POST"])
-def editar_cliente(id):
-    with conectar() as conexao:
-        cursor = conexao.cursor()
-        cursor.execute("SELECT * FROM clientes WHERE id=?", (id,))
-        cliente = cursor.fetchone()
-    if not cliente:
-        flash("❌ Cliente não encontrado!", "danger")
-        return redirect(url_for("listar_clientes"))
+# ===== API REST =====
+@app.route("/api/clientes", methods=["GET"])
+def obter_clientes():
+    clientes = Cliente.query.all()
+    return jsonify([c.to_dict() for c in clientes])
 
-    if request.method == "POST":
-        nome = request.form["nome"].strip()
-        email = request.form["email"].strip()
-        telefone = request.form["telefone"].strip()
-        endereco = request.form["endereco"].strip()
-        try:
-            with conectar() as conexao:
-                cursor = conexao.cursor()
-                cursor.execute("""
-                    UPDATE clientes
-                    SET nome=?, email=?, telefone=?, endereco=?
-                    WHERE id=?
-                """, (nome, email, telefone, endereco, id))
-            flash("✏️ Cliente atualizado com sucesso!", "info")
-            return redirect(url_for("listar_clientes"))
-        except Exception as e:
-            flash(f"❌ Erro ao atualizar cliente: {e}", "danger")
-            return redirect(url_for("editar_cliente", id=id))
+@app.route("/api/clientes", methods=["POST"])
+def adicionar_cliente():
+    data = request.get_json()
+    novo_cliente = Cliente(
+        nome=data["nome"],
+        email=data["email"],
+        telefone=data.get("telefone"),
+        endereco=data.get("endereco")
+    )
+    db.session.add(novo_cliente)
+    db.session.commit()
+    return jsonify({"mensagem": "Cliente cadastrado com sucesso!"}), 201
 
-    return render_template("editar.html", cliente=cliente)
-
-@app.route("/excluir/<int:id>")
+@app.route("/api/clientes/<int:id>", methods=["DELETE"])
 def excluir_cliente(id):
-    try:
-        with conectar() as conexao:
-            cursor = conexao.cursor()
-            cursor.execute("DELETE FROM clientes WHERE id=?", (id,))
-        flash("🗑️ Cliente excluído com sucesso!", "warning")
-    except Exception as e:
-        flash(f"❌ Erro ao excluir cliente: {e}", "danger")
-    return redirect(url_for("listar_clientes"))
+    cliente = Cliente.query.get(id)
+    if not cliente:
+        return jsonify({"erro": "Cliente não encontrado!"}), 404
 
-@app.route("/logout")
-def logout():
-    session.clear()
-    flash("✅ Você saiu da conta.", "success")
-    return redirect(url_for("login"))
+    db.session.delete(cliente)
+    db.session.commit()
+    return jsonify({"mensagem": "Cliente excluído com sucesso!"})
 
-# ======== EXECUÇÃO ========
+# ===== EXECUTAR SERVIDOR =====
 if __name__ == "__main__":
-    criar_banco()
     app.run(debug=True)

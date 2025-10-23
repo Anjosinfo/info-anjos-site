@@ -1,312 +1,243 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <link rel="icon" type="image/png" href="favicon.png">
-  <title>AnjosInfo - Suporte Ágil e Eficiente</title>
-  <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <style>
-    /* ===== RESET ===== */
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { height: 100%; }
+<title>AnjosInfo - Suporte Ágil e Eficiente</title>
+<meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
 
-    /* ===== BASE ===== */
-    body {
-      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, Arial;
-      background: #0b0c10; color: #eef2f7; line-height: 1.5;
-      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
-    }
-    a { color: inherit; text-decoration: none; }
-    html { scroll-padding-top: 90px; }
+<!-- FAVICON -->
+<link rel="icon" type="image/png" href="favicon.png">
 
-    /* ===== VARS ===== */
-    :root {
-      --bg: #0b0c10;
-      --card: #0f1115;
-      --accent: #00aaff;
-      --primary: #0056D2;
-      --muted: #aeb6c3;
-      --radius: 12px;
-    }
+<style>
+/* ===== RESET ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
 
-    /* ===== HEADER ===== */
-    header {
-      position: fixed; left: 0; right: 0; top: 0; z-index: 1400;
-      background: linear-gradient(90deg, rgba(11,12,16,0.96), rgba(0,0,0,0.92));
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-      backdrop-filter: blur(6px); box-shadow: 0 6px 20px rgba(0,0,0,0.6);
-    }
-    .nav-inner {
-      max-width: 1180px; margin: 0 auto; display: flex;
-      align-items: center; justify-content: space-between;
-      gap: 16px; padding: 12px 20px; flex-wrap: wrap;
-    }
-    .logo img { height: 56px; display: block; filter: drop-shadow(0 6px 18px rgba(0,170,255,0.15)); transition: transform .25s ease; }
-    .logo img:hover { transform: scale(1.03); }
-    nav { flex: 1 1 auto; display: flex; justify-content: center; }
-    nav ul { display: flex; gap: 24px; list-style: none; align-items: center; }
-    nav a { color: var(--muted); font-weight: 600; padding: 8px 6px; border-radius: 8px; transition: color .18s; }
-    nav a:hover { color: var(--accent); }
-    .nav-actions { display: flex; align-items: center; gap: 12px; }
-    .btn-remote {
-      background: var(--primary); color: #fff; padding: 10px 14px; border-radius: 999px;
-      font-weight: 700; box-shadow: 0 8px 22px rgba(0,86,210,0.18);
-    }
-    .btn-remote:hover { background: var(--accent); }
+/* ===== BASE ===== */
+body{
+font-family:"Poppins",system-ui,-apple-system,"Segoe UI",Roboto,Arial;
+background:#0b0c10;color:#eef2f7;line-height:1.5;
+-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale
+}
+a{color:inherit;text-decoration:none}
+html{scroll-padding-top:90px}
 
-    /* ===== HERO ===== */
-    main { max-width: 1180px; margin: 120px auto 40px; padding: 0 18px; }
-    .hero { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; justify-content: center; }
-    .hero-left { flex: 1 1 680px; display: flex; justify-content: center; }
-    .hero-left .card {
-      background: linear-gradient(180deg, rgba(0,86,210,0.08), rgba(0,0,0,0.14));
-      padding: 32px; border-radius: 14px; box-shadow: 0 12px 30px rgba(0,0,0,0.6); text-align: center;
-    }
-    .hero h1 { color: #fff; margin-bottom: 16px; font-size: 2.4rem; }
-    .hero p { color: var(--muted); margin-bottom: 14px; }
-    .actions { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 10px; }
-    .btn-primary { background: var(--primary); color: #fff; padding: 10px 14px; border-radius: 10px; font-weight: 700; min-width: 160px; text-align: center; }
-    .btn-primary:hover { background: var(--accent); }
+/* ===== VARS ===== */
+:root{
+--bg:#0b0c10;
+--card:#0f1115;
+--accent:#00aaff;
+--primary:#0056D2;
+--muted:#aeb6c3;
+--radius:12px
+}
 
-    /* ===== SECTIONS ===== */
-    .section-padding { padding: 48px 0; }
-    h2.section-title { color: var(--accent); text-align: center; margin-bottom: 18px; }
-    p.lead { color: var(--muted); text-align: center; max-width: 900px; margin: 0 auto 20px; }
+/* ===== HEADER ===== */
+header{
+position:fixed;left:0;right:0;top:0;z-index:1400;
+background:linear-gradient(90deg,rgba(11,12,16,.96),rgba(0,0,0,.92));
+border-bottom:1px solid rgba(255,255,255,.03);
+backdrop-filter:blur(6px);box-shadow:0 6px 20px rgba(0,0,0,.6)
+}
+.nav-inner{
+max-width:1180px;margin:0 auto;display:flex;align-items:center;
+justify-content:space-between;gap:16px;padding:12px 20px;flex-wrap:wrap
+}
+.logo img{height:56px;display:block;filter:drop-shadow(0 6px 18px rgba(0,170,255,.15))}
+nav{flex:1 1 auto;display:flex;justify-content:center}
+nav ul{display:flex;gap:24px;list-style:none;align-items:center}
+nav a{color:var(--muted);font-weight:600;padding:8px 6px}
+nav a:hover{color:var(--accent)}
+.nav-actions{display:flex;align-items:center;gap:12px}
+.btn-remote{
+background:var(--primary);color:#fff;padding:10px 14px;border-radius:999px;
+font-weight:700;box-shadow:0 8px 22px rgba(0,86,210,.18)
+}
+.btn-remote:hover{background:var(--accent)}
 
-    /* ===== GRID PADRONIZADO ===== */
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; align-items: stretch; justify-content: center; max-width: 1180px; margin: 0 auto; }
+/* ===== HERO ===== */
+main{max-width:1180px;margin:120px auto 40px;padding:0 18px}
+.hero{display:flex;justify-content:center}
+.hero .card{
+background:linear-gradient(180deg,rgba(0,86,210,.08),rgba(0,0,0,.14));
+padding:32px;border-radius:14px;box-shadow:0 12px 30px rgba(0,0,0,.6);
+text-align:center
+}
+.hero h1{font-size:2.4rem;margin-bottom:16px}
+.hero p{color:var(--muted);margin-bottom:14px}
+.btn-primary{
+background:var(--primary);color:#fff;padding:10px 16px;border-radius:10px;
+font-weight:700;display:inline-block
+}
+.btn-primary:hover{background:var(--accent)}
 
-    /* ===== CARD PADRONIZADO ===== */
-    .card {
-      background: radial-gradient(circle at top left, rgba(0,86,210,0.08) 0%, rgba(0,0,0,0.8) 90%);
-      padding: 28px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.05);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.7), inset 0 0 15px rgba(0,86,210,0.05);
-      transition: all .3s ease; display: flex; flex-direction: column; justify-content: flex-start;
-      min-height: 340px; position: relative; overflow: hidden; text-align: left;
-    }
-    .card:hover { transform: translateY(-6px) scale(1.02); box-shadow: 0 20px 48px rgba(0,0,0,0.8), 0 0 25px rgba(0,170,255,0.15); }
-    .card::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(0,170,255,0.15), transparent 60%); opacity: 0; transition: opacity .4s ease; }
-    .card:hover::before { opacity: 1; }
+/* ===== SEÇÕES ===== */
+.section-padding{padding:48px 0}
+.section-title{text-align:center;color:var(--accent);margin-bottom:18px}
+.lead{text-align:center;color:var(--muted);max-width:900px;margin:0 auto 20px}
 
-    .icon-circle {
-      width: 72px; height: 72px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;
-      margin: 0 auto 18px; font-size: 1.8rem; background: radial-gradient(circle at center, var(--primary) 0%, rgba(0,0,0,0.8) 90%);
-      box-shadow: 0 0 18px rgba(0,170,255,0.2); color: #fff; transition: transform .3s ease, box-shadow .3s ease;
-    }
-    .card:hover .icon-circle { transform: scale(1.1); box-shadow: 0 0 25px rgba(0,170,255,0.35); }
+/* ===== GRID ===== */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:24px;max-width:1180px;margin:0 auto
+}
 
-    /* ===== LISTA DE SERVIÇOS ===== */
-    ul.service-list { color: var(--muted); list-style: none; padding-left: 0; margin-top: 10px; }
-    ul.service-list li { margin-bottom: 10px; padding: 6px 0 6px 8px; border-left: 2px solid rgba(0,170,255,0.15); transition: all 0.2s ease; }
-    ul.service-list li:hover { color: #fff; border-left-color: var(--accent); background: rgba(0,170,255,0.05); border-radius: 6px; padding-left: 12px; }
+/* ===== CARD ===== */
+.card{
+background:radial-gradient(circle at top left,rgba(0,86,210,.08),rgba(0,0,0,.85));
+padding:28px;border-radius:var(--radius);
+border:1px solid rgba(255,255,255,.05);
+box-shadow:0 12px 32px rgba(0,0,0,.7)
+}
 
-    /* ===== CARROSSEL ===== */
-    #servicos { text-align: center; padding: 48px 0; }
-    .carousel-container { position: relative; width: 100%; overflow: hidden; padding: 0 50px; max-width: 1180px; margin: 0 auto; }
-    #servicos .grid { display: flex; flex-wrap: nowrap; gap: 24px; overflow-x: auto; scroll-behavior: smooth; scrollbar-width: none; scroll-snap-type: x mandatory; align-items: stretch; }
-    #servicos .grid::-webkit-scrollbar { display: none; }
-    #servicos .card { flex: 0 0 320px; min-height: 360px; scroll-snap-align: start; }
+/* ===== LISTA ===== */
+.service-list{list-style:none;color:var(--muted)}
+.service-list li{margin-bottom:10px;padding-left:10px;border-left:2px solid rgba(0,170,255,.2)}
+.service-list li:hover{color:#fff;border-left-color:var(--accent)}
 
-    .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,86,210,0.35); color: #fff; border: none; width: 46px; height: 46px; border-radius: 50%; cursor: pointer; font-size: 1.8rem; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; z-index: 10; }
-    .carousel-btn:hover { background: var(--accent); box-shadow: 0 0 20px rgba(0,170,255,0.45); }
-    .carousel-btn.left { left: 0; }
-    .carousel-btn.right { right: 0; }
+/* ===== CARROSSEL ===== */
+#servicos{text-align:center;padding:48px 0}
+.carousel-container{position:relative;overflow:hidden;padding:0 50px}
+#servicos .grid{
+display:flex;gap:24px;overflow-x:auto;scrollbar-width:none
+}
+#servicos .grid::-webkit-scrollbar{display:none}
+#servicos .card{flex:0 0 320px}
 
-    /* ===== CONTATO ===== */
-    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; align-items: start; max-width: 1180px; margin: 0 auto; }
-    iframe.map { width: 100%; height: 320px; border: 0; border-radius: 10px; }
+.carousel-btn{
+position:absolute;top:50%;transform:translateY(-50%);
+background:rgba(0,86,210,.4);color:#fff;border:none;
+width:46px;height:46px;border-radius:50%;font-size:1.8rem;cursor:pointer
+}
+.carousel-btn.left{left:0}
+.carousel-btn.right{right:0}
 
-    /* ===== FOOTER ===== */
-    footer { margin-top: 36px; background: linear-gradient(90deg, var(--primary), rgba(0,170,255,0.35)); text-align: center; padding: 18px; color: #fff; }
+/* ===== FOOTER ===== */
+footer{
+background:linear-gradient(90deg,var(--primary),rgba(0,170,255,.35));
+text-align:center;padding:18px;color:#fff
+}
 
-    /* ===== WHATSAPP ===== */
-    .whatsapp-button { position: fixed; bottom: 25px; right: 25px; z-index: 999; }
-    .whatsapp-button img { width: 60px; height: 60px; transition: transform 0.2s; }
-    .whatsapp-button img:hover { transform: scale(1.08); }
+/* ===== WHATSAPP ===== */
+.whatsapp-button{position:fixed;bottom:25px;right:25px}
+.whatsapp-button img{width:60px;height:60px}
 
-    /* ===== SUPORTE REMOTO ===== */
-    #suporte-remoto {
-      display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
-      min-height: 360px;
-    }
-
-    /* ===== RESPONSIVO ===== */
-    @media (max-width: 900px) { nav ul { display: none; } .menu-toggle { display: flex; } .hero-right { width: 100%; } main { margin: 100px auto 30px; } }
-    @media (max-width: 480px) { .logo img { height: 48px; } .hero h1 { font-size: 1.6rem; } .section-padding { padding: 28px 0; } }
-  </style>
+/* ===== RESPONSIVO ===== */
+@media(max-width:900px){nav ul{display:none}}
+</style>
 </head>
+
 <body>
 
-<!-- HEADER -->
 <header>
-  <div class="nav-inner">
-    <div class="logo"><a href="#top"><img src="logo.jpeg" alt="Logo AnjosInfo"></a></div>
-    <nav id="nav" aria-label="Menu principal">
-      <ul id="mainMenu">
-        <li><a href="#sobre">Sobre Nós</a></li>
-        <li><a href="#atuacao">Atuação</a></li>
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-    <div class="nav-actions">
-      <a class="btn-remote" href="#suporte-remoto" title="Suporte Remoto" rel="noopener">🎧 Suporte Remoto</a>
-      <a class="btn-remote" href="http://127.0.0.1:5000/" title="Área Restrita">🔐 Área Restrita</a>
-    </div>
-  </div>
+<div class="nav-inner">
+<div class="logo"><img src="logo.jpeg" alt="AnjosInfo"></div>
+<nav>
+<ul>
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#atuacao">Atuação</a></li>
+<li><a href="#servicos">Serviços</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+</nav>
+<div class="nav-actions">
+<a class="btn-remote" href="#suporte-remoto">🎧 Suporte Remoto</a>
+</div>
+</div>
 </header>
 
-<main id="top">
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="card">
-        <h1>Suporte Ágil e Eficiente para Você</h1>
-        <p class="lead">O <strong>AnjosInfo</strong> é quem garante a tranquilidade do seu dia a dia, descomplica problemas, tira dúvidas técnicas e restaura o funcionamento ideal dos seus sistemas, transformando o imprevisto em solução rápida.</p>
-        <p>A escolha do nome <strong>"Anjo"</strong> contribui significativamente para que o cliente estabeleça suas conexões e as melhores impressões possíveis da instituição, a partir do modo que foi acolhido. Esperamos caminhar junto no propósito de garantir alta performance, proteger dados e transformar a experiência digital, possibilitando aos nossos clientes o melhor suporte em tecnologia e a melhor experiência.</p>
-      </div>
-    </div>
-  </section>
+<main>
 
-  <!-- SOBRE -->
-  <section id="sobre" class="section-padding">
-    <h2 class="section-title">Sobre Nós</h2>
-    <div class="grid">
-      <article class="card">
-        <h3>Missão</h3>
-        <p>Garantir a tranquilidade e a continuidade digital dos nossos clientes, oferecendo suporte técnico humanizado, ágil e eficiente. Queremos que a tecnologia seja uma solução, e não um problema, simplificando o dia a dia e impulsionando a produtividade.</p>
-      </article>
-      <article class="card">
-        <h3>Visão</h3>
-        <p>Ser reconhecida em Belo Horizonte como referência em suporte de informática e atendimento ao cliente, sendo a primeira escolha pela confiabilidade e pela capacidade de transformar desafios técnicos em experiências positivas e duradouras.</p>
-      </article>
-      <article class="card">
-        <h3>Valores</h3>
-        <ul class="service-list">
-          <li>🤝 <strong>Suporte Ágil e Descomplicado:</strong> Atendimento remoto e presencial com foco na solução.</li>
-          <li>🧰 <strong>Soluções Abrangentes:</strong> Manutenção, remoção de vírus, backup, desbloqueio de senhas e mais.</li>
-          <li>💬 <strong>Compromisso com o Cliente:</strong> Atendimento empático, transparente e eficiente.</li>
-        </ul>
-      </article>
-    </div>
-  </section>
+<section class="hero">
+<div class="card">
+<h1>Suporte Ágil e Eficiente</h1>
+<p class="lead">Tecnologia sem dor de cabeça para você e sua empresa.</p>
+<a class="btn-primary" href="#contato">Fale Conosco</a>
+</div>
+</section>
 
-  <!-- ATUAÇÃO -->
-  <section id="atuacao" class="section-padding" style="background:transparent">
-    <h2 class="section-title">🌍 Nossa Atuação</h2>
-    <p class="lead">Atuamos em Belo Horizonte e Região Metropolitana, oferecendo suporte técnico para empresas, residências e profissionais autônomos — com atendimento presencial ou remoto.</p>
-    <div class="grid">
-      <div class="card"><div class="icon-circle">🏢</div><h3>Empresas</h3><p>Suporte técnico em computadores e notebooks corporativos, instalação de softwares, otimização de desempenho, backup de dados, manutenção preventiva e corretiva, remoção de vírus e malwares.</p></div>
-      <div class="card"><div class="icon-circle">🏠</div><h3>Residências</h3><p>Suporte em computadores pessoais, notebooks, redes domésticas, configuração de dispositivos móveis e manutenção preventiva para garantir que tudo funcione corretamente.</p></div>
-      <div class="card"><div class="icon-circle">💻</div><h3>Suporte Ágil</h3><p>Diagnóstico e resolução de problemas técnicos à distância, sem precisar sair de casa ou do escritório. Atendimento rápido e seguro via <strong>TeamViewer</strong>.</p></div>
-    </div>
-  </section>
+<section id="servicos">
+<h2 class="section-title">Serviços</h2>
+<div class="carousel-container">
 
-  <!-- SERVIÇOS -->
-  <section id="servicos">
-    <h2>Serviços</h2>
-    <div class="carousel-container">
-      <button class="carousel-btn left" id="servicos-left">&#10094;</button>
-      <div class="grid" id="servicos-carousel">
-        <div class="card">
-          <h3>💻 Manutenção e Hardware</h3>
-          <ul class="service-list">
-            <li>🖥️ Manutenção preventiva e corretiva de computadores</li>
-            <li>⚙️ Diagnóstico e solução de problemas de hardware e software</li>
-            <li>🧹 Limpeza interna e remoção de vírus e malwares</li>
-            <li>💽 Formatação e reinstalação de sistemas operacionais</li>
-            <li>💻 Upgrade de hardware (RAM, SSD, placa de vídeo)</li>
-            <li>🛠️ Troca de peças danificadas (tela, teclado, fonte)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>🛡️ Segurança e Backup</h3>
-          <ul class="service-list">
-            <li>🛡️ Instalação de antivírus</li>
-            <li>📦 Instalação e configuração do Pacote Office</li>
-            <li>🛡️ Backup em nuvem e segurança de dados</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>🌐 Redes e Conectividade</h3>
-          <ul class="service-list">
-            <li>📶 Configuração de roteadores e redes Wi-Fi</li>
-            <li>🌐 Expansão de rede sem fio e repetidores</li>
-            <li>🔌 Conexão de dispositivos IoT (impressoras, câmeras, smart TVs)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>⚙️ Otimização e Suporte Remoto</h3>
-          <ul class="service-list">
-            <li>🌐 Suporte remoto via TeamViewer</li>
-            <li>⚙️ Consultoria para otimização de sistemas</li>
-            <li>📈 Otimização de desempenho de PCs e notebooks</li>
-            <li>🔑 Desbloqueio de senha para computadores e notebooks</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>📱 Periféricos e Mobilidade</h3>
-          <ul class="service-list">
-            <li>🖨️ Instalação e configuração de impressoras e multifuncionais</li>
-            <li>📱 Configuração de celulares e sincronização com PC</li>
-          </ul>
-        </div>
-      </div>
-      <button class="carousel-btn right" id="servicos-right">&#10095;</button>
-    </div>
-  </section>
+<button class="carousel-btn left" id="servicos-left">&#10094;</button>
 
-  <!-- SUPORTE REMOTO -->
-  <section id="suporte-remoto" class="section-padding">
-    <h2>Suporte Remoto</h2>
-    <p class="lead">
-      Para suporte remoto ágil e seguro, baixe e execute o TeamViewer. Nossa equipe estará pronta para ajudar rapidamente.
-    </p>
-    <a class="btn-primary" href="https://get.teamviewer.com/65699et" target="_blank" rel="noopener noreferrer">
-      Baixar TeamViewer
-    </a>
-  </section>
+<div class="grid" id="servicos-carousel">
 
-  <!-- CONTATO -->
-  <section id="contato" class="section-padding">
-    <h2>Contato</h2>
-    <div class="contact-grid">
-      <div class="card">
-        <h3>Fale Conosco</h3>
-        <p>📍 Rua Joaquim Ramos Filho, 57 – Bairro Jaqueline, Belo Horizonte/MG</p>
-        <p>⏰ Segunda a Sexta 09h–18h</p>
-        <p>⏰ Sábado 09h–18h</p>
-        <p>⏰ Domingo 09h–13h</p>
-        <p style="color:var(--muted)">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="width:18px;height:18px;vertical-align:middle;margin-right:6px;">
-          (31) 3103-9546
-        </p>
-        <p>✉️ anjosinfo2025@gmail.com</p>
-      </div>
-      <div class="card" style="padding:10px">
-        <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3734.821482994385!2d-43.9227772!3d-19.817741799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa69710de3a6ddf%3A0x8480714f37b267d1!2sR.%20Joaquim%20Ramos%20Filho%2C%2057%20-%20Jaqueline%2C%20Belo%20Horizonte%20-%20MG%2C%2031731-360!5e0!3m2!1spt-BR!2sbr!4v1739868135133!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" aria-label="Localização AnjosInfo"></iframe>
-      </div>
-    </div>
-  </section>
+<div class="card">
+<h3>Manutenção e Hardware</h3>
+<ul class="service-list">
+<li>Instalação de SSD com clonagem de sistema</li>
+<li>Upgrade de hardware (RAM, SSD)</li>
+<li>Troca de peças danificadas</li>
+<li>Manutenção preventiva e corretiva</li>
+<li>Troca de pasta térmica para computador</li>
+<li>Troca de pasta térmica para notebook</li>
+<li>Limpeza interna com troca de pasta térmica</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Sistemas e Segurança</h3>
+<ul class="service-list">
+<li>Formatação e reinstalação do sistema operacional</li>
+<li>Troca de sistema operacional</li>
+<li>Instalação e configuração de Pacote Office</li>
+<li>Remoção de vírus e otimização do sistema</li>
+<li>Instalação de antivírus</li>
+<li>Backup em nuvem e segurança de dados</li>
+<li>Desbloqueio de senha de computadores e notebooks</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Redes e Conectividade</h3>
+<ul class="service-list">
+<li>Instalação de antenas Wi-Fi</li>
+<li>Expansão de rede cabeada</li>
+<li>Instalação de repetidores</li>
+<li>Conexão de dispositivos IoT</li>
+</ul>
+</div>
+
+<div class="card">
+<h3>Suporte</h3>
+<ul class="service-list">
+<li>Suporte remoto via TeamViewer</li>
+<li>Pacote Completo</li>
+</ul>
+</div>
+
+</div>
+
+<button class="carousel-btn right" id="servicos-right">&#10095;</button>
+
+</div>
+</section>
+
+<section id="contato" class="section-padding">
+<h2 class="section-title">Contato</h2>
+<p class="lead">(31) 3103-9546 • anjosinfo2025@gmail.com</p>
+</section>
 
 </main>
 
 <footer>
-  <div style="max-width:1180px;margin:0 auto;padding:6px 18px">
-    <small>© 2025 AnjosInfo — Todos os direitos reservados</small>
-  </div>
+© 2025 AnjosInfo — Todos os direitos reservados
 </footer>
 
-<a href="https://wa.me/553131039546" target="_blank" class="whatsapp-button" aria-label="Fale conosco no WhatsApp">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+<a href="https://wa.me/553131039546" class="whatsapp-button" target="_blank">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
 <script>
-  const servicosCarousel = document.getElementById('servicos-carousel');
-  document.getElementById('servicos-left').onclick = () => servicosCarousel.scrollBy({ left: -340, behavior: 'smooth' });
-  document.getElementById('servicos-right').onclick = () => servicosCarousel.scrollBy({ left: 340, behavior: 'smooth' });
+const c=document.getElementById("servicos-carousel");
+document.getElementById("servicos-left").onclick=()=>c.scrollBy({left:-340,behavior:"smooth"});
+document.getElementById("servicos-right").onclick=()=>c.scrollBy({left:340,behavior:"smooth"});
 </script>
+
 </body>
 </html>
