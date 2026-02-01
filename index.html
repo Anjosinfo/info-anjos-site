@@ -1,245 +1,185 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/png" href="favicon.png">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="favicon.png">
 
-  <title>AnjosInfo - Suporte Ágil e Eficiente</title>
-  <meta name="description" content="AnjosInfo - Suporte técnico ágil e eficiente em Belo Horizonte.">
+<title>AnjosInfo - Suporte Ágil e Eficiente</title>
+<meta name="description" content="Suporte técnico ágil e eficiente em Belo Horizonte.">
 
-  <!-- Swiper CSS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
 
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: "Poppins", system-ui, Arial;
-      background: #0b0c10;
-      color: #eef2f7;
-    }
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  font-family:Poppins,Arial;
+  background:#0b0c10;
+  color:#eef2f7
+}
+:root{
+  --primary:#0056D2;
+  --accent:#00aaff;
+  --muted:#aeb6c3;
+  --radius:12px;
+}
+header{
+  position:fixed;top:0;left:0;right:0;
+  background:linear-gradient(90deg,#0b0c10,#000);
+  z-index:1000;
+  border-bottom:1px solid rgba(255,255,255,.05)
+}
+.nav-inner{
+  max-width:1180px;margin:auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:12px 20px
+}
+.logo img{height:56px}
+nav ul{display:flex;gap:24px;list-style:none}
+nav a{color:var(--muted);font-weight:600;text-decoration:none}
+nav a:hover{color:var(--accent)}
+.menu-toggle{display:none;font-size:1.6rem;cursor:pointer}
+.btn-remote{
+  background:var(--primary);color:#fff;
+  padding:8px 14px;border-radius:999px;
+  font-weight:700;text-decoration:none
+}
+main{max-width:1180px;margin:120px auto 40px;padding:0 18px}
+.section-padding{padding:48px 0}
+.section-title{text-align:center;color:var(--accent);margin-bottom:20px}
 
-    :root {
-      --accent: #00aaff;
-      --primary: #0056D2;
-      --muted: #aeb6c3;
-      --radius: 12px;
-    }
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:24px
+}
+.card{
+  background:radial-gradient(circle at top left,rgba(0,86,210,.1),#000);
+  padding:28px;border-radius:var(--radius);
+  border:1px solid rgba(255,255,255,.05)
+}
+.service-list{list-style:none;color:var(--muted);margin-top:10px}
+.service-list li{margin-bottom:8px;border-left:2px solid var(--accent);padding-left:8px}
 
-    header {
-      position: fixed;
-      width: 100%;
-      top: 0;
-      background: rgba(11,12,16,.96);
-      z-index: 1000;
-      border-bottom: 1px solid rgba(255,255,255,.05);
-    }
+/* CARROSSEL MOBILE */
+.servicos-swiper{display:none}
+.swiper-pagination-bullet{background:var(--accent)}
 
-    .nav-inner {
-      max-width: 1180px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-    }
+footer{
+  background:linear-gradient(90deg,var(--primary),rgba(0,170,255,.4));
+  text-align:center;padding:18px;color:#fff
+}
+.whatsapp-button{
+  position:fixed;bottom:25px;right:25px
+}
+.whatsapp-button img{width:60px}
 
-    .logo img { height: 56px; }
+/* RESPONSIVO */
+@media(max-width:900px){
+  nav ul{
+    display:none;flex-direction:column;
+    position:absolute;top:70px;right:20px;
+    background:#0b0c10;padding:16px;border-radius:10px
+  }
+  nav ul.show{display:flex}
+  .menu-toggle{display:block}
 
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 24px;
-    }
-
-    nav a {
-      color: var(--muted);
-      font-weight: 600;
-      text-decoration: none;
-    }
-
-    nav a:hover { color: var(--accent); }
-
-    .menu-toggle {
-      display: none;
-      font-size: 1.6rem;
-      cursor: pointer;
-    }
-
-    .btn-remote {
-      background: var(--primary);
-      padding: 8px 16px;
-      border-radius: 999px;
-      color: #fff;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    main {
-      max-width: 1180px;
-      margin: 120px auto 40px;
-      padding: 0 18px;
-    }
-
-    h2 {
-      color: var(--accent);
-      text-align: center;
-      margin-bottom: 30px;
-    }
-
-    /* DESKTOP GRID */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-    }
-
-    .card {
-      background: radial-gradient(circle at top left, rgba(0,86,210,0.08), rgba(0,0,0,0.9));
-      padding: 28px;
-      border-radius: var(--radius);
-      border: 1px solid rgba(255,255,255,.05);
-      transition: transform .3s;
-    }
-
-    .card:hover {
-      transform: translateY(-6px);
-    }
-
-    .service-list {
-      list-style: none;
-      margin-top: 12px;
-      color: var(--muted);
-    }
-
-    .service-list li {
-      margin-bottom: 8px;
-      border-left: 2px solid rgba(0,170,255,.3);
-      padding-left: 8px;
-    }
-
-    /* SWIPER */
-    .servicos-swiper { display: none; }
-
-    .swiper-slide {
-      display: flex;
-      justify-content: center;
-    }
-
-    .swiper-pagination-bullet {
-      background: var(--accent);
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      color: var(--accent);
-    }
-
-    footer {
-      background: linear-gradient(90deg, var(--primary), rgba(0,170,255,.4));
-      padding: 18px;
-      text-align: center;
-      color: #fff;
-    }
-
-    .whatsapp-button {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-    }
-
-    .whatsapp-button img {
-      width: 60px;
-    }
-
-    @media (max-width: 900px) {
-      nav ul { display: none; flex-direction: column; }
-      nav ul.show { display: flex; background: #0b0c10; padding: 16px; }
-      .menu-toggle { display: block; }
-
-      .grid { display: none; }
-      .servicos-swiper { display: block; }
-    }
-  </style>
+  .grid{display:none}
+  .servicos-swiper{display:block}
+}
+iframe{width:100%;height:320px;border:0;border-radius:10px}
+</style>
 </head>
 
 <body>
 
 <header>
-  <div class="nav-inner">
-    <div class="logo"><img src="logo.jpeg"></div>
-
-    <nav>
-      <div class="menu-toggle" id="menuToggle">☰</div>
-      <ul id="menu">
-        <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#contato">Contato</a></li>
-      </ul>
-    </nav>
-
-    <a class="btn-remote">🎧 Suporte</a>
-  </div>
+<div class="nav-inner">
+<div class="logo"><img src="logo.jpeg"></div>
+<nav>
+<div class="menu-toggle" id="menuToggle">☰</div>
+<ul id="menu">
+<li><a href="#sobre">Sobre</a></li>
+<li><a href="#servicos">Serviços</a></li>
+<li><a href="#suporte">Suporte</a></li>
+<li><a href="#contato">Contato</a></li>
+</ul>
+</nav>
+<a class="btn-remote" href="#suporte">🎧 Suporte</a>
+</div>
 </header>
 
 <main>
 
-<section id="servicos">
-  <h2>Serviços</h2>
-
-  <!-- DESKTOP -->
-  <div class="grid">
-    <div class="card">
-      <h3>Manutenção e Hardware</h3>
-      <ul class="service-list">
-        <li>Instalação de SSD com clonagem</li>
-        <li>Upgrade de RAM e SSD</li>
-        <li>Troca de peças</li>
-        <li>Troca de pasta térmica</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Sistemas e Segurança</h3>
-      <ul class="service-list">
-        <li>Formatação e reinstalação</li>
-        <li>Troca de sistema operacional</li>
-        <li>Pacote Office</li>
-        <li>Remoção de vírus</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Redes</h3>
-      <ul class="service-list">
-        <li>Instalação de antenas Wi-Fi</li>
-        <li>Expansão de rede</li>
-        <li>Repetidores</li>
-        <li>IoT</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- MOBILE CARROSSEL -->
-  <div class="swiper servicos-swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide"><div class="card">Manutenção e Hardware</div></div>
-      <div class="swiper-slide"><div class="card">Sistemas e Segurança</div></div>
-      <div class="swiper-slide"><div class="card">Redes</div></div>
-    </div>
-
-    <div class="swiper-pagination"></div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
+<!-- SOBRE -->
+<section id="sobre" class="section-padding">
+<h2 class="section-title">Sobre Nós</h2>
+<div class="grid">
+<div class="card">
+<h3>Missão</h3>
+<p>Garantir tranquilidade digital com suporte técnico ágil, humano e eficiente.</p>
+</div>
+<div class="card">
+<h3>Visão</h3>
+<p>Ser referência em suporte de informática em Belo Horizonte.</p>
+</div>
+<div class="card">
+<h3>Valores</h3>
+<ul class="service-list">
+<li>Atendimento humanizado</li>
+<li>Transparência</li>
+<li>Agilidade</li>
+</ul>
+</div>
+</div>
 </section>
 
-<section id="contato">
-  <h2>Contato</h2>
-  <div class="card">
-    <p>📍 Belo Horizonte / MG</p>
-    <p>📞 (31) 3103-9546</p>
-    <p>✉️ anjosinfo2025@gmail.com</p>
-  </div>
+<!-- SERVIÇOS -->
+<section id="servicos" class="section-padding">
+<h2 class="section-title">Serviços</h2>
+
+<div class="grid">
+<div class="card"><h3>Hardware</h3><ul class="service-list"><li>SSD</li><li>RAM</li><li>Pasta térmica</li></ul></div>
+<div class="card"><h3>Sistemas</h3><ul class="service-list"><li>Formatação</li><li>Office</li><li>Vírus</li></ul></div>
+<div class="card"><h3>Redes</h3><ul class="service-list"><li>Wi-Fi</li><li>Repetidores</li></ul></div>
+</div>
+
+<div class="swiper servicos-swiper">
+<div class="swiper-wrapper">
+<div class="swiper-slide"><div class="card"><h3>Hardware</h3><ul class="service-list"><li>SSD</li><li>RAM</li></ul></div></div>
+<div class="swiper-slide"><div class="card"><h3>Sistemas</h3><ul class="service-list"><li>Formatação</li><li>Office</li></ul></div></div>
+<div class="swiper-slide"><div class="card"><h3>Redes</h3><ul class="service-list"><li>Wi-Fi</li><li>Repetidor</li></ul></div></div>
+</div>
+<div class="swiper-pagination"></div>
+</div>
+</section>
+
+<!-- SUPORTE REMOTO -->
+<section id="suporte" class="section-padding">
+<h2 class="section-title">Suporte Remoto</h2>
+<p style="text-align:center;color:var(--muted)">
+Baixe o TeamViewer para atendimento rápido e seguro
+</p>
+<div style="text-align:center;margin-top:20px">
+<a class="btn-remote" href="https://get.teamviewer.com/65699et" target="_blank">
+Baixar TeamViewer
+</a>
+</div>
+</section>
+
+<!-- CONTATO -->
+<section id="contato" class="section-padding">
+<h2 class="section-title">Contato</h2>
+<div class="grid">
+<div class="card">
+<p>📍 Rua Joaquim Ramos Filho, 57 – BH</p>
+<p>📞 (31) 3103-9546</p>
+<p>✉️ anjosinfo2025@gmail.com</p>
+</div>
+<div class="card">
+<iframe src="https://www.google.com/maps?q=Rua+Joaquim+Ramos+Filho+57+Belo+Horizonte&output=embed"></iframe>
+</div>
+</div>
 </section>
 
 </main>
@@ -247,31 +187,19 @@
 <footer>© 2025 AnjosInfo</footer>
 
 <a class="whatsapp-button" href="https://wa.me/553131039546" target="_blank">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+<img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
 </a>
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
 <script>
-  const swiper = new Swiper(".servicos-swiper", {
-    slidesPerView: 1.1,
-    spaceBetween: 20,
-    centeredSlides: true,
-    loop: true,
-    autoplay: {
-      delay: 3000,
-      disableOnInteraction: false,
-    },
-    pagination: { el: ".swiper-pagination", clickable: true },
-    navigation: {
-      nextEl: ".swiper-button-next",
-      prevEl: ".swiper-button-prev",
-    },
-  });
-
-  document.getElementById("menuToggle").onclick = () => {
-    document.getElementById("menu").classList.toggle("show");
-  };
+new Swiper(".servicos-swiper",{
+slidesPerView:1.1,
+spaceBetween:20,
+centeredSlides:true,
+loop:true,
+pagination:{el:".swiper-pagination"}
+});
+menuToggle.onclick=()=>menu.classList.toggle("show");
 </script>
 
 </body>
